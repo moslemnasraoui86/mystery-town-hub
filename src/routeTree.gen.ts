@@ -10,34 +10,81 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WhitelistRouteImport } from './routes/whitelist'
+import { Route as VoteRouteImport } from './routes/vote'
+import { Route as TicketsRouteImport } from './routes/tickets'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as StatusRouteImport } from './routes/status'
 import { Route as StaffRouteImport } from './routes/staff'
+import { Route as ShopRouteImport } from './routes/shop'
 import { Route as RulesRouteImport } from './routes/rules'
 import { Route as RegisterRouteImport } from './routes/register'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as NewsRouteImport } from './routes/news'
+import { Route as LoreRouteImport } from './routes/lore'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as LeaderboardRouteImport } from './routes/leaderboard'
 import { Route as GalleryRouteImport } from './routes/gallery'
+import { Route as ForumRouteImport } from './routes/forum'
 import { Route as FeaturesRouteImport } from './routes/features'
 import { Route as FaqRouteImport } from './routes/faq'
+import { Route as FactionsRouteImport } from './routes/factions'
+import { Route as EventsRouteImport } from './routes/events'
 import { Route as DonateRouteImport } from './routes/donate'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CharactersRouteImport } from './routes/characters'
+import { Route as ChangelogRouteImport } from './routes/changelog'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
+import { Route as NewsIdRouteImport } from './routes/news.$id'
 import { Route as AdminWhitelistRouteImport } from './routes/admin.whitelist'
 import { Route as AdminUsersRouteImport } from './routes/admin.users'
+import { Route as AdminTicketsRouteImport } from './routes/admin.tickets'
+import { Route as AdminStatusRouteImport } from './routes/admin.status'
 import { Route as AdminSettingsRouteImport } from './routes/admin.settings'
+import { Route as AdminNewsRouteImport } from './routes/admin.news'
 import { Route as AdminMessagesRouteImport } from './routes/admin.messages'
+import { Route as AdminFactionsRouteImport } from './routes/admin.factions'
+import { Route as AdminEventsRouteImport } from './routes/admin.events'
 import { Route as AdminDonationsRouteImport } from './routes/admin.donations'
+import { Route as AdminBansRouteImport } from './routes/admin.bans'
+import { Route as AdminAuditRouteImport } from './routes/admin.audit'
 
 const WhitelistRoute = WhitelistRouteImport.update({
   id: '/whitelist',
   path: '/whitelist',
   getParentRoute: () => rootRouteImport,
 } as any)
+const VoteRoute = VoteRouteImport.update({
+  id: '/vote',
+  path: '/vote',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TicketsRoute = TicketsRouteImport.update({
+  id: '/tickets',
+  path: '/tickets',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StatusRoute = StatusRouteImport.update({
+  id: '/status',
+  path: '/status',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const StaffRoute = StaffRouteImport.update({
   id: '/staff',
   path: '/staff',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShopRoute = ShopRouteImport.update({
+  id: '/shop',
+  path: '/shop',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RulesRoute = RulesRouteImport.update({
@@ -50,14 +97,39 @@ const RegisterRoute = RegisterRouteImport.update({
   path: '/register',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewsRoute = NewsRouteImport.update({
+  id: '/news',
+  path: '/news',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoreRoute = LoreRouteImport.update({
+  id: '/lore',
+  path: '/lore',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LeaderboardRoute = LeaderboardRouteImport.update({
+  id: '/leaderboard',
+  path: '/leaderboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GalleryRoute = GalleryRouteImport.update({
   id: '/gallery',
   path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ForumRoute = ForumRouteImport.update({
+  id: '/forum',
+  path: '/forum',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FeaturesRoute = FeaturesRouteImport.update({
@@ -68,6 +140,16 @@ const FeaturesRoute = FeaturesRouteImport.update({
 const FaqRoute = FaqRouteImport.update({
   id: '/faq',
   path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FactionsRoute = FactionsRouteImport.update({
+  id: '/factions',
+  path: '/factions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EventsRoute = EventsRouteImport.update({
+  id: '/events',
+  path: '/events',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DonateRoute = DonateRouteImport.update({
@@ -83,6 +165,16 @@ const DashboardRoute = DashboardRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CharactersRoute = CharactersRouteImport.update({
+  id: '/characters',
+  path: '/characters',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChangelogRoute = ChangelogRouteImport.update({
+  id: '/changelog',
+  path: '/changelog',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminRoute = AdminRouteImport.update({
@@ -105,6 +197,11 @@ const AdminIndexRoute = AdminIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AdminRoute,
 } as any)
+const NewsIdRoute = NewsIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => NewsRoute,
+} as any)
 const AdminWhitelistRoute = AdminWhitelistRouteImport.update({
   id: '/whitelist',
   path: '/whitelist',
@@ -115,9 +212,24 @@ const AdminUsersRoute = AdminUsersRouteImport.update({
   path: '/users',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminTicketsRoute = AdminTicketsRouteImport.update({
+  id: '/tickets',
+  path: '/tickets',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminStatusRoute = AdminStatusRouteImport.update({
+  id: '/status',
+  path: '/status',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AdminSettingsRoute = AdminSettingsRouteImport.update({
   id: '/settings',
   path: '/settings',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminNewsRoute = AdminNewsRouteImport.update({
+  id: '/news',
+  path: '/news',
   getParentRoute: () => AdminRoute,
 } as any)
 const AdminMessagesRoute = AdminMessagesRouteImport.update({
@@ -125,9 +237,29 @@ const AdminMessagesRoute = AdminMessagesRouteImport.update({
   path: '/messages',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminFactionsRoute = AdminFactionsRouteImport.update({
+  id: '/factions',
+  path: '/factions',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminEventsRoute = AdminEventsRouteImport.update({
+  id: '/events',
+  path: '/events',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AdminDonationsRoute = AdminDonationsRouteImport.update({
   id: '/donations',
   path: '/donations',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminBansRoute = AdminBansRouteImport.update({
+  id: '/bans',
+  path: '/bans',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminAuditRoute = AdminAuditRouteImport.update({
+  id: '/audit',
+  path: '/audit',
   getParentRoute: () => AdminRoute,
 } as any)
 
@@ -135,43 +267,87 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/admin': typeof AdminRouteWithChildren
+  '/changelog': typeof ChangelogRoute
+  '/characters': typeof CharactersRoute
   '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
   '/donate': typeof DonateRoute
+  '/events': typeof EventsRoute
+  '/factions': typeof FactionsRoute
   '/faq': typeof FaqRoute
   '/features': typeof FeaturesRoute
+  '/forum': typeof ForumRoute
   '/gallery': typeof GalleryRoute
+  '/leaderboard': typeof LeaderboardRoute
   '/login': typeof LoginRoute
+  '/lore': typeof LoreRoute
+  '/news': typeof NewsRouteWithChildren
+  '/privacy': typeof PrivacyRoute
   '/register': typeof RegisterRoute
   '/rules': typeof RulesRoute
+  '/shop': typeof ShopRoute
   '/staff': typeof StaffRoute
+  '/status': typeof StatusRoute
+  '/terms': typeof TermsRoute
+  '/tickets': typeof TicketsRoute
+  '/vote': typeof VoteRoute
   '/whitelist': typeof WhitelistRoute
+  '/admin/audit': typeof AdminAuditRoute
+  '/admin/bans': typeof AdminBansRoute
   '/admin/donations': typeof AdminDonationsRoute
+  '/admin/events': typeof AdminEventsRoute
+  '/admin/factions': typeof AdminFactionsRoute
   '/admin/messages': typeof AdminMessagesRoute
+  '/admin/news': typeof AdminNewsRoute
   '/admin/settings': typeof AdminSettingsRoute
+  '/admin/status': typeof AdminStatusRoute
+  '/admin/tickets': typeof AdminTicketsRoute
   '/admin/users': typeof AdminUsersRoute
   '/admin/whitelist': typeof AdminWhitelistRoute
+  '/news/$id': typeof NewsIdRoute
   '/admin/': typeof AdminIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/changelog': typeof ChangelogRoute
+  '/characters': typeof CharactersRoute
   '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
   '/donate': typeof DonateRoute
+  '/events': typeof EventsRoute
+  '/factions': typeof FactionsRoute
   '/faq': typeof FaqRoute
   '/features': typeof FeaturesRoute
+  '/forum': typeof ForumRoute
   '/gallery': typeof GalleryRoute
+  '/leaderboard': typeof LeaderboardRoute
   '/login': typeof LoginRoute
+  '/lore': typeof LoreRoute
+  '/news': typeof NewsRouteWithChildren
+  '/privacy': typeof PrivacyRoute
   '/register': typeof RegisterRoute
   '/rules': typeof RulesRoute
+  '/shop': typeof ShopRoute
   '/staff': typeof StaffRoute
+  '/status': typeof StatusRoute
+  '/terms': typeof TermsRoute
+  '/tickets': typeof TicketsRoute
+  '/vote': typeof VoteRoute
   '/whitelist': typeof WhitelistRoute
+  '/admin/audit': typeof AdminAuditRoute
+  '/admin/bans': typeof AdminBansRoute
   '/admin/donations': typeof AdminDonationsRoute
+  '/admin/events': typeof AdminEventsRoute
+  '/admin/factions': typeof AdminFactionsRoute
   '/admin/messages': typeof AdminMessagesRoute
+  '/admin/news': typeof AdminNewsRoute
   '/admin/settings': typeof AdminSettingsRoute
+  '/admin/status': typeof AdminStatusRoute
+  '/admin/tickets': typeof AdminTicketsRoute
   '/admin/users': typeof AdminUsersRoute
   '/admin/whitelist': typeof AdminWhitelistRoute
+  '/news/$id': typeof NewsIdRoute
   '/admin': typeof AdminIndexRoute
 }
 export interface FileRoutesById {
@@ -179,22 +355,44 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/admin': typeof AdminRouteWithChildren
+  '/changelog': typeof ChangelogRoute
+  '/characters': typeof CharactersRoute
   '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
   '/donate': typeof DonateRoute
+  '/events': typeof EventsRoute
+  '/factions': typeof FactionsRoute
   '/faq': typeof FaqRoute
   '/features': typeof FeaturesRoute
+  '/forum': typeof ForumRoute
   '/gallery': typeof GalleryRoute
+  '/leaderboard': typeof LeaderboardRoute
   '/login': typeof LoginRoute
+  '/lore': typeof LoreRoute
+  '/news': typeof NewsRouteWithChildren
+  '/privacy': typeof PrivacyRoute
   '/register': typeof RegisterRoute
   '/rules': typeof RulesRoute
+  '/shop': typeof ShopRoute
   '/staff': typeof StaffRoute
+  '/status': typeof StatusRoute
+  '/terms': typeof TermsRoute
+  '/tickets': typeof TicketsRoute
+  '/vote': typeof VoteRoute
   '/whitelist': typeof WhitelistRoute
+  '/admin/audit': typeof AdminAuditRoute
+  '/admin/bans': typeof AdminBansRoute
   '/admin/donations': typeof AdminDonationsRoute
+  '/admin/events': typeof AdminEventsRoute
+  '/admin/factions': typeof AdminFactionsRoute
   '/admin/messages': typeof AdminMessagesRoute
+  '/admin/news': typeof AdminNewsRoute
   '/admin/settings': typeof AdminSettingsRoute
+  '/admin/status': typeof AdminStatusRoute
+  '/admin/tickets': typeof AdminTicketsRoute
   '/admin/users': typeof AdminUsersRoute
   '/admin/whitelist': typeof AdminWhitelistRoute
+  '/news/$id': typeof NewsIdRoute
   '/admin/': typeof AdminIndexRoute
 }
 export interface FileRouteTypes {
@@ -203,65 +401,131 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/admin'
+    | '/changelog'
+    | '/characters'
     | '/contact'
     | '/dashboard'
     | '/donate'
+    | '/events'
+    | '/factions'
     | '/faq'
     | '/features'
+    | '/forum'
     | '/gallery'
+    | '/leaderboard'
     | '/login'
+    | '/lore'
+    | '/news'
+    | '/privacy'
     | '/register'
     | '/rules'
+    | '/shop'
     | '/staff'
+    | '/status'
+    | '/terms'
+    | '/tickets'
+    | '/vote'
     | '/whitelist'
+    | '/admin/audit'
+    | '/admin/bans'
     | '/admin/donations'
+    | '/admin/events'
+    | '/admin/factions'
     | '/admin/messages'
+    | '/admin/news'
     | '/admin/settings'
+    | '/admin/status'
+    | '/admin/tickets'
     | '/admin/users'
     | '/admin/whitelist'
+    | '/news/$id'
     | '/admin/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
+    | '/changelog'
+    | '/characters'
     | '/contact'
     | '/dashboard'
     | '/donate'
+    | '/events'
+    | '/factions'
     | '/faq'
     | '/features'
+    | '/forum'
     | '/gallery'
+    | '/leaderboard'
     | '/login'
+    | '/lore'
+    | '/news'
+    | '/privacy'
     | '/register'
     | '/rules'
+    | '/shop'
     | '/staff'
+    | '/status'
+    | '/terms'
+    | '/tickets'
+    | '/vote'
     | '/whitelist'
+    | '/admin/audit'
+    | '/admin/bans'
     | '/admin/donations'
+    | '/admin/events'
+    | '/admin/factions'
     | '/admin/messages'
+    | '/admin/news'
     | '/admin/settings'
+    | '/admin/status'
+    | '/admin/tickets'
     | '/admin/users'
     | '/admin/whitelist'
+    | '/news/$id'
     | '/admin'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/admin'
+    | '/changelog'
+    | '/characters'
     | '/contact'
     | '/dashboard'
     | '/donate'
+    | '/events'
+    | '/factions'
     | '/faq'
     | '/features'
+    | '/forum'
     | '/gallery'
+    | '/leaderboard'
     | '/login'
+    | '/lore'
+    | '/news'
+    | '/privacy'
     | '/register'
     | '/rules'
+    | '/shop'
     | '/staff'
+    | '/status'
+    | '/terms'
+    | '/tickets'
+    | '/vote'
     | '/whitelist'
+    | '/admin/audit'
+    | '/admin/bans'
     | '/admin/donations'
+    | '/admin/events'
+    | '/admin/factions'
     | '/admin/messages'
+    | '/admin/news'
     | '/admin/settings'
+    | '/admin/status'
+    | '/admin/tickets'
     | '/admin/users'
     | '/admin/whitelist'
+    | '/news/$id'
     | '/admin/'
   fileRoutesById: FileRoutesById
 }
@@ -269,16 +533,30 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   AdminRoute: typeof AdminRouteWithChildren
+  ChangelogRoute: typeof ChangelogRoute
+  CharactersRoute: typeof CharactersRoute
   ContactRoute: typeof ContactRoute
   DashboardRoute: typeof DashboardRoute
   DonateRoute: typeof DonateRoute
+  EventsRoute: typeof EventsRoute
+  FactionsRoute: typeof FactionsRoute
   FaqRoute: typeof FaqRoute
   FeaturesRoute: typeof FeaturesRoute
+  ForumRoute: typeof ForumRoute
   GalleryRoute: typeof GalleryRoute
+  LeaderboardRoute: typeof LeaderboardRoute
   LoginRoute: typeof LoginRoute
+  LoreRoute: typeof LoreRoute
+  NewsRoute: typeof NewsRouteWithChildren
+  PrivacyRoute: typeof PrivacyRoute
   RegisterRoute: typeof RegisterRoute
   RulesRoute: typeof RulesRoute
+  ShopRoute: typeof ShopRoute
   StaffRoute: typeof StaffRoute
+  StatusRoute: typeof StatusRoute
+  TermsRoute: typeof TermsRoute
+  TicketsRoute: typeof TicketsRoute
+  VoteRoute: typeof VoteRoute
   WhitelistRoute: typeof WhitelistRoute
 }
 
@@ -291,11 +569,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WhitelistRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/vote': {
+      id: '/vote'
+      path: '/vote'
+      fullPath: '/vote'
+      preLoaderRoute: typeof VoteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tickets': {
+      id: '/tickets'
+      path: '/tickets'
+      fullPath: '/tickets'
+      preLoaderRoute: typeof TicketsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/status': {
+      id: '/status'
+      path: '/status'
+      fullPath: '/status'
+      preLoaderRoute: typeof StatusRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/staff': {
       id: '/staff'
       path: '/staff'
       fullPath: '/staff'
       preLoaderRoute: typeof StaffRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shop': {
+      id: '/shop'
+      path: '/shop'
+      fullPath: '/shop'
+      preLoaderRoute: typeof ShopRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/rules': {
@@ -312,6 +625,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RegisterRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/news': {
+      id: '/news'
+      path: '/news'
+      fullPath: '/news'
+      preLoaderRoute: typeof NewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lore': {
+      id: '/lore'
+      path: '/lore'
+      fullPath: '/lore'
+      preLoaderRoute: typeof LoreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/login': {
       id: '/login'
       path: '/login'
@@ -319,11 +653,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/leaderboard': {
+      id: '/leaderboard'
+      path: '/leaderboard'
+      fullPath: '/leaderboard'
+      preLoaderRoute: typeof LeaderboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/gallery': {
       id: '/gallery'
       path: '/gallery'
       fullPath: '/gallery'
       preLoaderRoute: typeof GalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/forum': {
+      id: '/forum'
+      path: '/forum'
+      fullPath: '/forum'
+      preLoaderRoute: typeof ForumRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/features': {
@@ -338,6 +686,20 @@ declare module '@tanstack/react-router' {
       path: '/faq'
       fullPath: '/faq'
       preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/factions': {
+      id: '/factions'
+      path: '/factions'
+      fullPath: '/factions'
+      preLoaderRoute: typeof FactionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/events': {
+      id: '/events'
+      path: '/events'
+      fullPath: '/events'
+      preLoaderRoute: typeof EventsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/donate': {
@@ -359,6 +721,20 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/characters': {
+      id: '/characters'
+      path: '/characters'
+      fullPath: '/characters'
+      preLoaderRoute: typeof CharactersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/changelog': {
+      id: '/changelog'
+      path: '/changelog'
+      fullPath: '/changelog'
+      preLoaderRoute: typeof ChangelogRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin': {
@@ -389,6 +765,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminIndexRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/news/$id': {
+      id: '/news/$id'
+      path: '/$id'
+      fullPath: '/news/$id'
+      preLoaderRoute: typeof NewsIdRouteImport
+      parentRoute: typeof NewsRoute
+    }
     '/admin/whitelist': {
       id: '/admin/whitelist'
       path: '/whitelist'
@@ -403,11 +786,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminUsersRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/tickets': {
+      id: '/admin/tickets'
+      path: '/tickets'
+      fullPath: '/admin/tickets'
+      preLoaderRoute: typeof AdminTicketsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/status': {
+      id: '/admin/status'
+      path: '/status'
+      fullPath: '/admin/status'
+      preLoaderRoute: typeof AdminStatusRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/admin/settings': {
       id: '/admin/settings'
       path: '/settings'
       fullPath: '/admin/settings'
       preLoaderRoute: typeof AdminSettingsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/news': {
+      id: '/admin/news'
+      path: '/news'
+      fullPath: '/admin/news'
+      preLoaderRoute: typeof AdminNewsRouteImport
       parentRoute: typeof AdminRoute
     }
     '/admin/messages': {
@@ -417,6 +821,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminMessagesRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/factions': {
+      id: '/admin/factions'
+      path: '/factions'
+      fullPath: '/admin/factions'
+      preLoaderRoute: typeof AdminFactionsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/events': {
+      id: '/admin/events'
+      path: '/events'
+      fullPath: '/admin/events'
+      preLoaderRoute: typeof AdminEventsRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/admin/donations': {
       id: '/admin/donations'
       path: '/donations'
@@ -424,22 +842,50 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminDonationsRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/bans': {
+      id: '/admin/bans'
+      path: '/bans'
+      fullPath: '/admin/bans'
+      preLoaderRoute: typeof AdminBansRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/audit': {
+      id: '/admin/audit'
+      path: '/audit'
+      fullPath: '/admin/audit'
+      preLoaderRoute: typeof AdminAuditRouteImport
+      parentRoute: typeof AdminRoute
+    }
   }
 }
 
 interface AdminRouteChildren {
+  AdminAuditRoute: typeof AdminAuditRoute
+  AdminBansRoute: typeof AdminBansRoute
   AdminDonationsRoute: typeof AdminDonationsRoute
+  AdminEventsRoute: typeof AdminEventsRoute
+  AdminFactionsRoute: typeof AdminFactionsRoute
   AdminMessagesRoute: typeof AdminMessagesRoute
+  AdminNewsRoute: typeof AdminNewsRoute
   AdminSettingsRoute: typeof AdminSettingsRoute
+  AdminStatusRoute: typeof AdminStatusRoute
+  AdminTicketsRoute: typeof AdminTicketsRoute
   AdminUsersRoute: typeof AdminUsersRoute
   AdminWhitelistRoute: typeof AdminWhitelistRoute
   AdminIndexRoute: typeof AdminIndexRoute
 }
 
 const AdminRouteChildren: AdminRouteChildren = {
+  AdminAuditRoute: AdminAuditRoute,
+  AdminBansRoute: AdminBansRoute,
   AdminDonationsRoute: AdminDonationsRoute,
+  AdminEventsRoute: AdminEventsRoute,
+  AdminFactionsRoute: AdminFactionsRoute,
   AdminMessagesRoute: AdminMessagesRoute,
+  AdminNewsRoute: AdminNewsRoute,
   AdminSettingsRoute: AdminSettingsRoute,
+  AdminStatusRoute: AdminStatusRoute,
+  AdminTicketsRoute: AdminTicketsRoute,
   AdminUsersRoute: AdminUsersRoute,
   AdminWhitelistRoute: AdminWhitelistRoute,
   AdminIndexRoute: AdminIndexRoute,
@@ -447,20 +893,44 @@ const AdminRouteChildren: AdminRouteChildren = {
 
 const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
 
+interface NewsRouteChildren {
+  NewsIdRoute: typeof NewsIdRoute
+}
+
+const NewsRouteChildren: NewsRouteChildren = {
+  NewsIdRoute: NewsIdRoute,
+}
+
+const NewsRouteWithChildren = NewsRoute._addFileChildren(NewsRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   AdminRoute: AdminRouteWithChildren,
+  ChangelogRoute: ChangelogRoute,
+  CharactersRoute: CharactersRoute,
   ContactRoute: ContactRoute,
   DashboardRoute: DashboardRoute,
   DonateRoute: DonateRoute,
+  EventsRoute: EventsRoute,
+  FactionsRoute: FactionsRoute,
   FaqRoute: FaqRoute,
   FeaturesRoute: FeaturesRoute,
+  ForumRoute: ForumRoute,
   GalleryRoute: GalleryRoute,
+  LeaderboardRoute: LeaderboardRoute,
   LoginRoute: LoginRoute,
+  LoreRoute: LoreRoute,
+  NewsRoute: NewsRouteWithChildren,
+  PrivacyRoute: PrivacyRoute,
   RegisterRoute: RegisterRoute,
   RulesRoute: RulesRoute,
+  ShopRoute: ShopRoute,
   StaffRoute: StaffRoute,
+  StatusRoute: StatusRoute,
+  TermsRoute: TermsRoute,
+  TicketsRoute: TicketsRoute,
+  VoteRoute: VoteRoute,
   WhitelistRoute: WhitelistRoute,
 }
 export const routeTree = rootRouteImport

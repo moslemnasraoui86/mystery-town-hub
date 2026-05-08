@@ -1,7 +1,7 @@
 import { createFileRoute, useNavigate, Link, Outlet, useRouterState } from "@tanstack/react-router";
 import { useAuth } from "@/lib/auth-context";
 import { useEffect } from "react";
-import { LayoutDashboard, Users, FileText, Heart, MessageSquare, Settings, ArrowLeft, Skull } from "lucide-react";
+import { LayoutDashboard, Users, FileText, Heart, MessageSquare, Settings, ArrowLeft, Skull, Newspaper, Calendar, LifeBuoy, Ban, Swords, Activity, ScrollText } from "lucide-react";
 
 export const Route = createFileRoute("/admin")({
   head: () => ({ meta: [{ title: "Admin Dashboard — Mystery Town" }] }),
@@ -14,6 +14,13 @@ const NAV = [
   { to: "/admin/whitelist", label: "Whitelist", icon: FileText },
   { to: "/admin/donations", label: "Donations", icon: Heart },
   { to: "/admin/messages", label: "Messages", icon: MessageSquare },
+  { to: "/admin/news", label: "News", icon: Newspaper },
+  { to: "/admin/events", label: "Events", icon: Calendar },
+  { to: "/admin/factions", label: "Factions", icon: Swords },
+  { to: "/admin/tickets", label: "Tickets", icon: LifeBuoy },
+  { to: "/admin/bans", label: "Bans", icon: Ban },
+  { to: "/admin/status", label: "Server Status", icon: Activity },
+  { to: "/admin/audit", label: "Audit Log", icon: ScrollText },
   { to: "/admin/settings", label: "Settings", icon: Settings },
 ];
 

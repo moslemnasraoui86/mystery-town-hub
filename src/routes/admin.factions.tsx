@@ -36,7 +36,7 @@ function AdminFactions() {
       <div className="mt-8 space-y-2">
         {data?.map(x => (
           <div key={x.id} className="rounded-xl border border-border bg-card/50 p-4 flex justify-between items-center">
-            <div className="font-medium" style={{ color: x.color }}>[{x.tag}] {x.name}</div>
+            <div className="font-medium" style={{ color: x.color ?? "#dc2626" }}>[{x.tag}] {x.name}</div>
             <Button size="sm" variant="destructive" onClick={() => del(x.id)}><Trash2 className="h-3 w-3" /></Button>
           </div>
         ))}

@@ -24,7 +24,7 @@ function FactionsPage() {
             <div key={f.id} className="rounded-2xl border-2 border-border bg-card/50 p-6 hover:border-primary transition">
               <div className="flex items-start justify-between">
                 <div>
-                  <div className="text-xs font-mono" style={{ color: f.color }}>[{f.tag}]</div>
+                  <div className="text-xs font-mono" style={{ color: f.color ?? "#dc2626" }}>[{f.tag}]</div>
                   <h3 className="font-display text-2xl mt-1">{f.name}</h3>
                 </div>
                 {f.recruiting && <span className="text-[10px] uppercase tracking-widest bg-green-500/20 text-green-400 px-2 py-1 rounded-full">Recruiting</span>}
