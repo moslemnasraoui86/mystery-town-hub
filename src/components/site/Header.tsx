@@ -6,14 +6,22 @@ import { Button } from "@/components/ui/button";
 
 const NAV = [
   { to: "/", label: "Home" },
-  { to: "/about", label: "About" },
-  { to: "/features", label: "Features" },
+  { to: "/news", label: "News" },
+  { to: "/events", label: "Events" },
+  { to: "/factions", label: "Factions" },
+  { to: "/characters", label: "Roster" },
+  { to: "/leaderboard", label: "Leaders" },
+  { to: "/forum", label: "Forum" },
+  { to: "/lore", label: "Lore" },
   { to: "/rules", label: "Rules" },
   { to: "/whitelist", label: "Whitelist" },
+  { to: "/shop", label: "Shop" },
   { to: "/donate", label: "Donate" },
+  { to: "/vote", label: "Vote" },
+  { to: "/status", label: "Status" },
+  { to: "/tickets", label: "Support" },
   { to: "/staff", label: "Staff" },
-  { to: "/gallery", label: "Gallery" },
-  { to: "/faq", label: "FAQ" },
+  { to: "/about", label: "About" },
   { to: "/contact", label: "Contact" },
 ] as const;
 
