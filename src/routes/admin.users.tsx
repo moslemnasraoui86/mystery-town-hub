@@ -39,6 +39,16 @@ function AdminUsers() {
     refetch();
   };
 
+  const removeUser = async (userId: string, username: string) => {
+    if (!isCeo) return toast.error("Only CEO can remove users");
+    if (!confirm(`Permanently delete @${username}? Their account profile will be removed.`)) return;
+    await supabase.from("user_roles").delete().eq("user_id", userId);
+    const { error } = await supabase.from("profiles").delete().eq("id", userId);
+    if (error) return toast.error(error.message);
+    toast.success("User removed");
+    refetch();
+  };
+
   return (
     <div>
       <h1 className="font-display text-3xl font-black">Users & Roles</h1>
@@ -76,6 +86,9 @@ function AdminUsers() {
                           {u.roles.includes(r) ? `Revoke ${r}` : `Make ${r}`}
                         </Button>
                       ))}
+                      <Button size="sm" variant="destructive" onClick={() => removeUser(u.id, u.username)}>
+                        Delete
+                      </Button>
                     </div>
                   )}
                 </td>
