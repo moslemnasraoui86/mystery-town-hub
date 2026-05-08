@@ -72,11 +72,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Mystery Town — Hardcore RP & Zombies SA-MP Server" },
+      { name: "description", content: "Survive the dead. Live the role. Mystery Town is a hardcore RP & zombies SA-MP server with deep economy, factions and lore." },
+      { name: "author", content: "Mystery Town" },
+      { property: "og:title", content: "Mystery Town — RP & Zombies SA-MP" },
+      { property: "og:description", content: "Survive the dead. Live the role." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
@@ -108,12 +108,18 @@ function RootShell({ children }: { children: React.ReactNode }) {
   );
 }
 
+import { AuthProvider } from "@/lib/auth-context";
+import { Toaster } from "@/components/ui/sonner";
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
+      <AuthProvider>
+        <Outlet />
+        <Toaster richColors theme="dark" />
+      </AuthProvider>
     </QueryClientProvider>
   );
 }
