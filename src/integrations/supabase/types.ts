@@ -14,6 +14,104 @@ export type Database = {
   }
   public: {
     Tables: {
+      audit_logs: {
+        Row: {
+          action: string
+          actor_id: string | null
+          created_at: string
+          id: string
+          meta: Json | null
+          target: string | null
+        }
+        Insert: {
+          action: string
+          actor_id?: string | null
+          created_at?: string
+          id?: string
+          meta?: Json | null
+          target?: string | null
+        }
+        Update: {
+          action?: string
+          actor_id?: string | null
+          created_at?: string
+          id?: string
+          meta?: Json | null
+          target?: string | null
+        }
+        Relationships: []
+      }
+      bans: {
+        Row: {
+          active: boolean
+          created_at: string
+          created_by: string | null
+          expires_at: string | null
+          id: string
+          reason: string
+          user_id: string
+        }
+        Insert: {
+          active?: boolean
+          created_at?: string
+          created_by?: string | null
+          expires_at?: string | null
+          id?: string
+          reason: string
+          user_id: string
+        }
+        Update: {
+          active?: boolean
+          created_at?: string
+          created_by?: string | null
+          expires_at?: string | null
+          id?: string
+          reason?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      characters: {
+        Row: {
+          alive: boolean
+          bio: string | null
+          created_at: string
+          faction_id: string | null
+          id: string
+          level: number
+          name: string
+          user_id: string
+        }
+        Insert: {
+          alive?: boolean
+          bio?: string | null
+          created_at?: string
+          faction_id?: string | null
+          id?: string
+          level?: number
+          name: string
+          user_id: string
+        }
+        Update: {
+          alive?: boolean
+          bio?: string | null
+          created_at?: string
+          faction_id?: string | null
+          id?: string
+          level?: number
+          name?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "characters_faction_id_fkey"
+            columns: ["faction_id"]
+            isOneToOne: false
+            referencedRelation: "factions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       contact_messages: {
         Row: {
           body: string
@@ -71,6 +169,126 @@ export type Database = {
         }
         Relationships: []
       }
+      events: {
+        Row: {
+          created_at: string
+          description: string
+          id: string
+          location: string | null
+          starts_at: string
+          title: string
+        }
+        Insert: {
+          created_at?: string
+          description: string
+          id?: string
+          location?: string | null
+          starts_at: string
+          title: string
+        }
+        Update: {
+          created_at?: string
+          description?: string
+          id?: string
+          location?: string | null
+          starts_at?: string
+          title?: string
+        }
+        Relationships: []
+      }
+      factions: {
+        Row: {
+          color: string | null
+          created_at: string
+          description: string | null
+          id: string
+          name: string
+          recruiting: boolean
+          tag: string | null
+        }
+        Insert: {
+          color?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          name: string
+          recruiting?: boolean
+          tag?: string | null
+        }
+        Update: {
+          color?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          name?: string
+          recruiting?: boolean
+          tag?: string | null
+        }
+        Relationships: []
+      }
+      news: {
+        Row: {
+          author_id: string | null
+          body: string
+          cover_url: string | null
+          created_at: string
+          excerpt: string | null
+          id: string
+          published: boolean
+          title: string
+        }
+        Insert: {
+          author_id?: string | null
+          body: string
+          cover_url?: string | null
+          created_at?: string
+          excerpt?: string | null
+          id?: string
+          published?: boolean
+          title: string
+        }
+        Update: {
+          author_id?: string | null
+          body?: string
+          cover_url?: string | null
+          created_at?: string
+          excerpt?: string | null
+          id?: string
+          published?: boolean
+          title?: string
+        }
+        Relationships: []
+      }
+      posts: {
+        Row: {
+          body: string
+          category: string
+          created_at: string
+          id: string
+          pinned: boolean
+          title: string
+          user_id: string
+        }
+        Insert: {
+          body: string
+          category?: string
+          created_at?: string
+          id?: string
+          pinned?: boolean
+          title: string
+          user_id: string
+        }
+        Update: {
+          body?: string
+          category?: string
+          created_at?: string
+          id?: string
+          pinned?: boolean
+          title?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null
@@ -95,6 +313,101 @@ export type Database = {
           display_name?: string | null
           id?: string
           username?: string
+        }
+        Relationships: []
+      }
+      server_status: {
+        Row: {
+          id: number
+          ip: string | null
+          max_players: number
+          message: string | null
+          online: boolean
+          players: number
+          updated_at: string
+        }
+        Insert: {
+          id?: number
+          ip?: string | null
+          max_players?: number
+          message?: string | null
+          online?: boolean
+          players?: number
+          updated_at?: string
+        }
+        Update: {
+          id?: number
+          ip?: string | null
+          max_players?: number
+          message?: string | null
+          online?: boolean
+          players?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      ticket_replies: {
+        Row: {
+          body: string
+          created_at: string
+          id: string
+          ticket_id: string
+          user_id: string
+        }
+        Insert: {
+          body: string
+          created_at?: string
+          id?: string
+          ticket_id: string
+          user_id: string
+        }
+        Update: {
+          body?: string
+          created_at?: string
+          id?: string
+          ticket_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ticket_replies_ticket_id_fkey"
+            columns: ["ticket_id"]
+            isOneToOne: false
+            referencedRelation: "tickets"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      tickets: {
+        Row: {
+          body: string
+          category: string
+          created_at: string
+          id: string
+          status: string
+          subject: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          body: string
+          category?: string
+          created_at?: string
+          id?: string
+          status?: string
+          subject: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          body?: string
+          category?: string
+          created_at?: string
+          id?: string
+          status?: string
+          subject?: string
+          updated_at?: string
+          user_id?: string
         }
         Relationships: []
       }
