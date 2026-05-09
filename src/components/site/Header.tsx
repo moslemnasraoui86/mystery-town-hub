@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import {
-  Menu, X, Skull, LogOut, Shield, ChevronDown,
+  Skull, LogOut, Shield,
   Users, Newspaper, CalendarDays, MessagesSquare, Trophy, Image as ImageIcon,
   Swords, UserSquare2, BookOpen, ScrollText, ClipboardCheck,
   Server, Sparkles, GitCommitHorizontal, Crown,
@@ -12,13 +12,7 @@ import {
 } from "lucide-react";
 import { useAuth } from "@/lib/auth-context";
 import { Button } from "@/components/ui/button";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 type Item = { to: string; label: string; desc: string; icon: LucideIcon };
 type Category = { label: string; icon: LucideIcon; items: Item[] };
@@ -78,79 +72,39 @@ const CATEGORIES: Category[] = [
 ];
 
 export function Header() {
-  const [open, setOpen] = useState(false);
-  const [mobileCat, setMobileCat] = useState<string | null>(null);
   const { user, isStaff, signOut, profile } = useAuth();
   const nav = useNavigate();
+  const [openCat, setOpenCat] = useState<string | null>(null);
 
   return (
-    <header className="sticky top-0 z-50 backdrop-blur-xl bg-background/70 border-b border-border">
+    <header className="sticky top-0 z-50 backdrop-blur-xl bg-background/75 border-b border-border shadow-deep">
+      {/* Row 1: brand + auth */}
       <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
-        <Link to="/" className="flex items-center gap-2 group shrink-0">
-          <Skull className="h-7 w-7 text-primary group-hover:rotate-12 transition-transform" />
-          <span className="font-display font-black text-lg tracking-wider hidden sm:inline">
+        <Link to="/" className="flex items-center gap-2 group shrink-0 perspective-tilt">
+          <span className="relative">
+            <Skull className="h-8 w-8 text-primary group-hover:rotate-[18deg] group-hover:scale-110 transition-transform duration-500 drop-shadow-[0_0_12px_oklch(0.55_0.22_27/0.7)]" />
+            <span className="absolute inset-0 rounded-full bg-primary/30 blur-xl animate-pulse-blood -z-10" />
+          </span>
+          <span className="font-display font-black text-base sm:text-lg tracking-wider">
             MYSTERY <span className="text-primary text-glow">TOWN</span>
           </span>
         </Link>
 
-        <NavigationMenu className="hidden lg:flex">
-          <NavigationMenuList className="gap-1">
-            <NavigationMenuItem>
-              <Link
-                to="/"
-                className="inline-flex h-10 items-center gap-2 px-3 text-sm font-semibold rounded-md hover:bg-muted/50 transition-colors"
-                activeProps={{ className: "text-primary bg-primary/10" }}
-                activeOptions={{ exact: true }}
-              >
-                <HomeIcon className="h-4 w-4" />
-                Home
-              </Link>
-            </NavigationMenuItem>
+        <Link
+          to="/"
+          className="hidden sm:inline-flex items-center gap-2 px-3 h-9 text-sm font-semibold rounded-lg hover:bg-primary/10 hover:text-primary transition-colors"
+          activeProps={{ className: "text-primary bg-primary/10" }}
+          activeOptions={{ exact: true }}
+        >
+          <HomeIcon className="h-4 w-4" />
+          Home
+        </Link>
 
-            {CATEGORIES.map((cat) => {
-              const CatIcon = cat.icon;
-              return (
-                <NavigationMenuItem key={cat.label}>
-                  <NavigationMenuTrigger className="bg-transparent hover:bg-muted/50 data-[state=open]:bg-primary/10 data-[state=open]:text-primary font-semibold gap-2">
-                    <CatIcon className="h-4 w-4" />
-                    {cat.label}
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid w-[460px] gap-1 p-3 md:grid-cols-2 bg-background/95 backdrop-blur-xl border border-border rounded-xl shadow-blood">
-                      {cat.items.map((it) => {
-                        const ItIcon = it.icon;
-                        return (
-                          <li key={it.to}>
-                            <Link
-                              to={it.to}
-                              className="group flex items-start gap-3 select-none rounded-lg p-3 leading-none no-underline outline-none transition-all hover:bg-primary/10 hover:text-primary border border-transparent hover:border-primary/30"
-                            >
-                              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                                <ItIcon className="h-4 w-4" />
-                              </span>
-                              <span className="min-w-0">
-                                <span className="block text-sm font-bold mb-1">{it.label}</span>
-                                <span className="block text-xs text-muted-foreground line-clamp-2">
-                                  {it.desc}
-                                </span>
-                              </span>
-                            </Link>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-              );
-            })}
-          </NavigationMenuList>
-        </NavigationMenu>
-
-        <div className="hidden lg:flex items-center gap-2 shrink-0">
+        <div className="flex items-center gap-2 shrink-0">
           {user ? (
             <>
               {isStaff && (
-                <Button variant="outline" size="sm" onClick={() => nav({ to: "/admin" })}>
+                <Button variant="outline" size="sm" onClick={() => nav({ to: "/admin" })} className="hidden sm:inline-flex">
                   <Shield className="h-4 w-4 mr-1" /> Admin
                 </Button>
               )}
@@ -164,70 +118,76 @@ export function Header() {
           ) : (
             <>
               <Button variant="ghost" size="sm" onClick={() => nav({ to: "/login" })}>Login</Button>
-              <Button size="sm" className="bg-gradient-blood shadow-blood" onClick={() => nav({ to: "/register" })}>
+              <Button size="sm" className="bg-gradient-blood shadow-blood hover:scale-105 transition-transform" onClick={() => nav({ to: "/register" })}>
                 Join
               </Button>
             </>
           )}
         </div>
-
-        <button className="lg:hidden text-foreground" onClick={() => setOpen(!open)} aria-label="menu">
-          {open ? <X /> : <Menu />}
-        </button>
       </div>
 
-      {open && (
-        <div className="lg:hidden border-t border-border bg-background/95 px-4 py-4 space-y-1 max-h-[80vh] overflow-y-auto">
-          <Link to="/" onClick={() => setOpen(false)} className="flex items-center gap-2 px-3 py-2 rounded-md text-sm font-semibold hover:bg-muted">
-            <HomeIcon className="h-4 w-4 text-primary" /> Home
-          </Link>
-          {CATEGORIES.map((cat) => {
-            const CatIcon = cat.icon;
-            return (
-              <div key={cat.label} className="border-t border-border/50 pt-1">
-                <button
-                  onClick={() => setMobileCat(mobileCat === cat.label ? null : cat.label)}
-                  className="w-full flex items-center justify-between px-3 py-2 rounded-md text-sm font-bold uppercase tracking-wider text-primary hover:bg-muted"
+      {/* Row 2: ALWAYS-VISIBLE category bar (scrollable on mobile) */}
+      <div className="border-t border-border/60 bg-background/40">
+        <div className="max-w-7xl mx-auto px-2 sm:px-4">
+          <div className="flex items-center gap-1 overflow-x-auto scrollbar-none py-2">
+            {CATEGORIES.map((cat) => {
+              const CatIcon = cat.icon;
+              const isOpen = openCat === cat.label;
+              return (
+                <Popover
+                  key={cat.label}
+                  open={isOpen}
+                  onOpenChange={(o) => setOpenCat(o ? cat.label : null)}
                 >
-                  <span className="flex items-center gap-2"><CatIcon className="h-4 w-4" />{cat.label}</span>
-                  <ChevronDown className={`h-4 w-4 transition-transform ${mobileCat === cat.label ? "rotate-180" : ""}`} />
-                </button>
-                {mobileCat === cat.label && (
-                  <div className="pl-3 space-y-1">
-                    {cat.items.map((it) => {
-                      const ItIcon = it.icon;
-                      return (
-                        <Link
-                          key={it.to}
-                          to={it.to}
-                          onClick={() => setOpen(false)}
-                          className="flex items-center gap-2 px-3 py-2 rounded-md text-sm hover:bg-muted"
-                        >
-                          <ItIcon className="h-4 w-4 text-primary/80" /> {it.label}
-                        </Link>
-                      );
-                    })}
-                  </div>
-                )}
-              </div>
-            );
-          })}
-          <div className="pt-3 border-t border-border flex gap-2">
-            {user ? (
-              <>
-                {isStaff && <Button size="sm" className="flex-1" variant="outline" onClick={() => { setOpen(false); nav({ to: "/admin" }); }}>Admin</Button>}
-                <Button size="sm" className="flex-1" onClick={() => { setOpen(false); nav({ to: "/dashboard" }); }}>Account</Button>
-                <Button size="sm" variant="ghost" onClick={signOut}><LogOut className="h-4 w-4" /></Button>
-              </>
-            ) : (
-              <>
-                <Button size="sm" variant="outline" className="flex-1" onClick={() => { setOpen(false); nav({ to: "/login" }); }}>Login</Button>
-                <Button size="sm" className="flex-1 bg-gradient-blood" onClick={() => { setOpen(false); nav({ to: "/register" }); }}>Join</Button>
-              </>
-            )}
+                  <PopoverTrigger asChild>
+                    <button
+                      className={`group relative flex items-center gap-2 px-3 sm:px-4 h-10 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider whitespace-nowrap shrink-0 transition-all duration-300 border ${
+                        isOpen
+                          ? "bg-primary/15 text-primary border-primary/40 shadow-blood"
+                          : "border-transparent hover:bg-primary/10 hover:text-primary hover:border-primary/30 hover:-translate-y-0.5"
+                      }`}
+                    >
+                      <span className={`flex h-6 w-6 items-center justify-center rounded-md bg-primary/15 text-primary transition-all duration-500 ${isOpen ? "rotate-12 scale-110" : "group-hover:rotate-12 group-hover:scale-110 group-hover:animate-float"}`}>
+                        <CatIcon className="h-3.5 w-3.5" />
+                      </span>
+                      {cat.label}
+                    </button>
+                  </PopoverTrigger>
+                  <PopoverContent
+                    align="start"
+                    sideOffset={10}
+                    className="w-[92vw] max-w-[480px] p-3 bg-background/95 backdrop-blur-xl border border-primary/30 rounded-2xl shadow-blood animate-scale-in tilt-3d"
+                  >
+                    <div className="grid gap-1 sm:grid-cols-2">
+                      {cat.items.map((it) => {
+                        const ItIcon = it.icon;
+                        return (
+                          <Link
+                            key={it.to}
+                            to={it.to}
+                            onClick={() => setOpenCat(null)}
+                            className="group flex items-start gap-3 rounded-xl p-3 outline-none transition-all duration-300 hover:bg-primary/10 hover:text-primary border border-transparent hover:border-primary/40 hover:translate-x-1 hover:-translate-y-0.5"
+                          >
+                            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-blood text-primary-foreground shadow-blood transition-transform duration-500 group-hover:rotate-[14deg] group-hover:scale-110">
+                              <ItIcon className="h-5 w-5" />
+                            </span>
+                            <span className="min-w-0">
+                              <span className="block text-sm font-bold mb-0.5">{it.label}</span>
+                              <span className="block text-xs text-muted-foreground line-clamp-2">
+                                {it.desc}
+                              </span>
+                            </span>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  </PopoverContent>
+                </Popover>
+              );
+            })}
           </div>
         </div>
-      )}
+      </div>
     </header>
   );
 }
