@@ -9,20 +9,29 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WikiRouteImport } from './routes/wiki'
 import { Route as WhitelistRouteImport } from './routes/whitelist'
 import { Route as VoteRouteImport } from './routes/vote'
 import { Route as TicketsRouteImport } from './routes/tickets'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as StreamersRouteImport } from './routes/streamers'
 import { Route as StatusRouteImport } from './routes/status'
 import { Route as StaffRouteImport } from './routes/staff'
 import { Route as ShopRouteImport } from './routes/shop'
+import { Route as ScreenshotsRouteImport } from './routes/screenshots'
 import { Route as RulesRouteImport } from './routes/rules'
+import { Route as RoadmapRouteImport } from './routes/roadmap'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as PatchesRouteImport } from './routes/patches'
+import { Route as PartnersRouteImport } from './routes/partners'
 import { Route as NewsRouteImport } from './routes/news'
+import { Route as MediaRouteImport } from './routes/media'
+import { Route as MapRouteImport } from './routes/map'
 import { Route as LoreRouteImport } from './routes/lore'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as LeaderboardRouteImport } from './routes/leaderboard'
+import { Route as JobsRouteImport } from './routes/jobs'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as ForumRouteImport } from './routes/forum'
 import { Route as FeaturesRouteImport } from './routes/features'
@@ -30,6 +39,7 @@ import { Route as FaqRouteImport } from './routes/faq'
 import { Route as FactionsRouteImport } from './routes/factions'
 import { Route as EventsRouteImport } from './routes/events'
 import { Route as DonateRouteImport } from './routes/donate'
+import { Route as DiscordRouteImport } from './routes/discord'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CharactersRouteImport } from './routes/characters'
@@ -52,6 +62,11 @@ import { Route as AdminDonationsRouteImport } from './routes/admin.donations'
 import { Route as AdminBansRouteImport } from './routes/admin.bans'
 import { Route as AdminAuditRouteImport } from './routes/admin.audit'
 
+const WikiRoute = WikiRouteImport.update({
+  id: '/wiki',
+  path: '/wiki',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const WhitelistRoute = WhitelistRouteImport.update({
   id: '/whitelist',
   path: '/whitelist',
@@ -72,6 +87,11 @@ const TermsRoute = TermsRouteImport.update({
   path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StreamersRoute = StreamersRouteImport.update({
+  id: '/streamers',
+  path: '/streamers',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const StatusRoute = StatusRouteImport.update({
   id: '/status',
   path: '/status',
@@ -87,9 +107,19 @@ const ShopRoute = ShopRouteImport.update({
   path: '/shop',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ScreenshotsRoute = ScreenshotsRouteImport.update({
+  id: '/screenshots',
+  path: '/screenshots',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RulesRoute = RulesRouteImport.update({
   id: '/rules',
   path: '/rules',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RoadmapRoute = RoadmapRouteImport.update({
+  id: '/roadmap',
+  path: '/roadmap',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RegisterRoute = RegisterRouteImport.update({
@@ -102,9 +132,29 @@ const PrivacyRoute = PrivacyRouteImport.update({
   path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PatchesRoute = PatchesRouteImport.update({
+  id: '/patches',
+  path: '/patches',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PartnersRoute = PartnersRouteImport.update({
+  id: '/partners',
+  path: '/partners',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const NewsRoute = NewsRouteImport.update({
   id: '/news',
   path: '/news',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MediaRoute = MediaRouteImport.update({
+  id: '/media',
+  path: '/media',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MapRoute = MapRouteImport.update({
+  id: '/map',
+  path: '/map',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoreRoute = LoreRouteImport.update({
@@ -120,6 +170,11 @@ const LoginRoute = LoginRouteImport.update({
 const LeaderboardRoute = LeaderboardRouteImport.update({
   id: '/leaderboard',
   path: '/leaderboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JobsRoute = JobsRouteImport.update({
+  id: '/jobs',
+  path: '/jobs',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GalleryRoute = GalleryRouteImport.update({
@@ -155,6 +210,11 @@ const EventsRoute = EventsRouteImport.update({
 const DonateRoute = DonateRouteImport.update({
   id: '/donate',
   path: '/donate',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DiscordRoute = DiscordRouteImport.update({
+  id: '/discord',
+  path: '/discord',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DashboardRoute = DashboardRouteImport.update({
@@ -271,6 +331,7 @@ export interface FileRoutesByFullPath {
   '/characters': typeof CharactersRoute
   '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
+  '/discord': typeof DiscordRoute
   '/donate': typeof DonateRoute
   '/events': typeof EventsRoute
   '/factions': typeof FactionsRoute
@@ -278,20 +339,29 @@ export interface FileRoutesByFullPath {
   '/features': typeof FeaturesRoute
   '/forum': typeof ForumRoute
   '/gallery': typeof GalleryRoute
+  '/jobs': typeof JobsRoute
   '/leaderboard': typeof LeaderboardRoute
   '/login': typeof LoginRoute
   '/lore': typeof LoreRoute
+  '/map': typeof MapRoute
+  '/media': typeof MediaRoute
   '/news': typeof NewsRouteWithChildren
+  '/partners': typeof PartnersRoute
+  '/patches': typeof PatchesRoute
   '/privacy': typeof PrivacyRoute
   '/register': typeof RegisterRoute
+  '/roadmap': typeof RoadmapRoute
   '/rules': typeof RulesRoute
+  '/screenshots': typeof ScreenshotsRoute
   '/shop': typeof ShopRoute
   '/staff': typeof StaffRoute
   '/status': typeof StatusRoute
+  '/streamers': typeof StreamersRoute
   '/terms': typeof TermsRoute
   '/tickets': typeof TicketsRoute
   '/vote': typeof VoteRoute
   '/whitelist': typeof WhitelistRoute
+  '/wiki': typeof WikiRoute
   '/admin/audit': typeof AdminAuditRoute
   '/admin/bans': typeof AdminBansRoute
   '/admin/donations': typeof AdminDonationsRoute
@@ -314,6 +384,7 @@ export interface FileRoutesByTo {
   '/characters': typeof CharactersRoute
   '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
+  '/discord': typeof DiscordRoute
   '/donate': typeof DonateRoute
   '/events': typeof EventsRoute
   '/factions': typeof FactionsRoute
@@ -321,20 +392,29 @@ export interface FileRoutesByTo {
   '/features': typeof FeaturesRoute
   '/forum': typeof ForumRoute
   '/gallery': typeof GalleryRoute
+  '/jobs': typeof JobsRoute
   '/leaderboard': typeof LeaderboardRoute
   '/login': typeof LoginRoute
   '/lore': typeof LoreRoute
+  '/map': typeof MapRoute
+  '/media': typeof MediaRoute
   '/news': typeof NewsRouteWithChildren
+  '/partners': typeof PartnersRoute
+  '/patches': typeof PatchesRoute
   '/privacy': typeof PrivacyRoute
   '/register': typeof RegisterRoute
+  '/roadmap': typeof RoadmapRoute
   '/rules': typeof RulesRoute
+  '/screenshots': typeof ScreenshotsRoute
   '/shop': typeof ShopRoute
   '/staff': typeof StaffRoute
   '/status': typeof StatusRoute
+  '/streamers': typeof StreamersRoute
   '/terms': typeof TermsRoute
   '/tickets': typeof TicketsRoute
   '/vote': typeof VoteRoute
   '/whitelist': typeof WhitelistRoute
+  '/wiki': typeof WikiRoute
   '/admin/audit': typeof AdminAuditRoute
   '/admin/bans': typeof AdminBansRoute
   '/admin/donations': typeof AdminDonationsRoute
@@ -359,6 +439,7 @@ export interface FileRoutesById {
   '/characters': typeof CharactersRoute
   '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
+  '/discord': typeof DiscordRoute
   '/donate': typeof DonateRoute
   '/events': typeof EventsRoute
   '/factions': typeof FactionsRoute
@@ -366,20 +447,29 @@ export interface FileRoutesById {
   '/features': typeof FeaturesRoute
   '/forum': typeof ForumRoute
   '/gallery': typeof GalleryRoute
+  '/jobs': typeof JobsRoute
   '/leaderboard': typeof LeaderboardRoute
   '/login': typeof LoginRoute
   '/lore': typeof LoreRoute
+  '/map': typeof MapRoute
+  '/media': typeof MediaRoute
   '/news': typeof NewsRouteWithChildren
+  '/partners': typeof PartnersRoute
+  '/patches': typeof PatchesRoute
   '/privacy': typeof PrivacyRoute
   '/register': typeof RegisterRoute
+  '/roadmap': typeof RoadmapRoute
   '/rules': typeof RulesRoute
+  '/screenshots': typeof ScreenshotsRoute
   '/shop': typeof ShopRoute
   '/staff': typeof StaffRoute
   '/status': typeof StatusRoute
+  '/streamers': typeof StreamersRoute
   '/terms': typeof TermsRoute
   '/tickets': typeof TicketsRoute
   '/vote': typeof VoteRoute
   '/whitelist': typeof WhitelistRoute
+  '/wiki': typeof WikiRoute
   '/admin/audit': typeof AdminAuditRoute
   '/admin/bans': typeof AdminBansRoute
   '/admin/donations': typeof AdminDonationsRoute
@@ -405,6 +495,7 @@ export interface FileRouteTypes {
     | '/characters'
     | '/contact'
     | '/dashboard'
+    | '/discord'
     | '/donate'
     | '/events'
     | '/factions'
@@ -412,20 +503,29 @@ export interface FileRouteTypes {
     | '/features'
     | '/forum'
     | '/gallery'
+    | '/jobs'
     | '/leaderboard'
     | '/login'
     | '/lore'
+    | '/map'
+    | '/media'
     | '/news'
+    | '/partners'
+    | '/patches'
     | '/privacy'
     | '/register'
+    | '/roadmap'
     | '/rules'
+    | '/screenshots'
     | '/shop'
     | '/staff'
     | '/status'
+    | '/streamers'
     | '/terms'
     | '/tickets'
     | '/vote'
     | '/whitelist'
+    | '/wiki'
     | '/admin/audit'
     | '/admin/bans'
     | '/admin/donations'
@@ -448,6 +548,7 @@ export interface FileRouteTypes {
     | '/characters'
     | '/contact'
     | '/dashboard'
+    | '/discord'
     | '/donate'
     | '/events'
     | '/factions'
@@ -455,20 +556,29 @@ export interface FileRouteTypes {
     | '/features'
     | '/forum'
     | '/gallery'
+    | '/jobs'
     | '/leaderboard'
     | '/login'
     | '/lore'
+    | '/map'
+    | '/media'
     | '/news'
+    | '/partners'
+    | '/patches'
     | '/privacy'
     | '/register'
+    | '/roadmap'
     | '/rules'
+    | '/screenshots'
     | '/shop'
     | '/staff'
     | '/status'
+    | '/streamers'
     | '/terms'
     | '/tickets'
     | '/vote'
     | '/whitelist'
+    | '/wiki'
     | '/admin/audit'
     | '/admin/bans'
     | '/admin/donations'
@@ -492,6 +602,7 @@ export interface FileRouteTypes {
     | '/characters'
     | '/contact'
     | '/dashboard'
+    | '/discord'
     | '/donate'
     | '/events'
     | '/factions'
@@ -499,20 +610,29 @@ export interface FileRouteTypes {
     | '/features'
     | '/forum'
     | '/gallery'
+    | '/jobs'
     | '/leaderboard'
     | '/login'
     | '/lore'
+    | '/map'
+    | '/media'
     | '/news'
+    | '/partners'
+    | '/patches'
     | '/privacy'
     | '/register'
+    | '/roadmap'
     | '/rules'
+    | '/screenshots'
     | '/shop'
     | '/staff'
     | '/status'
+    | '/streamers'
     | '/terms'
     | '/tickets'
     | '/vote'
     | '/whitelist'
+    | '/wiki'
     | '/admin/audit'
     | '/admin/bans'
     | '/admin/donations'
@@ -537,6 +657,7 @@ export interface RootRouteChildren {
   CharactersRoute: typeof CharactersRoute
   ContactRoute: typeof ContactRoute
   DashboardRoute: typeof DashboardRoute
+  DiscordRoute: typeof DiscordRoute
   DonateRoute: typeof DonateRoute
   EventsRoute: typeof EventsRoute
   FactionsRoute: typeof FactionsRoute
@@ -544,24 +665,40 @@ export interface RootRouteChildren {
   FeaturesRoute: typeof FeaturesRoute
   ForumRoute: typeof ForumRoute
   GalleryRoute: typeof GalleryRoute
+  JobsRoute: typeof JobsRoute
   LeaderboardRoute: typeof LeaderboardRoute
   LoginRoute: typeof LoginRoute
   LoreRoute: typeof LoreRoute
+  MapRoute: typeof MapRoute
+  MediaRoute: typeof MediaRoute
   NewsRoute: typeof NewsRouteWithChildren
+  PartnersRoute: typeof PartnersRoute
+  PatchesRoute: typeof PatchesRoute
   PrivacyRoute: typeof PrivacyRoute
   RegisterRoute: typeof RegisterRoute
+  RoadmapRoute: typeof RoadmapRoute
   RulesRoute: typeof RulesRoute
+  ScreenshotsRoute: typeof ScreenshotsRoute
   ShopRoute: typeof ShopRoute
   StaffRoute: typeof StaffRoute
   StatusRoute: typeof StatusRoute
+  StreamersRoute: typeof StreamersRoute
   TermsRoute: typeof TermsRoute
   TicketsRoute: typeof TicketsRoute
   VoteRoute: typeof VoteRoute
   WhitelistRoute: typeof WhitelistRoute
+  WikiRoute: typeof WikiRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/wiki': {
+      id: '/wiki'
+      path: '/wiki'
+      fullPath: '/wiki'
+      preLoaderRoute: typeof WikiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/whitelist': {
       id: '/whitelist'
       path: '/whitelist'
@@ -590,6 +727,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/streamers': {
+      id: '/streamers'
+      path: '/streamers'
+      fullPath: '/streamers'
+      preLoaderRoute: typeof StreamersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/status': {
       id: '/status'
       path: '/status'
@@ -611,11 +755,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShopRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/screenshots': {
+      id: '/screenshots'
+      path: '/screenshots'
+      fullPath: '/screenshots'
+      preLoaderRoute: typeof ScreenshotsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/rules': {
       id: '/rules'
       path: '/rules'
       fullPath: '/rules'
       preLoaderRoute: typeof RulesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/roadmap': {
+      id: '/roadmap'
+      path: '/roadmap'
+      fullPath: '/roadmap'
+      preLoaderRoute: typeof RoadmapRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/register': {
@@ -632,11 +790,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/patches': {
+      id: '/patches'
+      path: '/patches'
+      fullPath: '/patches'
+      preLoaderRoute: typeof PatchesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/partners': {
+      id: '/partners'
+      path: '/partners'
+      fullPath: '/partners'
+      preLoaderRoute: typeof PartnersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/news': {
       id: '/news'
       path: '/news'
       fullPath: '/news'
       preLoaderRoute: typeof NewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/media': {
+      id: '/media'
+      path: '/media'
+      fullPath: '/media'
+      preLoaderRoute: typeof MediaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/map': {
+      id: '/map'
+      path: '/map'
+      fullPath: '/map'
+      preLoaderRoute: typeof MapRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lore': {
@@ -658,6 +844,13 @@ declare module '@tanstack/react-router' {
       path: '/leaderboard'
       fullPath: '/leaderboard'
       preLoaderRoute: typeof LeaderboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/jobs': {
+      id: '/jobs'
+      path: '/jobs'
+      fullPath: '/jobs'
+      preLoaderRoute: typeof JobsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/gallery': {
@@ -707,6 +900,13 @@ declare module '@tanstack/react-router' {
       path: '/donate'
       fullPath: '/donate'
       preLoaderRoute: typeof DonateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/discord': {
+      id: '/discord'
+      path: '/discord'
+      fullPath: '/discord'
+      preLoaderRoute: typeof DiscordRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dashboard': {
@@ -911,6 +1111,7 @@ const rootRouteChildren: RootRouteChildren = {
   CharactersRoute: CharactersRoute,
   ContactRoute: ContactRoute,
   DashboardRoute: DashboardRoute,
+  DiscordRoute: DiscordRoute,
   DonateRoute: DonateRoute,
   EventsRoute: EventsRoute,
   FactionsRoute: FactionsRoute,
@@ -918,20 +1119,29 @@ const rootRouteChildren: RootRouteChildren = {
   FeaturesRoute: FeaturesRoute,
   ForumRoute: ForumRoute,
   GalleryRoute: GalleryRoute,
+  JobsRoute: JobsRoute,
   LeaderboardRoute: LeaderboardRoute,
   LoginRoute: LoginRoute,
   LoreRoute: LoreRoute,
+  MapRoute: MapRoute,
+  MediaRoute: MediaRoute,
   NewsRoute: NewsRouteWithChildren,
+  PartnersRoute: PartnersRoute,
+  PatchesRoute: PatchesRoute,
   PrivacyRoute: PrivacyRoute,
   RegisterRoute: RegisterRoute,
+  RoadmapRoute: RoadmapRoute,
   RulesRoute: RulesRoute,
+  ScreenshotsRoute: ScreenshotsRoute,
   ShopRoute: ShopRoute,
   StaffRoute: StaffRoute,
   StatusRoute: StatusRoute,
+  StreamersRoute: StreamersRoute,
   TermsRoute: TermsRoute,
   TicketsRoute: TicketsRoute,
   VoteRoute: VoteRoute,
   WhitelistRoute: WhitelistRoute,
+  WikiRoute: WikiRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
