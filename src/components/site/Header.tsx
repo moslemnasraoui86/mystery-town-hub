@@ -8,6 +8,7 @@ import {
   LifeBuoy, HelpCircle, Mail, Info,
   HeartHandshake, ShoppingBag, ThumbsUp,
   Home as HomeIcon,
+  Map, Camera, Twitch, Briefcase, Megaphone, Film,
   type LucideIcon,
 } from "lucide-react";
 import { useAuth } from "@/lib/auth-context";
@@ -27,6 +28,7 @@ const CATEGORIES: Category[] = [
       { to: "/forum", label: "Forum", desc: "Discuss with players", icon: MessagesSquare },
       { to: "/leaderboard", label: "Leaderboard", desc: "Top survivors", icon: Trophy },
       { to: "/gallery", label: "Gallery", desc: "Screenshots & art", icon: ImageIcon },
+      { to: "/discord", label: "Discord", desc: "Join 6,400+", icon: MessagesSquare },
     ],
   },
   {
@@ -38,6 +40,8 @@ const CATEGORIES: Category[] = [
       { to: "/lore", label: "Lore", desc: "World story", icon: BookOpen },
       { to: "/rules", label: "Rules", desc: "RP guidelines", icon: ScrollText },
       { to: "/whitelist", label: "Whitelist", desc: "Apply to play", icon: ClipboardCheck },
+      { to: "/wiki", label: "Wiki", desc: "Mechanics & lore", icon: BookOpen },
+      { to: "/map", label: "Map", desc: "Regions & risk", icon: Map },
     ],
   },
   {
@@ -47,7 +51,20 @@ const CATEGORIES: Category[] = [
       { to: "/status", label: "Live Status", desc: "Players online & IP", icon: Server },
       { to: "/features", label: "Features", desc: "What we offer", icon: Sparkles },
       { to: "/changelog", label: "Changelog", desc: "Patch notes", icon: GitCommitHorizontal },
+      { to: "/patches", label: "Patch Notes", desc: "Versioned changes", icon: GitCommitHorizontal },
+      { to: "/roadmap", label: "Roadmap", desc: "What's coming", icon: Map },
       { to: "/staff", label: "Staff Team", desc: "Meet the crew", icon: Crown },
+    ],
+  },
+  {
+    label: "Media",
+    icon: Camera,
+    items: [
+      { to: "/media", label: "Media Hub", desc: "Trailers & clips", icon: Film },
+      { to: "/screenshots", label: "Screenshots", desc: "Hi-res vault", icon: ImageIcon },
+      { to: "/streamers", label: "Streamers", desc: "Watch live", icon: Twitch },
+      { to: "/partners", label: "Partners", desc: "Studios & hosts", icon: HeartHandshake },
+      { to: "/jobs", label: "Careers", desc: "Open roles", icon: Briefcase },
     ],
   },
   {

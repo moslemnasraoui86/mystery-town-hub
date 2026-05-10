@@ -7,6 +7,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/lib/auth-context";
 import { toast } from "sonner";
 import { Skull, Zap, Crown } from "lucide-react";
+import { useJsonBinAppend } from "@/lib/jsonbin-client";
 
 const TIERS = [
   { name: "Survivor", price: 5, icon: Skull, perks: ["Custom name color", "Discord supporter role", "VIP queue"] },
@@ -21,6 +22,7 @@ export const Route = createFileRoute("/donate")({
 
 function DonatePage() {
   const { user } = useAuth();
+  const mirror = useJsonBinAppend();
   const [selected, setSelected] = useState<typeof TIERS[number] | null>(null);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
@@ -34,6 +36,7 @@ function DonatePage() {
     });
     setLoading(false);
     if (error) return toast.error(error.message);
+    await mirror("donations", { user_id: user.id, tier: selected.name, amount: selected.price, message: message || null });
     toast.success("Donation recorded! Staff will activate perks within 24h.");
     setSelected(null); setMessage("");
   };

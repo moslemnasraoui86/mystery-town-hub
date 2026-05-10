@@ -9,20 +9,29 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WikiRouteImport } from './routes/wiki'
 import { Route as WhitelistRouteImport } from './routes/whitelist'
 import { Route as VoteRouteImport } from './routes/vote'
 import { Route as TicketsRouteImport } from './routes/tickets'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as StreamersRouteImport } from './routes/streamers'
 import { Route as StatusRouteImport } from './routes/status'
 import { Route as StaffRouteImport } from './routes/staff'
 import { Route as ShopRouteImport } from './routes/shop'
+import { Route as ScreenshotsRouteImport } from './routes/screenshots'
 import { Route as RulesRouteImport } from './routes/rules'
+import { Route as RoadmapRouteImport } from './routes/roadmap'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as PatchesRouteImport } from './routes/patches'
+import { Route as PartnersRouteImport } from './routes/partners'
 import { Route as NewsRouteImport } from './routes/news'
+import { Route as MediaRouteImport } from './routes/media'
+import { Route as MapRouteImport } from './routes/map'
 import { Route as LoreRouteImport } from './routes/lore'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as LeaderboardRouteImport } from './routes/leaderboard'
+import { Route as JobsRouteImport } from './routes/jobs'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as ForumRouteImport } from './routes/forum'
 import { Route as FeaturesRouteImport } from './routes/features'
@@ -30,6 +39,7 @@ import { Route as FaqRouteImport } from './routes/faq'
 import { Route as FactionsRouteImport } from './routes/factions'
 import { Route as EventsRouteImport } from './routes/events'
 import { Route as DonateRouteImport } from './routes/donate'
+import { Route as DiscordRouteImport } from './routes/discord'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CharactersRouteImport } from './routes/characters'
@@ -44,14 +54,29 @@ import { Route as AdminUsersRouteImport } from './routes/admin.users'
 import { Route as AdminTicketsRouteImport } from './routes/admin.tickets'
 import { Route as AdminStatusRouteImport } from './routes/admin.status'
 import { Route as AdminSettingsRouteImport } from './routes/admin.settings'
+import { Route as AdminRoadmapRouteImport } from './routes/admin.roadmap'
+import { Route as AdminReportsRouteImport } from './routes/admin.reports'
+import { Route as AdminPermissionsRouteImport } from './routes/admin.permissions'
 import { Route as AdminNewsRouteImport } from './routes/admin.news'
 import { Route as AdminMessagesRouteImport } from './routes/admin.messages'
+import { Route as AdminMediaRouteImport } from './routes/admin.media'
+import { Route as AdminLogsRouteImport } from './routes/admin.logs'
+import { Route as AdminJsonbinRouteImport } from './routes/admin.jsonbin'
 import { Route as AdminFactionsRouteImport } from './routes/admin.factions'
 import { Route as AdminEventsRouteImport } from './routes/admin.events'
 import { Route as AdminDonationsRouteImport } from './routes/admin.donations'
+import { Route as AdminCronRouteImport } from './routes/admin.cron'
+import { Route as AdminBroadcastRouteImport } from './routes/admin.broadcast'
 import { Route as AdminBansRouteImport } from './routes/admin.bans'
+import { Route as AdminBackupsRouteImport } from './routes/admin.backups'
 import { Route as AdminAuditRouteImport } from './routes/admin.audit'
+import { Route as AdminAnalyticsRouteImport } from './routes/admin.analytics'
 
+const WikiRoute = WikiRouteImport.update({
+  id: '/wiki',
+  path: '/wiki',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const WhitelistRoute = WhitelistRouteImport.update({
   id: '/whitelist',
   path: '/whitelist',
@@ -72,6 +97,11 @@ const TermsRoute = TermsRouteImport.update({
   path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StreamersRoute = StreamersRouteImport.update({
+  id: '/streamers',
+  path: '/streamers',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const StatusRoute = StatusRouteImport.update({
   id: '/status',
   path: '/status',
@@ -87,9 +117,19 @@ const ShopRoute = ShopRouteImport.update({
   path: '/shop',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ScreenshotsRoute = ScreenshotsRouteImport.update({
+  id: '/screenshots',
+  path: '/screenshots',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RulesRoute = RulesRouteImport.update({
   id: '/rules',
   path: '/rules',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RoadmapRoute = RoadmapRouteImport.update({
+  id: '/roadmap',
+  path: '/roadmap',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RegisterRoute = RegisterRouteImport.update({
@@ -102,9 +142,29 @@ const PrivacyRoute = PrivacyRouteImport.update({
   path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PatchesRoute = PatchesRouteImport.update({
+  id: '/patches',
+  path: '/patches',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PartnersRoute = PartnersRouteImport.update({
+  id: '/partners',
+  path: '/partners',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const NewsRoute = NewsRouteImport.update({
   id: '/news',
   path: '/news',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MediaRoute = MediaRouteImport.update({
+  id: '/media',
+  path: '/media',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MapRoute = MapRouteImport.update({
+  id: '/map',
+  path: '/map',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoreRoute = LoreRouteImport.update({
@@ -120,6 +180,11 @@ const LoginRoute = LoginRouteImport.update({
 const LeaderboardRoute = LeaderboardRouteImport.update({
   id: '/leaderboard',
   path: '/leaderboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JobsRoute = JobsRouteImport.update({
+  id: '/jobs',
+  path: '/jobs',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GalleryRoute = GalleryRouteImport.update({
@@ -155,6 +220,11 @@ const EventsRoute = EventsRouteImport.update({
 const DonateRoute = DonateRouteImport.update({
   id: '/donate',
   path: '/donate',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DiscordRoute = DiscordRouteImport.update({
+  id: '/discord',
+  path: '/discord',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DashboardRoute = DashboardRouteImport.update({
@@ -227,6 +297,21 @@ const AdminSettingsRoute = AdminSettingsRouteImport.update({
   path: '/settings',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminRoadmapRoute = AdminRoadmapRouteImport.update({
+  id: '/roadmap',
+  path: '/roadmap',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminReportsRoute = AdminReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminPermissionsRoute = AdminPermissionsRouteImport.update({
+  id: '/permissions',
+  path: '/permissions',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AdminNewsRoute = AdminNewsRouteImport.update({
   id: '/news',
   path: '/news',
@@ -235,6 +320,21 @@ const AdminNewsRoute = AdminNewsRouteImport.update({
 const AdminMessagesRoute = AdminMessagesRouteImport.update({
   id: '/messages',
   path: '/messages',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminMediaRoute = AdminMediaRouteImport.update({
+  id: '/media',
+  path: '/media',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminLogsRoute = AdminLogsRouteImport.update({
+  id: '/logs',
+  path: '/logs',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminJsonbinRoute = AdminJsonbinRouteImport.update({
+  id: '/jsonbin',
+  path: '/jsonbin',
   getParentRoute: () => AdminRoute,
 } as any)
 const AdminFactionsRoute = AdminFactionsRouteImport.update({
@@ -252,14 +352,34 @@ const AdminDonationsRoute = AdminDonationsRouteImport.update({
   path: '/donations',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminCronRoute = AdminCronRouteImport.update({
+  id: '/cron',
+  path: '/cron',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminBroadcastRoute = AdminBroadcastRouteImport.update({
+  id: '/broadcast',
+  path: '/broadcast',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AdminBansRoute = AdminBansRouteImport.update({
   id: '/bans',
   path: '/bans',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminBackupsRoute = AdminBackupsRouteImport.update({
+  id: '/backups',
+  path: '/backups',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AdminAuditRoute = AdminAuditRouteImport.update({
   id: '/audit',
   path: '/audit',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminAnalyticsRoute = AdminAnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
   getParentRoute: () => AdminRoute,
 } as any)
 
@@ -271,6 +391,7 @@ export interface FileRoutesByFullPath {
   '/characters': typeof CharactersRoute
   '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
+  '/discord': typeof DiscordRoute
   '/donate': typeof DonateRoute
   '/events': typeof EventsRoute
   '/factions': typeof FactionsRoute
@@ -278,27 +399,46 @@ export interface FileRoutesByFullPath {
   '/features': typeof FeaturesRoute
   '/forum': typeof ForumRoute
   '/gallery': typeof GalleryRoute
+  '/jobs': typeof JobsRoute
   '/leaderboard': typeof LeaderboardRoute
   '/login': typeof LoginRoute
   '/lore': typeof LoreRoute
+  '/map': typeof MapRoute
+  '/media': typeof MediaRoute
   '/news': typeof NewsRouteWithChildren
+  '/partners': typeof PartnersRoute
+  '/patches': typeof PatchesRoute
   '/privacy': typeof PrivacyRoute
   '/register': typeof RegisterRoute
+  '/roadmap': typeof RoadmapRoute
   '/rules': typeof RulesRoute
+  '/screenshots': typeof ScreenshotsRoute
   '/shop': typeof ShopRoute
   '/staff': typeof StaffRoute
   '/status': typeof StatusRoute
+  '/streamers': typeof StreamersRoute
   '/terms': typeof TermsRoute
   '/tickets': typeof TicketsRoute
   '/vote': typeof VoteRoute
   '/whitelist': typeof WhitelistRoute
+  '/wiki': typeof WikiRoute
+  '/admin/analytics': typeof AdminAnalyticsRoute
   '/admin/audit': typeof AdminAuditRoute
+  '/admin/backups': typeof AdminBackupsRoute
   '/admin/bans': typeof AdminBansRoute
+  '/admin/broadcast': typeof AdminBroadcastRoute
+  '/admin/cron': typeof AdminCronRoute
   '/admin/donations': typeof AdminDonationsRoute
   '/admin/events': typeof AdminEventsRoute
   '/admin/factions': typeof AdminFactionsRoute
+  '/admin/jsonbin': typeof AdminJsonbinRoute
+  '/admin/logs': typeof AdminLogsRoute
+  '/admin/media': typeof AdminMediaRoute
   '/admin/messages': typeof AdminMessagesRoute
   '/admin/news': typeof AdminNewsRoute
+  '/admin/permissions': typeof AdminPermissionsRoute
+  '/admin/reports': typeof AdminReportsRoute
+  '/admin/roadmap': typeof AdminRoadmapRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/admin/status': typeof AdminStatusRoute
   '/admin/tickets': typeof AdminTicketsRoute
@@ -314,6 +454,7 @@ export interface FileRoutesByTo {
   '/characters': typeof CharactersRoute
   '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
+  '/discord': typeof DiscordRoute
   '/donate': typeof DonateRoute
   '/events': typeof EventsRoute
   '/factions': typeof FactionsRoute
@@ -321,27 +462,46 @@ export interface FileRoutesByTo {
   '/features': typeof FeaturesRoute
   '/forum': typeof ForumRoute
   '/gallery': typeof GalleryRoute
+  '/jobs': typeof JobsRoute
   '/leaderboard': typeof LeaderboardRoute
   '/login': typeof LoginRoute
   '/lore': typeof LoreRoute
+  '/map': typeof MapRoute
+  '/media': typeof MediaRoute
   '/news': typeof NewsRouteWithChildren
+  '/partners': typeof PartnersRoute
+  '/patches': typeof PatchesRoute
   '/privacy': typeof PrivacyRoute
   '/register': typeof RegisterRoute
+  '/roadmap': typeof RoadmapRoute
   '/rules': typeof RulesRoute
+  '/screenshots': typeof ScreenshotsRoute
   '/shop': typeof ShopRoute
   '/staff': typeof StaffRoute
   '/status': typeof StatusRoute
+  '/streamers': typeof StreamersRoute
   '/terms': typeof TermsRoute
   '/tickets': typeof TicketsRoute
   '/vote': typeof VoteRoute
   '/whitelist': typeof WhitelistRoute
+  '/wiki': typeof WikiRoute
+  '/admin/analytics': typeof AdminAnalyticsRoute
   '/admin/audit': typeof AdminAuditRoute
+  '/admin/backups': typeof AdminBackupsRoute
   '/admin/bans': typeof AdminBansRoute
+  '/admin/broadcast': typeof AdminBroadcastRoute
+  '/admin/cron': typeof AdminCronRoute
   '/admin/donations': typeof AdminDonationsRoute
   '/admin/events': typeof AdminEventsRoute
   '/admin/factions': typeof AdminFactionsRoute
+  '/admin/jsonbin': typeof AdminJsonbinRoute
+  '/admin/logs': typeof AdminLogsRoute
+  '/admin/media': typeof AdminMediaRoute
   '/admin/messages': typeof AdminMessagesRoute
   '/admin/news': typeof AdminNewsRoute
+  '/admin/permissions': typeof AdminPermissionsRoute
+  '/admin/reports': typeof AdminReportsRoute
+  '/admin/roadmap': typeof AdminRoadmapRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/admin/status': typeof AdminStatusRoute
   '/admin/tickets': typeof AdminTicketsRoute
@@ -359,6 +519,7 @@ export interface FileRoutesById {
   '/characters': typeof CharactersRoute
   '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
+  '/discord': typeof DiscordRoute
   '/donate': typeof DonateRoute
   '/events': typeof EventsRoute
   '/factions': typeof FactionsRoute
@@ -366,27 +527,46 @@ export interface FileRoutesById {
   '/features': typeof FeaturesRoute
   '/forum': typeof ForumRoute
   '/gallery': typeof GalleryRoute
+  '/jobs': typeof JobsRoute
   '/leaderboard': typeof LeaderboardRoute
   '/login': typeof LoginRoute
   '/lore': typeof LoreRoute
+  '/map': typeof MapRoute
+  '/media': typeof MediaRoute
   '/news': typeof NewsRouteWithChildren
+  '/partners': typeof PartnersRoute
+  '/patches': typeof PatchesRoute
   '/privacy': typeof PrivacyRoute
   '/register': typeof RegisterRoute
+  '/roadmap': typeof RoadmapRoute
   '/rules': typeof RulesRoute
+  '/screenshots': typeof ScreenshotsRoute
   '/shop': typeof ShopRoute
   '/staff': typeof StaffRoute
   '/status': typeof StatusRoute
+  '/streamers': typeof StreamersRoute
   '/terms': typeof TermsRoute
   '/tickets': typeof TicketsRoute
   '/vote': typeof VoteRoute
   '/whitelist': typeof WhitelistRoute
+  '/wiki': typeof WikiRoute
+  '/admin/analytics': typeof AdminAnalyticsRoute
   '/admin/audit': typeof AdminAuditRoute
+  '/admin/backups': typeof AdminBackupsRoute
   '/admin/bans': typeof AdminBansRoute
+  '/admin/broadcast': typeof AdminBroadcastRoute
+  '/admin/cron': typeof AdminCronRoute
   '/admin/donations': typeof AdminDonationsRoute
   '/admin/events': typeof AdminEventsRoute
   '/admin/factions': typeof AdminFactionsRoute
+  '/admin/jsonbin': typeof AdminJsonbinRoute
+  '/admin/logs': typeof AdminLogsRoute
+  '/admin/media': typeof AdminMediaRoute
   '/admin/messages': typeof AdminMessagesRoute
   '/admin/news': typeof AdminNewsRoute
+  '/admin/permissions': typeof AdminPermissionsRoute
+  '/admin/reports': typeof AdminReportsRoute
+  '/admin/roadmap': typeof AdminRoadmapRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/admin/status': typeof AdminStatusRoute
   '/admin/tickets': typeof AdminTicketsRoute
@@ -405,6 +585,7 @@ export interface FileRouteTypes {
     | '/characters'
     | '/contact'
     | '/dashboard'
+    | '/discord'
     | '/donate'
     | '/events'
     | '/factions'
@@ -412,27 +593,46 @@ export interface FileRouteTypes {
     | '/features'
     | '/forum'
     | '/gallery'
+    | '/jobs'
     | '/leaderboard'
     | '/login'
     | '/lore'
+    | '/map'
+    | '/media'
     | '/news'
+    | '/partners'
+    | '/patches'
     | '/privacy'
     | '/register'
+    | '/roadmap'
     | '/rules'
+    | '/screenshots'
     | '/shop'
     | '/staff'
     | '/status'
+    | '/streamers'
     | '/terms'
     | '/tickets'
     | '/vote'
     | '/whitelist'
+    | '/wiki'
+    | '/admin/analytics'
     | '/admin/audit'
+    | '/admin/backups'
     | '/admin/bans'
+    | '/admin/broadcast'
+    | '/admin/cron'
     | '/admin/donations'
     | '/admin/events'
     | '/admin/factions'
+    | '/admin/jsonbin'
+    | '/admin/logs'
+    | '/admin/media'
     | '/admin/messages'
     | '/admin/news'
+    | '/admin/permissions'
+    | '/admin/reports'
+    | '/admin/roadmap'
     | '/admin/settings'
     | '/admin/status'
     | '/admin/tickets'
@@ -448,6 +648,7 @@ export interface FileRouteTypes {
     | '/characters'
     | '/contact'
     | '/dashboard'
+    | '/discord'
     | '/donate'
     | '/events'
     | '/factions'
@@ -455,27 +656,46 @@ export interface FileRouteTypes {
     | '/features'
     | '/forum'
     | '/gallery'
+    | '/jobs'
     | '/leaderboard'
     | '/login'
     | '/lore'
+    | '/map'
+    | '/media'
     | '/news'
+    | '/partners'
+    | '/patches'
     | '/privacy'
     | '/register'
+    | '/roadmap'
     | '/rules'
+    | '/screenshots'
     | '/shop'
     | '/staff'
     | '/status'
+    | '/streamers'
     | '/terms'
     | '/tickets'
     | '/vote'
     | '/whitelist'
+    | '/wiki'
+    | '/admin/analytics'
     | '/admin/audit'
+    | '/admin/backups'
     | '/admin/bans'
+    | '/admin/broadcast'
+    | '/admin/cron'
     | '/admin/donations'
     | '/admin/events'
     | '/admin/factions'
+    | '/admin/jsonbin'
+    | '/admin/logs'
+    | '/admin/media'
     | '/admin/messages'
     | '/admin/news'
+    | '/admin/permissions'
+    | '/admin/reports'
+    | '/admin/roadmap'
     | '/admin/settings'
     | '/admin/status'
     | '/admin/tickets'
@@ -492,6 +712,7 @@ export interface FileRouteTypes {
     | '/characters'
     | '/contact'
     | '/dashboard'
+    | '/discord'
     | '/donate'
     | '/events'
     | '/factions'
@@ -499,27 +720,46 @@ export interface FileRouteTypes {
     | '/features'
     | '/forum'
     | '/gallery'
+    | '/jobs'
     | '/leaderboard'
     | '/login'
     | '/lore'
+    | '/map'
+    | '/media'
     | '/news'
+    | '/partners'
+    | '/patches'
     | '/privacy'
     | '/register'
+    | '/roadmap'
     | '/rules'
+    | '/screenshots'
     | '/shop'
     | '/staff'
     | '/status'
+    | '/streamers'
     | '/terms'
     | '/tickets'
     | '/vote'
     | '/whitelist'
+    | '/wiki'
+    | '/admin/analytics'
     | '/admin/audit'
+    | '/admin/backups'
     | '/admin/bans'
+    | '/admin/broadcast'
+    | '/admin/cron'
     | '/admin/donations'
     | '/admin/events'
     | '/admin/factions'
+    | '/admin/jsonbin'
+    | '/admin/logs'
+    | '/admin/media'
     | '/admin/messages'
     | '/admin/news'
+    | '/admin/permissions'
+    | '/admin/reports'
+    | '/admin/roadmap'
     | '/admin/settings'
     | '/admin/status'
     | '/admin/tickets'
@@ -537,6 +777,7 @@ export interface RootRouteChildren {
   CharactersRoute: typeof CharactersRoute
   ContactRoute: typeof ContactRoute
   DashboardRoute: typeof DashboardRoute
+  DiscordRoute: typeof DiscordRoute
   DonateRoute: typeof DonateRoute
   EventsRoute: typeof EventsRoute
   FactionsRoute: typeof FactionsRoute
@@ -544,24 +785,40 @@ export interface RootRouteChildren {
   FeaturesRoute: typeof FeaturesRoute
   ForumRoute: typeof ForumRoute
   GalleryRoute: typeof GalleryRoute
+  JobsRoute: typeof JobsRoute
   LeaderboardRoute: typeof LeaderboardRoute
   LoginRoute: typeof LoginRoute
   LoreRoute: typeof LoreRoute
+  MapRoute: typeof MapRoute
+  MediaRoute: typeof MediaRoute
   NewsRoute: typeof NewsRouteWithChildren
+  PartnersRoute: typeof PartnersRoute
+  PatchesRoute: typeof PatchesRoute
   PrivacyRoute: typeof PrivacyRoute
   RegisterRoute: typeof RegisterRoute
+  RoadmapRoute: typeof RoadmapRoute
   RulesRoute: typeof RulesRoute
+  ScreenshotsRoute: typeof ScreenshotsRoute
   ShopRoute: typeof ShopRoute
   StaffRoute: typeof StaffRoute
   StatusRoute: typeof StatusRoute
+  StreamersRoute: typeof StreamersRoute
   TermsRoute: typeof TermsRoute
   TicketsRoute: typeof TicketsRoute
   VoteRoute: typeof VoteRoute
   WhitelistRoute: typeof WhitelistRoute
+  WikiRoute: typeof WikiRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/wiki': {
+      id: '/wiki'
+      path: '/wiki'
+      fullPath: '/wiki'
+      preLoaderRoute: typeof WikiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/whitelist': {
       id: '/whitelist'
       path: '/whitelist'
@@ -590,6 +847,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/streamers': {
+      id: '/streamers'
+      path: '/streamers'
+      fullPath: '/streamers'
+      preLoaderRoute: typeof StreamersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/status': {
       id: '/status'
       path: '/status'
@@ -611,11 +875,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShopRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/screenshots': {
+      id: '/screenshots'
+      path: '/screenshots'
+      fullPath: '/screenshots'
+      preLoaderRoute: typeof ScreenshotsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/rules': {
       id: '/rules'
       path: '/rules'
       fullPath: '/rules'
       preLoaderRoute: typeof RulesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/roadmap': {
+      id: '/roadmap'
+      path: '/roadmap'
+      fullPath: '/roadmap'
+      preLoaderRoute: typeof RoadmapRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/register': {
@@ -632,11 +910,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/patches': {
+      id: '/patches'
+      path: '/patches'
+      fullPath: '/patches'
+      preLoaderRoute: typeof PatchesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/partners': {
+      id: '/partners'
+      path: '/partners'
+      fullPath: '/partners'
+      preLoaderRoute: typeof PartnersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/news': {
       id: '/news'
       path: '/news'
       fullPath: '/news'
       preLoaderRoute: typeof NewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/media': {
+      id: '/media'
+      path: '/media'
+      fullPath: '/media'
+      preLoaderRoute: typeof MediaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/map': {
+      id: '/map'
+      path: '/map'
+      fullPath: '/map'
+      preLoaderRoute: typeof MapRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lore': {
@@ -658,6 +964,13 @@ declare module '@tanstack/react-router' {
       path: '/leaderboard'
       fullPath: '/leaderboard'
       preLoaderRoute: typeof LeaderboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/jobs': {
+      id: '/jobs'
+      path: '/jobs'
+      fullPath: '/jobs'
+      preLoaderRoute: typeof JobsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/gallery': {
@@ -707,6 +1020,13 @@ declare module '@tanstack/react-router' {
       path: '/donate'
       fullPath: '/donate'
       preLoaderRoute: typeof DonateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/discord': {
+      id: '/discord'
+      path: '/discord'
+      fullPath: '/discord'
+      preLoaderRoute: typeof DiscordRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dashboard': {
@@ -807,6 +1127,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminSettingsRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/roadmap': {
+      id: '/admin/roadmap'
+      path: '/roadmap'
+      fullPath: '/admin/roadmap'
+      preLoaderRoute: typeof AdminRoadmapRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/reports': {
+      id: '/admin/reports'
+      path: '/reports'
+      fullPath: '/admin/reports'
+      preLoaderRoute: typeof AdminReportsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/permissions': {
+      id: '/admin/permissions'
+      path: '/permissions'
+      fullPath: '/admin/permissions'
+      preLoaderRoute: typeof AdminPermissionsRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/admin/news': {
       id: '/admin/news'
       path: '/news'
@@ -819,6 +1160,27 @@ declare module '@tanstack/react-router' {
       path: '/messages'
       fullPath: '/admin/messages'
       preLoaderRoute: typeof AdminMessagesRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/media': {
+      id: '/admin/media'
+      path: '/media'
+      fullPath: '/admin/media'
+      preLoaderRoute: typeof AdminMediaRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/logs': {
+      id: '/admin/logs'
+      path: '/logs'
+      fullPath: '/admin/logs'
+      preLoaderRoute: typeof AdminLogsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/jsonbin': {
+      id: '/admin/jsonbin'
+      path: '/jsonbin'
+      fullPath: '/admin/jsonbin'
+      preLoaderRoute: typeof AdminJsonbinRouteImport
       parentRoute: typeof AdminRoute
     }
     '/admin/factions': {
@@ -842,11 +1204,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminDonationsRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/cron': {
+      id: '/admin/cron'
+      path: '/cron'
+      fullPath: '/admin/cron'
+      preLoaderRoute: typeof AdminCronRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/broadcast': {
+      id: '/admin/broadcast'
+      path: '/broadcast'
+      fullPath: '/admin/broadcast'
+      preLoaderRoute: typeof AdminBroadcastRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/admin/bans': {
       id: '/admin/bans'
       path: '/bans'
       fullPath: '/admin/bans'
       preLoaderRoute: typeof AdminBansRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/backups': {
+      id: '/admin/backups'
+      path: '/backups'
+      fullPath: '/admin/backups'
+      preLoaderRoute: typeof AdminBackupsRouteImport
       parentRoute: typeof AdminRoute
     }
     '/admin/audit': {
@@ -856,17 +1239,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminAuditRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/analytics': {
+      id: '/admin/analytics'
+      path: '/analytics'
+      fullPath: '/admin/analytics'
+      preLoaderRoute: typeof AdminAnalyticsRouteImport
+      parentRoute: typeof AdminRoute
+    }
   }
 }
 
 interface AdminRouteChildren {
+  AdminAnalyticsRoute: typeof AdminAnalyticsRoute
   AdminAuditRoute: typeof AdminAuditRoute
+  AdminBackupsRoute: typeof AdminBackupsRoute
   AdminBansRoute: typeof AdminBansRoute
+  AdminBroadcastRoute: typeof AdminBroadcastRoute
+  AdminCronRoute: typeof AdminCronRoute
   AdminDonationsRoute: typeof AdminDonationsRoute
   AdminEventsRoute: typeof AdminEventsRoute
   AdminFactionsRoute: typeof AdminFactionsRoute
+  AdminJsonbinRoute: typeof AdminJsonbinRoute
+  AdminLogsRoute: typeof AdminLogsRoute
+  AdminMediaRoute: typeof AdminMediaRoute
   AdminMessagesRoute: typeof AdminMessagesRoute
   AdminNewsRoute: typeof AdminNewsRoute
+  AdminPermissionsRoute: typeof AdminPermissionsRoute
+  AdminReportsRoute: typeof AdminReportsRoute
+  AdminRoadmapRoute: typeof AdminRoadmapRoute
   AdminSettingsRoute: typeof AdminSettingsRoute
   AdminStatusRoute: typeof AdminStatusRoute
   AdminTicketsRoute: typeof AdminTicketsRoute
@@ -876,13 +1276,23 @@ interface AdminRouteChildren {
 }
 
 const AdminRouteChildren: AdminRouteChildren = {
+  AdminAnalyticsRoute: AdminAnalyticsRoute,
   AdminAuditRoute: AdminAuditRoute,
+  AdminBackupsRoute: AdminBackupsRoute,
   AdminBansRoute: AdminBansRoute,
+  AdminBroadcastRoute: AdminBroadcastRoute,
+  AdminCronRoute: AdminCronRoute,
   AdminDonationsRoute: AdminDonationsRoute,
   AdminEventsRoute: AdminEventsRoute,
   AdminFactionsRoute: AdminFactionsRoute,
+  AdminJsonbinRoute: AdminJsonbinRoute,
+  AdminLogsRoute: AdminLogsRoute,
+  AdminMediaRoute: AdminMediaRoute,
   AdminMessagesRoute: AdminMessagesRoute,
   AdminNewsRoute: AdminNewsRoute,
+  AdminPermissionsRoute: AdminPermissionsRoute,
+  AdminReportsRoute: AdminReportsRoute,
+  AdminRoadmapRoute: AdminRoadmapRoute,
   AdminSettingsRoute: AdminSettingsRoute,
   AdminStatusRoute: AdminStatusRoute,
   AdminTicketsRoute: AdminTicketsRoute,
@@ -911,6 +1321,7 @@ const rootRouteChildren: RootRouteChildren = {
   CharactersRoute: CharactersRoute,
   ContactRoute: ContactRoute,
   DashboardRoute: DashboardRoute,
+  DiscordRoute: DiscordRoute,
   DonateRoute: DonateRoute,
   EventsRoute: EventsRoute,
   FactionsRoute: FactionsRoute,
@@ -918,31 +1329,30 @@ const rootRouteChildren: RootRouteChildren = {
   FeaturesRoute: FeaturesRoute,
   ForumRoute: ForumRoute,
   GalleryRoute: GalleryRoute,
+  JobsRoute: JobsRoute,
   LeaderboardRoute: LeaderboardRoute,
   LoginRoute: LoginRoute,
   LoreRoute: LoreRoute,
+  MapRoute: MapRoute,
+  MediaRoute: MediaRoute,
   NewsRoute: NewsRouteWithChildren,
+  PartnersRoute: PartnersRoute,
+  PatchesRoute: PatchesRoute,
   PrivacyRoute: PrivacyRoute,
   RegisterRoute: RegisterRoute,
+  RoadmapRoute: RoadmapRoute,
   RulesRoute: RulesRoute,
+  ScreenshotsRoute: ScreenshotsRoute,
   ShopRoute: ShopRoute,
   StaffRoute: StaffRoute,
   StatusRoute: StatusRoute,
+  StreamersRoute: StreamersRoute,
   TermsRoute: TermsRoute,
   TicketsRoute: TicketsRoute,
   VoteRoute: VoteRoute,
   WhitelistRoute: WhitelistRoute,
+  WikiRoute: WikiRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

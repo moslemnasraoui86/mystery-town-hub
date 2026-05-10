@@ -8,6 +8,7 @@ import { useState } from "react";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import { useJsonBinAppend } from "@/lib/jsonbin-client";
 
 const schema = z.object({
   name: z.string().trim().min(1).max(100),
@@ -22,6 +23,7 @@ export const Route = createFileRoute("/contact")({
 });
 
 function ContactPage() {
+  const mirror = useJsonBinAppend();
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", subject: "", body: "" });
 
@@ -33,6 +35,7 @@ function ContactPage() {
     const { error } = await supabase.from("contact_messages").insert(parsed.data);
     setLoading(false);
     if (error) return toast.error(error.message);
+    await mirror("contact", parsed.data);
     toast.success("Message sent. We'll be in touch.");
     setForm({ name: "", email: "", subject: "", body: "" });
   };
