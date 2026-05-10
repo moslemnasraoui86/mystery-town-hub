@@ -1,7 +1,7 @@
 import { createFileRoute, useNavigate, Link, Outlet, useRouterState } from "@tanstack/react-router";
 import { useAuth } from "@/lib/auth-context";
 import { useEffect } from "react";
-import { LayoutDashboard, Users, FileText, Heart, MessageSquare, Settings, ArrowLeft, Skull, Newspaper, Calendar, LifeBuoy, Ban, Swords, Activity, ScrollText } from "lucide-react";
+import { LayoutDashboard, Users, FileText, Heart, MessageSquare, Settings, ArrowLeft, Skull, Newspaper, Calendar, LifeBuoy, Ban, Swords, Activity, ScrollText, Database, BarChart3, Save, FileBarChart, Megaphone, ShieldCheck, Clock, Image, Map } from "lucide-react";
 
 export const Route = createFileRoute("/admin")({
   head: () => ({ meta: [{ title: "Admin Dashboard — Mystery Town" }] }),
@@ -10,6 +10,8 @@ export const Route = createFileRoute("/admin")({
 
 const NAV = [
   { to: "/admin", label: "Overview", icon: LayoutDashboard, exact: true },
+  { to: "/admin/analytics", label: "Analytics", icon: BarChart3 },
+  { to: "/admin/jsonbin", label: "JSON Database", icon: Database },
   { to: "/admin/users", label: "Users & Roles", icon: Users },
   { to: "/admin/whitelist", label: "Whitelist", icon: FileText },
   { to: "/admin/donations", label: "Donations", icon: Heart },
@@ -21,6 +23,14 @@ const NAV = [
   { to: "/admin/bans", label: "Bans", icon: Ban },
   { to: "/admin/status", label: "Server Status", icon: Activity },
   { to: "/admin/audit", label: "Audit Log", icon: ScrollText },
+  { to: "/admin/logs", label: "System Logs", icon: ScrollText },
+  { to: "/admin/reports", label: "Reports", icon: FileBarChart },
+  { to: "/admin/backups", label: "Backups", icon: Save },
+  { to: "/admin/broadcast", label: "Broadcast", icon: Megaphone },
+  { to: "/admin/permissions", label: "Permissions", icon: ShieldCheck },
+  { to: "/admin/cron", label: "Cron Jobs", icon: Clock },
+  { to: "/admin/media", label: "Media Library", icon: Image },
+  { to: "/admin/roadmap", label: "Roadmap", icon: Map },
   { to: "/admin/settings", label: "Settings", icon: Settings },
 ];
 

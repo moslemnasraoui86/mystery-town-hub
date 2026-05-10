@@ -54,13 +54,23 @@ import { Route as AdminUsersRouteImport } from './routes/admin.users'
 import { Route as AdminTicketsRouteImport } from './routes/admin.tickets'
 import { Route as AdminStatusRouteImport } from './routes/admin.status'
 import { Route as AdminSettingsRouteImport } from './routes/admin.settings'
+import { Route as AdminRoadmapRouteImport } from './routes/admin.roadmap'
+import { Route as AdminReportsRouteImport } from './routes/admin.reports'
+import { Route as AdminPermissionsRouteImport } from './routes/admin.permissions'
 import { Route as AdminNewsRouteImport } from './routes/admin.news'
 import { Route as AdminMessagesRouteImport } from './routes/admin.messages'
+import { Route as AdminMediaRouteImport } from './routes/admin.media'
+import { Route as AdminLogsRouteImport } from './routes/admin.logs'
+import { Route as AdminJsonbinRouteImport } from './routes/admin.jsonbin'
 import { Route as AdminFactionsRouteImport } from './routes/admin.factions'
 import { Route as AdminEventsRouteImport } from './routes/admin.events'
 import { Route as AdminDonationsRouteImport } from './routes/admin.donations'
+import { Route as AdminCronRouteImport } from './routes/admin.cron'
+import { Route as AdminBroadcastRouteImport } from './routes/admin.broadcast'
 import { Route as AdminBansRouteImport } from './routes/admin.bans'
+import { Route as AdminBackupsRouteImport } from './routes/admin.backups'
 import { Route as AdminAuditRouteImport } from './routes/admin.audit'
+import { Route as AdminAnalyticsRouteImport } from './routes/admin.analytics'
 
 const WikiRoute = WikiRouteImport.update({
   id: '/wiki',
@@ -287,6 +297,21 @@ const AdminSettingsRoute = AdminSettingsRouteImport.update({
   path: '/settings',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminRoadmapRoute = AdminRoadmapRouteImport.update({
+  id: '/roadmap',
+  path: '/roadmap',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminReportsRoute = AdminReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminPermissionsRoute = AdminPermissionsRouteImport.update({
+  id: '/permissions',
+  path: '/permissions',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AdminNewsRoute = AdminNewsRouteImport.update({
   id: '/news',
   path: '/news',
@@ -295,6 +320,21 @@ const AdminNewsRoute = AdminNewsRouteImport.update({
 const AdminMessagesRoute = AdminMessagesRouteImport.update({
   id: '/messages',
   path: '/messages',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminMediaRoute = AdminMediaRouteImport.update({
+  id: '/media',
+  path: '/media',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminLogsRoute = AdminLogsRouteImport.update({
+  id: '/logs',
+  path: '/logs',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminJsonbinRoute = AdminJsonbinRouteImport.update({
+  id: '/jsonbin',
+  path: '/jsonbin',
   getParentRoute: () => AdminRoute,
 } as any)
 const AdminFactionsRoute = AdminFactionsRouteImport.update({
@@ -312,14 +352,34 @@ const AdminDonationsRoute = AdminDonationsRouteImport.update({
   path: '/donations',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminCronRoute = AdminCronRouteImport.update({
+  id: '/cron',
+  path: '/cron',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminBroadcastRoute = AdminBroadcastRouteImport.update({
+  id: '/broadcast',
+  path: '/broadcast',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AdminBansRoute = AdminBansRouteImport.update({
   id: '/bans',
   path: '/bans',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminBackupsRoute = AdminBackupsRouteImport.update({
+  id: '/backups',
+  path: '/backups',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AdminAuditRoute = AdminAuditRouteImport.update({
   id: '/audit',
   path: '/audit',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminAnalyticsRoute = AdminAnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
   getParentRoute: () => AdminRoute,
 } as any)
 
@@ -362,13 +422,23 @@ export interface FileRoutesByFullPath {
   '/vote': typeof VoteRoute
   '/whitelist': typeof WhitelistRoute
   '/wiki': typeof WikiRoute
+  '/admin/analytics': typeof AdminAnalyticsRoute
   '/admin/audit': typeof AdminAuditRoute
+  '/admin/backups': typeof AdminBackupsRoute
   '/admin/bans': typeof AdminBansRoute
+  '/admin/broadcast': typeof AdminBroadcastRoute
+  '/admin/cron': typeof AdminCronRoute
   '/admin/donations': typeof AdminDonationsRoute
   '/admin/events': typeof AdminEventsRoute
   '/admin/factions': typeof AdminFactionsRoute
+  '/admin/jsonbin': typeof AdminJsonbinRoute
+  '/admin/logs': typeof AdminLogsRoute
+  '/admin/media': typeof AdminMediaRoute
   '/admin/messages': typeof AdminMessagesRoute
   '/admin/news': typeof AdminNewsRoute
+  '/admin/permissions': typeof AdminPermissionsRoute
+  '/admin/reports': typeof AdminReportsRoute
+  '/admin/roadmap': typeof AdminRoadmapRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/admin/status': typeof AdminStatusRoute
   '/admin/tickets': typeof AdminTicketsRoute
@@ -415,13 +485,23 @@ export interface FileRoutesByTo {
   '/vote': typeof VoteRoute
   '/whitelist': typeof WhitelistRoute
   '/wiki': typeof WikiRoute
+  '/admin/analytics': typeof AdminAnalyticsRoute
   '/admin/audit': typeof AdminAuditRoute
+  '/admin/backups': typeof AdminBackupsRoute
   '/admin/bans': typeof AdminBansRoute
+  '/admin/broadcast': typeof AdminBroadcastRoute
+  '/admin/cron': typeof AdminCronRoute
   '/admin/donations': typeof AdminDonationsRoute
   '/admin/events': typeof AdminEventsRoute
   '/admin/factions': typeof AdminFactionsRoute
+  '/admin/jsonbin': typeof AdminJsonbinRoute
+  '/admin/logs': typeof AdminLogsRoute
+  '/admin/media': typeof AdminMediaRoute
   '/admin/messages': typeof AdminMessagesRoute
   '/admin/news': typeof AdminNewsRoute
+  '/admin/permissions': typeof AdminPermissionsRoute
+  '/admin/reports': typeof AdminReportsRoute
+  '/admin/roadmap': typeof AdminRoadmapRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/admin/status': typeof AdminStatusRoute
   '/admin/tickets': typeof AdminTicketsRoute
@@ -470,13 +550,23 @@ export interface FileRoutesById {
   '/vote': typeof VoteRoute
   '/whitelist': typeof WhitelistRoute
   '/wiki': typeof WikiRoute
+  '/admin/analytics': typeof AdminAnalyticsRoute
   '/admin/audit': typeof AdminAuditRoute
+  '/admin/backups': typeof AdminBackupsRoute
   '/admin/bans': typeof AdminBansRoute
+  '/admin/broadcast': typeof AdminBroadcastRoute
+  '/admin/cron': typeof AdminCronRoute
   '/admin/donations': typeof AdminDonationsRoute
   '/admin/events': typeof AdminEventsRoute
   '/admin/factions': typeof AdminFactionsRoute
+  '/admin/jsonbin': typeof AdminJsonbinRoute
+  '/admin/logs': typeof AdminLogsRoute
+  '/admin/media': typeof AdminMediaRoute
   '/admin/messages': typeof AdminMessagesRoute
   '/admin/news': typeof AdminNewsRoute
+  '/admin/permissions': typeof AdminPermissionsRoute
+  '/admin/reports': typeof AdminReportsRoute
+  '/admin/roadmap': typeof AdminRoadmapRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/admin/status': typeof AdminStatusRoute
   '/admin/tickets': typeof AdminTicketsRoute
@@ -526,13 +616,23 @@ export interface FileRouteTypes {
     | '/vote'
     | '/whitelist'
     | '/wiki'
+    | '/admin/analytics'
     | '/admin/audit'
+    | '/admin/backups'
     | '/admin/bans'
+    | '/admin/broadcast'
+    | '/admin/cron'
     | '/admin/donations'
     | '/admin/events'
     | '/admin/factions'
+    | '/admin/jsonbin'
+    | '/admin/logs'
+    | '/admin/media'
     | '/admin/messages'
     | '/admin/news'
+    | '/admin/permissions'
+    | '/admin/reports'
+    | '/admin/roadmap'
     | '/admin/settings'
     | '/admin/status'
     | '/admin/tickets'
@@ -579,13 +679,23 @@ export interface FileRouteTypes {
     | '/vote'
     | '/whitelist'
     | '/wiki'
+    | '/admin/analytics'
     | '/admin/audit'
+    | '/admin/backups'
     | '/admin/bans'
+    | '/admin/broadcast'
+    | '/admin/cron'
     | '/admin/donations'
     | '/admin/events'
     | '/admin/factions'
+    | '/admin/jsonbin'
+    | '/admin/logs'
+    | '/admin/media'
     | '/admin/messages'
     | '/admin/news'
+    | '/admin/permissions'
+    | '/admin/reports'
+    | '/admin/roadmap'
     | '/admin/settings'
     | '/admin/status'
     | '/admin/tickets'
@@ -633,13 +743,23 @@ export interface FileRouteTypes {
     | '/vote'
     | '/whitelist'
     | '/wiki'
+    | '/admin/analytics'
     | '/admin/audit'
+    | '/admin/backups'
     | '/admin/bans'
+    | '/admin/broadcast'
+    | '/admin/cron'
     | '/admin/donations'
     | '/admin/events'
     | '/admin/factions'
+    | '/admin/jsonbin'
+    | '/admin/logs'
+    | '/admin/media'
     | '/admin/messages'
     | '/admin/news'
+    | '/admin/permissions'
+    | '/admin/reports'
+    | '/admin/roadmap'
     | '/admin/settings'
     | '/admin/status'
     | '/admin/tickets'
@@ -1007,6 +1127,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminSettingsRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/roadmap': {
+      id: '/admin/roadmap'
+      path: '/roadmap'
+      fullPath: '/admin/roadmap'
+      preLoaderRoute: typeof AdminRoadmapRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/reports': {
+      id: '/admin/reports'
+      path: '/reports'
+      fullPath: '/admin/reports'
+      preLoaderRoute: typeof AdminReportsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/permissions': {
+      id: '/admin/permissions'
+      path: '/permissions'
+      fullPath: '/admin/permissions'
+      preLoaderRoute: typeof AdminPermissionsRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/admin/news': {
       id: '/admin/news'
       path: '/news'
@@ -1019,6 +1160,27 @@ declare module '@tanstack/react-router' {
       path: '/messages'
       fullPath: '/admin/messages'
       preLoaderRoute: typeof AdminMessagesRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/media': {
+      id: '/admin/media'
+      path: '/media'
+      fullPath: '/admin/media'
+      preLoaderRoute: typeof AdminMediaRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/logs': {
+      id: '/admin/logs'
+      path: '/logs'
+      fullPath: '/admin/logs'
+      preLoaderRoute: typeof AdminLogsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/jsonbin': {
+      id: '/admin/jsonbin'
+      path: '/jsonbin'
+      fullPath: '/admin/jsonbin'
+      preLoaderRoute: typeof AdminJsonbinRouteImport
       parentRoute: typeof AdminRoute
     }
     '/admin/factions': {
@@ -1042,11 +1204,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminDonationsRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/cron': {
+      id: '/admin/cron'
+      path: '/cron'
+      fullPath: '/admin/cron'
+      preLoaderRoute: typeof AdminCronRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/broadcast': {
+      id: '/admin/broadcast'
+      path: '/broadcast'
+      fullPath: '/admin/broadcast'
+      preLoaderRoute: typeof AdminBroadcastRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/admin/bans': {
       id: '/admin/bans'
       path: '/bans'
       fullPath: '/admin/bans'
       preLoaderRoute: typeof AdminBansRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/backups': {
+      id: '/admin/backups'
+      path: '/backups'
+      fullPath: '/admin/backups'
+      preLoaderRoute: typeof AdminBackupsRouteImport
       parentRoute: typeof AdminRoute
     }
     '/admin/audit': {
@@ -1056,17 +1239,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminAuditRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/analytics': {
+      id: '/admin/analytics'
+      path: '/analytics'
+      fullPath: '/admin/analytics'
+      preLoaderRoute: typeof AdminAnalyticsRouteImport
+      parentRoute: typeof AdminRoute
+    }
   }
 }
 
 interface AdminRouteChildren {
+  AdminAnalyticsRoute: typeof AdminAnalyticsRoute
   AdminAuditRoute: typeof AdminAuditRoute
+  AdminBackupsRoute: typeof AdminBackupsRoute
   AdminBansRoute: typeof AdminBansRoute
+  AdminBroadcastRoute: typeof AdminBroadcastRoute
+  AdminCronRoute: typeof AdminCronRoute
   AdminDonationsRoute: typeof AdminDonationsRoute
   AdminEventsRoute: typeof AdminEventsRoute
   AdminFactionsRoute: typeof AdminFactionsRoute
+  AdminJsonbinRoute: typeof AdminJsonbinRoute
+  AdminLogsRoute: typeof AdminLogsRoute
+  AdminMediaRoute: typeof AdminMediaRoute
   AdminMessagesRoute: typeof AdminMessagesRoute
   AdminNewsRoute: typeof AdminNewsRoute
+  AdminPermissionsRoute: typeof AdminPermissionsRoute
+  AdminReportsRoute: typeof AdminReportsRoute
+  AdminRoadmapRoute: typeof AdminRoadmapRoute
   AdminSettingsRoute: typeof AdminSettingsRoute
   AdminStatusRoute: typeof AdminStatusRoute
   AdminTicketsRoute: typeof AdminTicketsRoute
@@ -1076,13 +1276,23 @@ interface AdminRouteChildren {
 }
 
 const AdminRouteChildren: AdminRouteChildren = {
+  AdminAnalyticsRoute: AdminAnalyticsRoute,
   AdminAuditRoute: AdminAuditRoute,
+  AdminBackupsRoute: AdminBackupsRoute,
   AdminBansRoute: AdminBansRoute,
+  AdminBroadcastRoute: AdminBroadcastRoute,
+  AdminCronRoute: AdminCronRoute,
   AdminDonationsRoute: AdminDonationsRoute,
   AdminEventsRoute: AdminEventsRoute,
   AdminFactionsRoute: AdminFactionsRoute,
+  AdminJsonbinRoute: AdminJsonbinRoute,
+  AdminLogsRoute: AdminLogsRoute,
+  AdminMediaRoute: AdminMediaRoute,
   AdminMessagesRoute: AdminMessagesRoute,
   AdminNewsRoute: AdminNewsRoute,
+  AdminPermissionsRoute: AdminPermissionsRoute,
+  AdminReportsRoute: AdminReportsRoute,
+  AdminRoadmapRoute: AdminRoadmapRoute,
   AdminSettingsRoute: AdminSettingsRoute,
   AdminStatusRoute: AdminStatusRoute,
   AdminTicketsRoute: AdminTicketsRoute,
