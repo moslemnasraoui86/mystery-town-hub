@@ -10,6 +10,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/lib/auth-context";
 import { toast } from "sonner";
 import { useQuery } from "@tanstack/react-query";
+import { useJsonBinAppend } from "@/lib/jsonbin-client";
 
 const schema = z.object({
   character_name: z.string().trim().min(2).max(60),
@@ -25,6 +26,7 @@ export const Route = createFileRoute("/whitelist")({
 
 function WhitelistPage() {
   const { user } = useAuth();
+  const mirror = useJsonBinAppend();
   const [form, setForm] = useState({ character_name: "", age: "", backstory: "", rp_experience: "" });
   const [loading, setLoading] = useState(false);
 
@@ -63,6 +65,7 @@ function WhitelistPage() {
     const { error } = await supabase.from("whitelist_applications").insert({ ...parsed.data, user_id: user.id });
     setLoading(false);
     if (error) return toast.error(error.message);
+    await mirror("whitelist", { ...parsed.data, user_id: user.id, username: user.email });
     toast.success("Application submitted!");
     setForm({ character_name: "", age: "", backstory: "", rp_experience: "" });
     refetch();
