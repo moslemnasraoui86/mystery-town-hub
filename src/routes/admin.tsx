@@ -45,6 +45,7 @@ function AdminLayout() {
     else if (!isStaff) nav({ to: "/dashboard" });
   }, [user, isStaff, loading, nav]);
 
+  if (loading) return <div className="min-h-screen grid place-items-center text-muted-foreground">Loading admin…</div>;
   if (!user || !isStaff) return null;
 
   return (
