@@ -75,6 +75,7 @@ const CATEGORIES: Category[] = [
       { to: "/faq", label: "FAQ", desc: "Common questions", icon: HelpCircle },
       { to: "/contact", label: "Contact", desc: "Send a message", icon: Mail },
       { to: "/about", label: "About", desc: "Who we are", icon: Info },
+      { to: "/account", label: "Account", desc: "Manage profile & security", icon: UserSquare2 },
     ],
   },
   {
