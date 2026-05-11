@@ -126,7 +126,7 @@ export function Header() {
                   <Shield className="h-4 w-4 mr-1" /> Admin
                 </Button>
               )}
-              <Button variant="ghost" size="sm" onClick={() => nav({ to: "/dashboard" })}>
+              <Button variant="ghost" size="sm" onClick={() => nav({ to: "/account" })}>
                 {profile?.username ?? "Account"}
               </Button>
               <Button variant="ghost" size="icon" onClick={signOut} aria-label="Sign out">
