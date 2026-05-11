@@ -75,6 +75,7 @@ const CATEGORIES: Category[] = [
       { to: "/faq", label: "FAQ", desc: "Common questions", icon: HelpCircle },
       { to: "/contact", label: "Contact", desc: "Send a message", icon: Mail },
       { to: "/about", label: "About", desc: "Who we are", icon: Info },
+      { to: "/account", label: "Account", desc: "Manage profile & security", icon: UserSquare2 },
     ],
   },
   {
@@ -125,7 +126,7 @@ export function Header() {
                   <Shield className="h-4 w-4 mr-1" /> Admin
                 </Button>
               )}
-              <Button variant="ghost" size="sm" onClick={() => nav({ to: "/dashboard" })}>
+              <Button variant="ghost" size="sm" onClick={() => nav({ to: "/account" })}>
                 {profile?.username ?? "Account"}
               </Button>
               <Button variant="ghost" size="icon" onClick={signOut} aria-label="Sign out">
