@@ -5,62 +5,63 @@ import { useAuth } from "@/lib/auth-context";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
 import { toast } from "sonner";
-import { Crown, Edit3, Search, Shield, Trash2, UserCog, Users } from "lucide-react";
+import { Crown, Edit3, Search, Shield, Trash2, UserCog, Users, KeyRound } from "lucide-react";
 import { useMemo, useState } from "react";
 
 export const Route = createFileRoute("/admin/users")({ component: AdminUsers });
 
-type Row = { id: string; username: string; display_name: string | null; avatar_url: string | null; bio: string | null; created_at: string; roles: string[] };
+type Row = { id: string; username: string; display_name: string | null; avatar_url: string | null; bio: string | null; created_at: string; legacyRoles: string[]; assignments: string[] };
+type RoleLite = { id: string; name: string; slug: string; color: string; is_system: boolean };
 
 function AdminUsers() {
-  const { isCeo, user: me } = useAuth();
+  const { isCeo, hasPerm, user: me } = useAuth();
+  const canEdit = isCeo || hasPerm("action:users.edit");
+  const canDelete = isCeo || hasPerm("action:users.delete");
+  const canManageRoles = isCeo || hasPerm("action:roles.manage");
+
   const [search, setSearch] = useState("");
   const [editing, setEditing] = useState<Row | null>(null);
   const [draft, setDraft] = useState({ username: "", display_name: "", avatar_url: "", bio: "" });
+  const [assigning, setAssigning] = useState<Row | null>(null);
+  const [assignDraft, setAssignDraft] = useState<Set<string>>(new Set());
+
   const { data, refetch, isLoading } = useQuery({
-    queryKey: ["admin-users"],
-    queryFn: async (): Promise<Row[]> => {
-      const [{ data: profs }, { data: roles }] = await Promise.all([
+    queryKey: ["admin-users-v2"],
+    queryFn: async (): Promise<{ users: Row[]; roles: RoleLite[] }> => {
+      const [{ data: profs }, { data: roles }, { data: rolesAll }, { data: assignments }] = await Promise.all([
         supabase.from("profiles").select("*").order("created_at", { ascending: false }),
         supabase.from("user_roles").select("user_id, role"),
+        supabase.from("roles").select("id, name, slug, color, is_system").order("is_system", { ascending: false }).order("name"),
+        supabase.from("user_role_assignments").select("user_id, role_id"),
       ]);
+      const legacy: Record<string, string[]> = {};
+      (roles ?? []).forEach((r: any) => { (legacy[r.user_id] ??= []).push(r.role); });
       const byUser: Record<string, string[]> = {};
-      (roles ?? []).forEach((r: any) => {
-        byUser[r.user_id] = [...(byUser[r.user_id] ?? []), r.role];
-      });
-      return (profs ?? []).map((p: any) => ({ ...p, roles: byUser[p.id] ?? [] }));
+      (assignments ?? []).forEach((a: any) => { (byUser[a.user_id] ??= []).push(a.role_id); });
+      const users = (profs ?? []).map((p: any) => ({ ...p, legacyRoles: legacy[p.id] ?? [], assignments: byUser[p.id] ?? [] }));
+      return { users, roles: (rolesAll ?? []) as RoleLite[] };
     },
   });
 
-  const setRole = async (userId: string, role: "user" | "admin" | "ceo", add: boolean) => {
-    if (!isCeo) return toast.error("Only CEO can change roles");
-    if (add) {
-      const { error } = await supabase.from("user_roles").insert({ user_id: userId, role });
-      if (error) return toast.error(error.message);
-    } else {
-      const { error } = await supabase.from("user_roles").delete().eq("user_id", userId).eq("role", role);
-      if (error) return toast.error(error.message);
-    }
-    toast.success("Role updated");
-    refetch();
-  };
+  const users = data?.users ?? [];
+  const allRoles = data?.roles ?? [];
+  const roleById = useMemo(() => Object.fromEntries(allRoles.map(r => [r.id, r])), [allRoles]);
 
   const openEdit = (row: Row) => {
     setEditing(row);
     setDraft({
-      username: row.username,
-      display_name: row.display_name ?? "",
-      avatar_url: row.avatar_url ?? "",
-      bio: row.bio ?? "",
+      username: row.username, display_name: row.display_name ?? "",
+      avatar_url: row.avatar_url ?? "", bio: row.bio ?? "",
     });
   };
 
   const saveProfile = async () => {
     if (!editing) return;
-    if (!isCeo && editing.id !== me?.id) return toast.error("Only CEO can edit other users");
+    if (!canEdit && editing.id !== me?.id) return toast.error("No permission");
     const { error } = await supabase.from("profiles").update({
       username: draft.username.trim(),
       display_name: draft.display_name.trim() || null,
@@ -68,46 +69,89 @@ function AdminUsers() {
       bio: draft.bio.trim() || null,
     }).eq("id", editing.id);
     if (error) return toast.error(error.message);
-    toast.success("User profile updated");
+    toast.success("User updated");
     setEditing(null);
     refetch();
   };
 
-  const removeUser = async (userId: string, username: string) => {
-    if (!isCeo) return toast.error("Only CEO can remove users");
+  const removeUser = async (userId: string) => {
+    if (!canDelete) return toast.error("No permission");
     await supabase.from("user_roles").delete().eq("user_id", userId);
+    await supabase.from("user_role_assignments").delete().eq("user_id", userId);
     const { error } = await supabase.from("profiles").delete().eq("id", userId);
     if (error) return toast.error(error.message);
     toast.success("User removed");
     refetch();
   };
 
+  const openAssign = (row: Row) => {
+    setAssigning(row);
+    setAssignDraft(new Set(row.assignments));
+  };
+
+  const toggleAssign = (id: string) => {
+    const next = new Set(assignDraft);
+    next.has(id) ? next.delete(id) : next.add(id);
+    setAssignDraft(next);
+  };
+
+  const saveAssignments = async () => {
+    if (!assigning) return;
+    const current = new Set(assigning.assignments);
+    const toAdd = [...assignDraft].filter(id => !current.has(id));
+    const toRemove = [...current].filter(id => !assignDraft.has(id));
+
+    if (toRemove.length) {
+      const { error } = await supabase.from("user_role_assignments").delete()
+        .eq("user_id", assigning.id).in("role_id", toRemove);
+      if (error) return toast.error(error.message);
+    }
+    if (toAdd.length) {
+      const rows = toAdd.map(role_id => ({ user_id: assigning.id, role_id, assigned_by: me?.id }));
+      const { error } = await supabase.from("user_role_assignments").insert(rows);
+      if (error) return toast.error(error.message);
+    }
+
+    // Sync legacy user_roles for system roles (ceo/admin/user) so existing RLS keeps working
+    const slugs = new Set(allRoles.filter(r => assignDraft.has(r.id) && r.is_system).map(r => r.slug));
+    const legacyTargets = ["ceo", "admin", "user"].filter(s => slugs.has(s));
+    const currentLegacy = assigning.legacyRoles;
+    const legacyAdd = legacyTargets.filter(s => !currentLegacy.includes(s));
+    const legacyRemove = currentLegacy.filter(s => ["ceo", "admin", "user"].includes(s) && !slugs.has(s));
+    if (legacyRemove.length) await supabase.from("user_roles").delete().eq("user_id", assigning.id).in("role", legacyRemove as any);
+    if (legacyAdd.length) await supabase.from("user_roles").insert(legacyAdd.map(role => ({ user_id: assigning.id, role: role as any })));
+
+    toast.success("Roles updated");
+    setAssigning(null);
+    refetch();
+  };
+
   const filtered = useMemo(() => {
     const q = search.toLowerCase().trim();
-    return (data ?? []).filter((u) => !q || u.username.toLowerCase().includes(q) || (u.display_name ?? "").toLowerCase().includes(q) || u.roles.join(" ").includes(q));
-  }, [data, search]);
+    return users.filter((u) => !q || u.username.toLowerCase().includes(q) || (u.display_name ?? "").toLowerCase().includes(q));
+  }, [users, search]);
 
   const stats = {
-    total: data?.length ?? 0,
-    ceo: data?.filter((u) => u.roles.includes("ceo")).length ?? 0,
-    admin: data?.filter((u) => u.roles.includes("admin")).length ?? 0,
+    total: users.length,
+    staff: users.filter(u => u.legacyRoles.includes("admin") || u.legacyRoles.includes("ceo")).length,
+    ceo: users.filter(u => u.legacyRoles.includes("ceo")).length,
   };
 
   return (
     <div>
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h1 className="font-display text-3xl font-black flex items-center gap-2"><UserCog className="h-7 w-7 text-primary" /> Users & Roles</h1>
-          <p className="text-muted-foreground mt-1 text-sm">{isCeo ? "CEO access — profile editing, role control, and user cleanup." : "View only — only CEO can edit roles and users."}</p>
+          <h1 className="font-display text-3xl font-black flex items-center gap-2"><UserCog className="h-7 w-7 text-primary" /> Users</h1>
+          <p className="text-muted-foreground mt-1 text-sm">{canManageRoles ? "Manage profiles, assign roles, and remove accounts." : "View only."}</p>
         </div>
         <div className="relative w-full sm:w-80">
           <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-          <Input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search users, names, roles..." className="pl-9 bg-card/60" />
+          <Input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search users..." className="pl-9 bg-card/60" />
         </div>
       </div>
 
       <div className="mt-6 grid gap-3 sm:grid-cols-3">
-        {[{ label: "Total users", value: stats.total, icon: Users }, { label: "Admins", value: stats.admin, icon: Shield }, { label: "CEO", value: stats.ceo, icon: Crown }].map((s) => {
+        {[{ label: "Total", value: stats.total, icon: Users }, { label: "Staff", value: stats.staff, icon: Shield }, { label: "CEO", value: stats.ceo, icon: Crown }].map((s) => {
           const Icon = s.icon;
           return <div key={s.label} className="rounded-xl border border-border bg-card/50 p-4"><div className="flex items-center justify-between text-xs uppercase tracking-widest text-muted-foreground"><span>{s.label}</span><Icon className="h-4 w-4 text-primary" /></div><div className="mt-2 font-display text-3xl font-black">{s.value}</div></div>;
         })}
@@ -130,54 +174,71 @@ function AdminUsers() {
                 </td>
                 <td className="px-4 py-3">
                   <div className="flex gap-1 flex-wrap">
-                    {u.roles.map(r => (
-                      <span key={r} className={`text-[10px] px-2 py-0.5 rounded-full uppercase font-bold tracking-widest ${
-                        r === "ceo" ? "bg-gradient-blood text-primary-foreground" :
-                        r === "admin" ? "bg-primary/30 text-primary" : "bg-muted text-muted-foreground"
-                      }`}>{r}</span>
-                    ))}
+                    {u.assignments.map(rid => {
+                      const r = roleById[rid];
+                      if (!r) return null;
+                      return <span key={rid} className="text-[10px] px-2 py-0.5 rounded-full uppercase font-bold tracking-widest text-white" style={{ background: r.color }}>{r.name}</span>;
+                    })}
+                    {u.assignments.length === 0 && <span className="text-xs text-muted-foreground">No roles</span>}
                   </div>
                 </td>
                 <td className="px-4 py-3 text-xs text-muted-foreground">{new Date(u.created_at).toLocaleDateString()}</td>
                 <td className="px-4 py-3 text-right">
                   <div className="flex gap-1 justify-end flex-wrap">
-                    <Button size="sm" variant="outline" onClick={() => openEdit(u)} disabled={!isCeo && u.id !== me?.id}><Edit3 className="h-3 w-3" /> Edit</Button>
-                    {isCeo && u.id !== me?.id && (
-                      <>
-                        {(["admin", "ceo"] as const).map(r => (
-                          <Button key={r} size="sm" variant={u.roles.includes(r) ? "destructive" : "outline"}
-                            onClick={() => setRole(u.id, r, !u.roles.includes(r))}>
-                            {u.roles.includes(r) ? `Revoke ${r}` : `Make ${r}`}
-                          </Button>
-                        ))}
-                        <AlertDialog>
-                          <AlertDialogTrigger asChild><Button size="sm" variant="destructive"><Trash2 className="h-3 w-3" /> Delete</Button></AlertDialogTrigger>
-                          <AlertDialogContent>
-                            <AlertDialogHeader><AlertDialogTitle>Delete @{u.username}?</AlertDialogTitle><AlertDialogDescription>This removes the user profile and roles from the admin system. This action cannot be undone.</AlertDialogDescription></AlertDialogHeader>
-                            <AlertDialogFooter><AlertDialogCancel>Cancel</AlertDialogCancel><AlertDialogAction className="bg-destructive text-destructive-foreground hover:bg-destructive/90" onClick={() => removeUser(u.id, u.username)}>Delete user</AlertDialogAction></AlertDialogFooter>
-                          </AlertDialogContent>
-                        </AlertDialog>
-                      </>
+                    {canManageRoles && u.id !== me?.id && (
+                      <Button size="sm" variant="outline" onClick={() => openAssign(u)}><KeyRound className="h-3 w-3" /> Roles</Button>
+                    )}
+                    <Button size="sm" variant="outline" onClick={() => openEdit(u)} disabled={!canEdit && u.id !== me?.id}><Edit3 className="h-3 w-3" /> Edit</Button>
+                    {canDelete && u.id !== me?.id && (
+                      <AlertDialog>
+                        <AlertDialogTrigger asChild><Button size="sm" variant="destructive"><Trash2 className="h-3 w-3" /></Button></AlertDialogTrigger>
+                        <AlertDialogContent>
+                          <AlertDialogHeader><AlertDialogTitle>Delete @{u.username}?</AlertDialogTitle><AlertDialogDescription>Removes profile, roles, and assignments. Cannot be undone.</AlertDialogDescription></AlertDialogHeader>
+                          <AlertDialogFooter><AlertDialogCancel>Cancel</AlertDialogCancel><AlertDialogAction className="bg-destructive text-destructive-foreground" onClick={() => removeUser(u.id)}>Delete</AlertDialogAction></AlertDialogFooter>
+                        </AlertDialogContent>
+                      </AlertDialog>
                     )}
                   </div>
                 </td>
               </tr>
             ))}
-            {!isLoading && filtered.length === 0 && <tr><td colSpan={4} className="p-8 text-center text-muted-foreground">No users match your search.</td></tr>}
+            {!isLoading && filtered.length === 0 && <tr><td colSpan={4} className="p-8 text-center text-muted-foreground">No users match.</td></tr>}
           </tbody>
         </table>
       </div>
 
-      <Dialog open={!!editing} onOpenChange={(open) => !open && setEditing(null)}>
+      {/* Edit profile */}
+      <Dialog open={!!editing} onOpenChange={open => !open && setEditing(null)}>
         <DialogContent className="bg-card/95 border-border">
-          <DialogHeader><DialogTitle className="font-display">Edit user profile</DialogTitle></DialogHeader>
+          <DialogHeader><DialogTitle className="font-display">Edit profile</DialogTitle></DialogHeader>
           <div className="grid gap-3">
-            <Input value={draft.username} onChange={(e) => setDraft({ ...draft, username: e.target.value })} placeholder="Username" />
-            <Input value={draft.display_name} onChange={(e) => setDraft({ ...draft, display_name: e.target.value })} placeholder="Display name" />
-            <Input value={draft.avatar_url} onChange={(e) => setDraft({ ...draft, avatar_url: e.target.value })} placeholder="Avatar URL" />
-            <Textarea value={draft.bio} onChange={(e) => setDraft({ ...draft, bio: e.target.value })} placeholder="Bio" className="min-h-28" />
-            <div className="flex justify-end gap-2 pt-2"><Button variant="outline" onClick={() => setEditing(null)}>Cancel</Button><Button onClick={saveProfile} className="bg-gradient-blood">Save changes</Button></div>
+            <Input value={draft.username} onChange={e => setDraft({ ...draft, username: e.target.value })} placeholder="Username" />
+            <Input value={draft.display_name} onChange={e => setDraft({ ...draft, display_name: e.target.value })} placeholder="Display name" />
+            <Input value={draft.avatar_url} onChange={e => setDraft({ ...draft, avatar_url: e.target.value })} placeholder="Avatar URL" />
+            <Textarea value={draft.bio} onChange={e => setDraft({ ...draft, bio: e.target.value })} placeholder="Bio" className="min-h-28" />
+            <div className="flex justify-end gap-2 pt-2"><Button variant="outline" onClick={() => setEditing(null)}>Cancel</Button><Button onClick={saveProfile} className="bg-gradient-blood">Save</Button></div>
           </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* Assign roles */}
+      <Dialog open={!!assigning} onOpenChange={open => !open && setAssigning(null)}>
+        <DialogContent className="bg-card/95 border-border">
+          <DialogHeader><DialogTitle className="font-display">Manage roles for @{assigning?.username}</DialogTitle></DialogHeader>
+          <div className="grid gap-2 max-h-[60vh] overflow-y-auto">
+            {allRoles.map(r => (
+              <label key={r.id} className="flex items-center gap-3 p-3 rounded-lg border border-border bg-muted/20 cursor-pointer hover:border-primary">
+                <Checkbox checked={assignDraft.has(r.id)} onCheckedChange={() => toggleAssign(r.id)} />
+                <span className="h-3 w-3 rounded-full" style={{ background: r.color }} />
+                <div className="flex-1">
+                  <div className="font-medium text-sm flex items-center gap-2">{r.name}{r.is_system && <span className="text-[9px] uppercase tracking-widest text-muted-foreground">system</span>}</div>
+                  <div className="text-xs text-muted-foreground">@{r.slug}</div>
+                </div>
+              </label>
+            ))}
+            {allRoles.length === 0 && <div className="text-sm text-muted-foreground p-4 text-center">No roles defined yet. Create one in Roles Manager.</div>}
+          </div>
+          <div className="flex justify-end gap-2 pt-2"><Button variant="outline" onClick={() => setAssigning(null)}>Cancel</Button><Button onClick={saveAssignments} className="bg-gradient-blood">Save</Button></div>
         </DialogContent>
       </Dialog>
     </div>

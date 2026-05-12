@@ -55,6 +55,7 @@ import { Route as AdminUsersRouteImport } from './routes/admin.users'
 import { Route as AdminTicketsRouteImport } from './routes/admin.tickets'
 import { Route as AdminStatusRouteImport } from './routes/admin.status'
 import { Route as AdminSettingsRouteImport } from './routes/admin.settings'
+import { Route as AdminRolesRouteImport } from './routes/admin.roles'
 import { Route as AdminRoadmapRouteImport } from './routes/admin.roadmap'
 import { Route as AdminReportsRouteImport } from './routes/admin.reports'
 import { Route as AdminPermissionsRouteImport } from './routes/admin.permissions'
@@ -303,6 +304,11 @@ const AdminSettingsRoute = AdminSettingsRouteImport.update({
   path: '/settings',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminRolesRoute = AdminRolesRouteImport.update({
+  id: '/roles',
+  path: '/roles',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AdminRoadmapRoute = AdminRoadmapRouteImport.update({
   id: '/roadmap',
   path: '/roadmap',
@@ -446,6 +452,7 @@ export interface FileRoutesByFullPath {
   '/admin/permissions': typeof AdminPermissionsRoute
   '/admin/reports': typeof AdminReportsRoute
   '/admin/roadmap': typeof AdminRoadmapRoute
+  '/admin/roles': typeof AdminRolesRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/admin/status': typeof AdminStatusRoute
   '/admin/tickets': typeof AdminTicketsRoute
@@ -510,6 +517,7 @@ export interface FileRoutesByTo {
   '/admin/permissions': typeof AdminPermissionsRoute
   '/admin/reports': typeof AdminReportsRoute
   '/admin/roadmap': typeof AdminRoadmapRoute
+  '/admin/roles': typeof AdminRolesRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/admin/status': typeof AdminStatusRoute
   '/admin/tickets': typeof AdminTicketsRoute
@@ -576,6 +584,7 @@ export interface FileRoutesById {
   '/admin/permissions': typeof AdminPermissionsRoute
   '/admin/reports': typeof AdminReportsRoute
   '/admin/roadmap': typeof AdminRoadmapRoute
+  '/admin/roles': typeof AdminRolesRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/admin/status': typeof AdminStatusRoute
   '/admin/tickets': typeof AdminTicketsRoute
@@ -643,6 +652,7 @@ export interface FileRouteTypes {
     | '/admin/permissions'
     | '/admin/reports'
     | '/admin/roadmap'
+    | '/admin/roles'
     | '/admin/settings'
     | '/admin/status'
     | '/admin/tickets'
@@ -707,6 +717,7 @@ export interface FileRouteTypes {
     | '/admin/permissions'
     | '/admin/reports'
     | '/admin/roadmap'
+    | '/admin/roles'
     | '/admin/settings'
     | '/admin/status'
     | '/admin/tickets'
@@ -772,6 +783,7 @@ export interface FileRouteTypes {
     | '/admin/permissions'
     | '/admin/reports'
     | '/admin/roadmap'
+    | '/admin/roles'
     | '/admin/settings'
     | '/admin/status'
     | '/admin/tickets'
@@ -1147,6 +1159,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminSettingsRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/roles': {
+      id: '/admin/roles'
+      path: '/roles'
+      fullPath: '/admin/roles'
+      preLoaderRoute: typeof AdminRolesRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/admin/roadmap': {
       id: '/admin/roadmap'
       path: '/roadmap'
@@ -1287,6 +1306,7 @@ interface AdminRouteChildren {
   AdminPermissionsRoute: typeof AdminPermissionsRoute
   AdminReportsRoute: typeof AdminReportsRoute
   AdminRoadmapRoute: typeof AdminRoadmapRoute
+  AdminRolesRoute: typeof AdminRolesRoute
   AdminSettingsRoute: typeof AdminSettingsRoute
   AdminStatusRoute: typeof AdminStatusRoute
   AdminTicketsRoute: typeof AdminTicketsRoute
@@ -1313,6 +1333,7 @@ const AdminRouteChildren: AdminRouteChildren = {
   AdminPermissionsRoute: AdminPermissionsRoute,
   AdminReportsRoute: AdminReportsRoute,
   AdminRoadmapRoute: AdminRoadmapRoute,
+  AdminRolesRoute: AdminRolesRoute,
   AdminSettingsRoute: AdminSettingsRoute,
   AdminStatusRoute: AdminStatusRoute,
   AdminTicketsRoute: AdminTicketsRoute,
@@ -1377,13 +1398,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
