@@ -1,52 +1,57 @@
 import { createFileRoute, useNavigate, Link, Outlet, useRouterState } from "@tanstack/react-router";
 import { useAuth } from "@/lib/auth-context";
 import { useEffect } from "react";
-import { LayoutDashboard, Users, FileText, Heart, MessageSquare, Settings, ArrowLeft, Skull, Newspaper, Calendar, LifeBuoy, Ban, Swords, Activity, ScrollText, Database, BarChart3, Save, FileBarChart, Megaphone, ShieldCheck, Clock, Image, Map } from "lucide-react";
+import { LayoutDashboard, Users, FileText, Heart, MessageSquare, Settings, ArrowLeft, Skull, Newspaper, Calendar, LifeBuoy, Ban, Swords, Activity, ScrollText, Database, BarChart3, Save, FileBarChart, Megaphone, ShieldCheck, Clock, Image, Map, KeyRound } from "lucide-react";
+import type { PageKey } from "@/lib/permissions";
 
 export const Route = createFileRoute("/admin")({
   head: () => ({ meta: [{ title: "Admin Dashboard — Mystery Town" }] }),
   component: AdminLayout,
 });
 
-const NAV = [
-  { to: "/admin", label: "Overview", icon: LayoutDashboard, exact: true },
-  { to: "/admin/analytics", label: "Analytics", icon: BarChart3 },
-  { to: "/admin/jsonbin", label: "JSON Database", icon: Database },
-  { to: "/admin/users", label: "Users & Roles", icon: Users },
-  { to: "/admin/whitelist", label: "Whitelist", icon: FileText },
-  { to: "/admin/donations", label: "Donations", icon: Heart },
-  { to: "/admin/messages", label: "Messages", icon: MessageSquare },
-  { to: "/admin/news", label: "News", icon: Newspaper },
-  { to: "/admin/events", label: "Events", icon: Calendar },
-  { to: "/admin/factions", label: "Factions", icon: Swords },
-  { to: "/admin/tickets", label: "Tickets", icon: LifeBuoy },
-  { to: "/admin/bans", label: "Bans", icon: Ban },
-  { to: "/admin/status", label: "Server Status", icon: Activity },
-  { to: "/admin/audit", label: "Audit Log", icon: ScrollText },
-  { to: "/admin/logs", label: "System Logs", icon: ScrollText },
-  { to: "/admin/reports", label: "Reports", icon: FileBarChart },
-  { to: "/admin/backups", label: "Backups", icon: Save },
-  { to: "/admin/broadcast", label: "Broadcast", icon: Megaphone },
-  { to: "/admin/permissions", label: "Permissions", icon: ShieldCheck },
-  { to: "/admin/cron", label: "Cron Jobs", icon: Clock },
-  { to: "/admin/media", label: "Media Library", icon: Image },
-  { to: "/admin/roadmap", label: "Roadmap", icon: Map },
-  { to: "/admin/settings", label: "Settings", icon: Settings },
+const NAV: { to: string; label: string; icon: any; exact?: boolean; key: PageKey }[] = [
+  { to: "/admin",             label: "Overview",       icon: LayoutDashboard, exact: true, key: "admin.overview" },
+  { to: "/admin/analytics",   label: "Analytics",      icon: BarChart3,       key: "admin.analytics" },
+  { to: "/admin/jsonbin",     label: "JSON Database",  icon: Database,        key: "admin.jsonbin" },
+  { to: "/admin/users",       label: "Users",          icon: Users,           key: "admin.users" },
+  { to: "/admin/roles",       label: "Roles Manager",  icon: KeyRound,        key: "admin.roles" },
+  { to: "/admin/whitelist",   label: "Whitelist",      icon: FileText,        key: "admin.whitelist" },
+  { to: "/admin/donations",   label: "Donations",      icon: Heart,           key: "admin.donations" },
+  { to: "/admin/messages",    label: "Messages",       icon: MessageSquare,   key: "admin.messages" },
+  { to: "/admin/news",        label: "News",           icon: Newspaper,       key: "admin.news" },
+  { to: "/admin/events",      label: "Events",         icon: Calendar,        key: "admin.events" },
+  { to: "/admin/factions",    label: "Factions",       icon: Swords,          key: "admin.factions" },
+  { to: "/admin/tickets",     label: "Tickets",        icon: LifeBuoy,        key: "admin.tickets" },
+  { to: "/admin/bans",        label: "Bans",           icon: Ban,             key: "admin.bans" },
+  { to: "/admin/status",      label: "Server Status",  icon: Activity,        key: "admin.status" },
+  { to: "/admin/audit",       label: "Audit Log",      icon: ScrollText,      key: "admin.audit" },
+  { to: "/admin/logs",        label: "System Logs",    icon: ScrollText,      key: "admin.logs" },
+  { to: "/admin/reports",     label: "Reports",        icon: FileBarChart,    key: "admin.reports" },
+  { to: "/admin/backups",     label: "Backups",        icon: Save,            key: "admin.backups" },
+  { to: "/admin/broadcast",   label: "Broadcast",      icon: Megaphone,       key: "admin.broadcast" },
+  { to: "/admin/permissions", label: "Permissions",    icon: ShieldCheck,     key: "admin.permissions" },
+  { to: "/admin/cron",        label: "Cron Jobs",      icon: Clock,           key: "admin.cron" },
+  { to: "/admin/media",       label: "Media Library",  icon: Image,           key: "admin.media" },
+  { to: "/admin/roadmap",     label: "Roadmap",        icon: Map,             key: "admin.roadmap" },
+  { to: "/admin/settings",    label: "Settings",       icon: Settings,        key: "admin.settings" },
 ];
 
 function AdminLayout() {
-  const { user, isStaff, loading } = useAuth();
+  const { user, isStaff, loading, canAccessPage } = useAuth();
   const nav = useNavigate();
   const path = useRouterState({ select: s => s.location.pathname });
+
+  const visible = NAV.filter(n => canAccessPage(n.key));
+  const hasAnyAdminAccess = isStaff || visible.length > 0;
 
   useEffect(() => {
     if (loading) return;
     if (!user) nav({ to: "/login" });
-    else if (!isStaff) nav({ to: "/dashboard" });
-  }, [user, isStaff, loading, nav]);
+    else if (!hasAnyAdminAccess) nav({ to: "/dashboard" });
+  }, [user, hasAnyAdminAccess, loading, nav]);
 
   if (loading) return <div className="min-h-screen grid place-items-center text-muted-foreground">Loading admin…</div>;
-  if (!user || !isStaff) return null;
+  if (!user || !hasAnyAdminAccess) return null;
 
   return (
     <div className="min-h-screen flex">
@@ -58,8 +63,8 @@ function AdminLayout() {
             <div className="text-[10px] uppercase tracking-widest text-primary">Admin Panel</div>
           </div>
         </Link>
-        <nav className="mt-6 space-y-1 flex-1">
-          {NAV.map(n => {
+        <nav className="mt-6 space-y-1 flex-1 overflow-y-auto">
+          {visible.map(n => {
             const active = n.exact ? path === n.to : path.startsWith(n.to);
             const Icon = n.icon;
             return (
@@ -78,9 +83,8 @@ function AdminLayout() {
       </aside>
 
       <main className="flex-1 min-w-0">
-        {/* Mobile top nav */}
         <div className="md:hidden border-b border-border bg-sidebar p-3 flex gap-2 overflow-x-auto">
-          {NAV.map(n => {
+          {visible.map(n => {
             const active = n.exact ? path === n.to : path.startsWith(n.to);
             return (
               <Link key={n.to} to={n.to} className={`shrink-0 px-3 py-1.5 rounded-md text-xs ${active ? "bg-primary text-primary-foreground" : "bg-card"}`}>
