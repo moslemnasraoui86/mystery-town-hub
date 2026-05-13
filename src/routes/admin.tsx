@@ -1,7 +1,7 @@
 import { createFileRoute, useNavigate, Link, Outlet, useRouterState } from "@tanstack/react-router";
 import { useAuth } from "@/lib/auth-context";
 import { useEffect } from "react";
-import { LayoutDashboard, Users, FileText, Heart, MessageSquare, Settings, ArrowLeft, Skull, Newspaper, Calendar, LifeBuoy, Ban, Swords, Activity, ScrollText, Database, BarChart3, Save, FileBarChart, Megaphone, ShieldCheck, Clock, Image, Map, KeyRound } from "lucide-react";
+import { LayoutDashboard, Users, FileText, Heart, MessageSquare, Settings, ArrowLeft, Skull, Newspaper, Calendar, LifeBuoy, Ban, Swords, Activity, ScrollText, Database, BarChart3, Save, FileBarChart, Megaphone, ShieldCheck, Clock, Image, Map, KeyRound, UserCheck } from "lucide-react";
 import type { PageKey } from "@/lib/permissions";
 
 export const Route = createFileRoute("/admin")({
@@ -16,6 +16,7 @@ const NAV: { to: string; label: string; icon: any; exact?: boolean; key: PageKey
   { to: "/admin/users",       label: "Users",          icon: Users,           key: "admin.users" },
   { to: "/admin/roles",       label: "Roles Manager",  icon: KeyRound,        key: "admin.roles" },
   { to: "/admin/whitelist",   label: "Whitelist",      icon: FileText,        key: "admin.whitelist" },
+  { to: "/admin/characters",  label: "Char. Approvals",icon: UserCheck,       key: "admin.characters" },
   { to: "/admin/donations",   label: "Donations",      icon: Heart,           key: "admin.donations" },
   { to: "/admin/messages",    label: "Messages",       icon: MessageSquare,   key: "admin.messages" },
   { to: "/admin/news",        label: "News",           icon: Newspaper,       key: "admin.news" },

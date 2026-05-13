@@ -80,6 +80,10 @@ export type Database = {
           id: string
           level: number
           name: string
+          reviewed_at: string | null
+          reviewed_by: string | null
+          reviewer_notes: string | null
+          status: string
           user_id: string
         }
         Insert: {
@@ -90,6 +94,10 @@ export type Database = {
           id?: string
           level?: number
           name: string
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          reviewer_notes?: string | null
+          status?: string
           user_id: string
         }
         Update: {
@@ -100,6 +108,10 @@ export type Database = {
           id?: string
           level?: number
           name?: string
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          reviewer_notes?: string | null
+          status?: string
           user_id?: string
         }
         Relationships: [

@@ -68,6 +68,7 @@ import { Route as AdminFactionsRouteImport } from './routes/admin.factions'
 import { Route as AdminEventsRouteImport } from './routes/admin.events'
 import { Route as AdminDonationsRouteImport } from './routes/admin.donations'
 import { Route as AdminCronRouteImport } from './routes/admin.cron'
+import { Route as AdminCharactersRouteImport } from './routes/admin.characters'
 import { Route as AdminBroadcastRouteImport } from './routes/admin.broadcast'
 import { Route as AdminBansRouteImport } from './routes/admin.bans'
 import { Route as AdminBackupsRouteImport } from './routes/admin.backups'
@@ -369,6 +370,11 @@ const AdminCronRoute = AdminCronRouteImport.update({
   path: '/cron',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminCharactersRoute = AdminCharactersRouteImport.update({
+  id: '/characters',
+  path: '/characters',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AdminBroadcastRoute = AdminBroadcastRouteImport.update({
   id: '/broadcast',
   path: '/broadcast',
@@ -440,6 +446,7 @@ export interface FileRoutesByFullPath {
   '/admin/backups': typeof AdminBackupsRoute
   '/admin/bans': typeof AdminBansRoute
   '/admin/broadcast': typeof AdminBroadcastRoute
+  '/admin/characters': typeof AdminCharactersRoute
   '/admin/cron': typeof AdminCronRoute
   '/admin/donations': typeof AdminDonationsRoute
   '/admin/events': typeof AdminEventsRoute
@@ -505,6 +512,7 @@ export interface FileRoutesByTo {
   '/admin/backups': typeof AdminBackupsRoute
   '/admin/bans': typeof AdminBansRoute
   '/admin/broadcast': typeof AdminBroadcastRoute
+  '/admin/characters': typeof AdminCharactersRoute
   '/admin/cron': typeof AdminCronRoute
   '/admin/donations': typeof AdminDonationsRoute
   '/admin/events': typeof AdminEventsRoute
@@ -572,6 +580,7 @@ export interface FileRoutesById {
   '/admin/backups': typeof AdminBackupsRoute
   '/admin/bans': typeof AdminBansRoute
   '/admin/broadcast': typeof AdminBroadcastRoute
+  '/admin/characters': typeof AdminCharactersRoute
   '/admin/cron': typeof AdminCronRoute
   '/admin/donations': typeof AdminDonationsRoute
   '/admin/events': typeof AdminEventsRoute
@@ -640,6 +649,7 @@ export interface FileRouteTypes {
     | '/admin/backups'
     | '/admin/bans'
     | '/admin/broadcast'
+    | '/admin/characters'
     | '/admin/cron'
     | '/admin/donations'
     | '/admin/events'
@@ -705,6 +715,7 @@ export interface FileRouteTypes {
     | '/admin/backups'
     | '/admin/bans'
     | '/admin/broadcast'
+    | '/admin/characters'
     | '/admin/cron'
     | '/admin/donations'
     | '/admin/events'
@@ -771,6 +782,7 @@ export interface FileRouteTypes {
     | '/admin/backups'
     | '/admin/bans'
     | '/admin/broadcast'
+    | '/admin/characters'
     | '/admin/cron'
     | '/admin/donations'
     | '/admin/events'
@@ -1250,6 +1262,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminCronRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/characters': {
+      id: '/admin/characters'
+      path: '/characters'
+      fullPath: '/admin/characters'
+      preLoaderRoute: typeof AdminCharactersRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/admin/broadcast': {
       id: '/admin/broadcast'
       path: '/broadcast'
@@ -1294,6 +1313,7 @@ interface AdminRouteChildren {
   AdminBackupsRoute: typeof AdminBackupsRoute
   AdminBansRoute: typeof AdminBansRoute
   AdminBroadcastRoute: typeof AdminBroadcastRoute
+  AdminCharactersRoute: typeof AdminCharactersRoute
   AdminCronRoute: typeof AdminCronRoute
   AdminDonationsRoute: typeof AdminDonationsRoute
   AdminEventsRoute: typeof AdminEventsRoute
@@ -1321,6 +1341,7 @@ const AdminRouteChildren: AdminRouteChildren = {
   AdminBackupsRoute: AdminBackupsRoute,
   AdminBansRoute: AdminBansRoute,
   AdminBroadcastRoute: AdminBroadcastRoute,
+  AdminCharactersRoute: AdminCharactersRoute,
   AdminCronRoute: AdminCronRoute,
   AdminDonationsRoute: AdminDonationsRoute,
   AdminEventsRoute: AdminEventsRoute,
