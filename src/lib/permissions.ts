@@ -4,7 +4,7 @@ export type PageKey =
   | "admin.factions" | "admin.tickets" | "admin.bans" | "admin.status"
   | "admin.audit" | "admin.logs" | "admin.reports" | "admin.backups"
   | "admin.broadcast" | "admin.permissions" | "admin.cron" | "admin.media"
-  | "admin.roadmap" | "admin.jsonbin" | "admin.settings" | "admin.roles";
+  | "admin.roadmap" | "admin.jsonbin" | "admin.settings" | "admin.roles" | "admin.characters";
 
 export const PAGES: { key: PageKey; label: string; path: string }[] = [
   { key: "admin.overview",    label: "Overview",            path: "/admin" },
@@ -30,6 +30,7 @@ export const PAGES: { key: PageKey; label: string; path: string }[] = [
   { key: "admin.cron",        label: "Cron Jobs",           path: "/admin/cron" },
   { key: "admin.media",       label: "Media Library",       path: "/admin/media" },
   { key: "admin.roadmap",     label: "Roadmap",             path: "/admin/roadmap" },
+  { key: "admin.characters",  label: "Character Approvals", path: "/admin/characters" },
   { key: "admin.settings",    label: "Settings",            path: "/admin/settings" },
 ];
 
