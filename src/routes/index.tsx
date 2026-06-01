@@ -9,6 +9,29 @@ export const Route = createFileRoute("/")({
     meta: [
       { title: "Mystery Town — Hardcore RP & Zombies SA-MP Server" },
       { name: "description", content: "Welcome to Mystery Town: a hardcore RP & zombies SA-MP server with deep economy, factions, and atmospheric lore." },
+      { property: "og:url", content: "https://mystery-town-nexus.lovable.app/" },
+    ],
+    links: [{ rel: "canonical", href: "https://mystery-town-nexus.lovable.app/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "Mystery Town",
+          url: "https://mystery-town-nexus.lovable.app/",
+          description: "Hardcore RP & zombies SA-MP server with deep economy, factions and atmospheric lore.",
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "Mystery Town",
+          url: "https://mystery-town-nexus.lovable.app/",
+        }),
+      },
     ],
   }),
   component: Home,

@@ -17,6 +17,7 @@ import { Route as TermsRouteImport } from './routes/terms'
 import { Route as StreamersRouteImport } from './routes/streamers'
 import { Route as StatusRouteImport } from './routes/status'
 import { Route as StaffRouteImport } from './routes/staff'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ShopRouteImport } from './routes/shop'
 import { Route as ScreenshotsRouteImport } from './routes/screenshots'
 import { Route as RulesRouteImport } from './routes/rules'
@@ -113,6 +114,11 @@ const StatusRoute = StatusRouteImport.update({
 const StaffRoute = StaffRouteImport.update({
   id: '/staff',
   path: '/staff',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ShopRoute = ShopRouteImport.update({
@@ -433,6 +439,7 @@ export interface FileRoutesByFullPath {
   '/rules': typeof RulesRoute
   '/screenshots': typeof ScreenshotsRoute
   '/shop': typeof ShopRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/staff': typeof StaffRoute
   '/status': typeof StatusRoute
   '/streamers': typeof StreamersRoute
@@ -499,6 +506,7 @@ export interface FileRoutesByTo {
   '/rules': typeof RulesRoute
   '/screenshots': typeof ScreenshotsRoute
   '/shop': typeof ShopRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/staff': typeof StaffRoute
   '/status': typeof StatusRoute
   '/streamers': typeof StreamersRoute
@@ -567,6 +575,7 @@ export interface FileRoutesById {
   '/rules': typeof RulesRoute
   '/screenshots': typeof ScreenshotsRoute
   '/shop': typeof ShopRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/staff': typeof StaffRoute
   '/status': typeof StatusRoute
   '/streamers': typeof StreamersRoute
@@ -636,6 +645,7 @@ export interface FileRouteTypes {
     | '/rules'
     | '/screenshots'
     | '/shop'
+    | '/sitemap.xml'
     | '/staff'
     | '/status'
     | '/streamers'
@@ -702,6 +712,7 @@ export interface FileRouteTypes {
     | '/rules'
     | '/screenshots'
     | '/shop'
+    | '/sitemap.xml'
     | '/staff'
     | '/status'
     | '/streamers'
@@ -769,6 +780,7 @@ export interface FileRouteTypes {
     | '/rules'
     | '/screenshots'
     | '/shop'
+    | '/sitemap.xml'
     | '/staff'
     | '/status'
     | '/streamers'
@@ -837,6 +849,7 @@ export interface RootRouteChildren {
   RulesRoute: typeof RulesRoute
   ScreenshotsRoute: typeof ScreenshotsRoute
   ShopRoute: typeof ShopRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   StaffRoute: typeof StaffRoute
   StatusRoute: typeof StatusRoute
   StreamersRoute: typeof StreamersRoute
@@ -903,6 +916,13 @@ declare module '@tanstack/react-router' {
       path: '/staff'
       fullPath: '/staff'
       preLoaderRoute: typeof StaffRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/shop': {
@@ -1407,6 +1427,7 @@ const rootRouteChildren: RootRouteChildren = {
   RulesRoute: RulesRoute,
   ScreenshotsRoute: ScreenshotsRoute,
   ShopRoute: ShopRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   StaffRoute: StaffRoute,
   StatusRoute: StatusRoute,
   StreamersRoute: StreamersRoute,
