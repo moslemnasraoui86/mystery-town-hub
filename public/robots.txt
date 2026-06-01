@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /account
+Disallow: /dashboard
+
+Sitemap: https://mystery-town-nexus.lovable.app/sitemap.xml

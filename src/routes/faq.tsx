@@ -13,7 +13,28 @@ const FAQS = [
 ];
 
 export const Route = createFileRoute("/faq")({
-  head: () => ({ meta: [{ title: "FAQ — Mystery Town" }] }),
+  head: () => ({
+    meta: [
+      { title: "FAQ — Mystery Town" },
+      { name: "description", content: "Answers to common questions about joining Mystery Town: whitelist process, SA-MP version, character changes, mods policy, staff coverage and permadeath rules." },
+      { property: "og:title", content: "FAQ — Mystery Town" },
+      { property: "og:description", content: "Everything you need to know before joining Mystery Town — whitelist, rules, character, mods and staff coverage." },
+      { property: "og:url", content: "https://mystery-town-nexus.lovable.app/faq" },
+    ],
+    links: [{ rel: "canonical", href: "https://mystery-town-nexus.lovable.app/faq" }],
+    scripts: [{
+      type: "application/ld+json",
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: FAQS.map(f => ({
+          "@type": "Question",
+          name: f.q,
+          acceptedAnswer: { "@type": "Answer", text: f.a },
+        })),
+      }),
+    }],
+  }),
   component: () => (
     <SiteLayout>
       <section className="max-w-3xl mx-auto px-4 py-20">

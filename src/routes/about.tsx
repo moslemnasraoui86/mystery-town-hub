@@ -2,7 +2,16 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/SiteLayout";
 
 export const Route = createFileRoute("/about")({
-  head: () => ({ meta: [{ title: "About — Mystery Town" }, { name: "description", content: "The story of Mystery Town." }] }),
+  head: () => ({
+    meta: [
+      { title: "About — Mystery Town" },
+      { name: "description", content: "The story behind Mystery Town: an ambitious hardcore RP & zombies SA-MP server built by passionate developers, writers and roleplayers since 2021." },
+      { property: "og:title", content: "About — Mystery Town" },
+      { property: "og:description", content: "Quality over chaos — meet the team and mission behind Mystery Town's hardcore RP & zombies SA-MP server." },
+      { property: "og:url", content: "https://mystery-town-nexus.lovable.app/about" },
+    ],
+    links: [{ rel: "canonical", href: "https://mystery-town-nexus.lovable.app/about" }],
+  }),
   component: About,
 });
 
