@@ -15,7 +15,16 @@ const RULES = [
 ];
 
 export const Route = createFileRoute("/rules")({
-  head: () => ({ meta: [{ title: "Rules — Mystery Town" }] }),
+  head: () => ({
+    meta: [
+      { title: "Server Rules — Mystery Town" },
+      { name: "description", content: "The ten rules every Mystery Town survivor must follow: respect, no metagaming, no powergaming, no RDM/VDM, no cheats and how to report issues." },
+      { property: "og:title", content: "Server Rules — Mystery Town" },
+      { property: "og:description", content: "The code of conduct for Mystery Town RP — breaking these is the fastest way out." },
+      { property: "og:url", content: "https://mystery-town-nexus.lovable.app/rules" },
+    ],
+    links: [{ rel: "canonical", href: "https://mystery-town-nexus.lovable.app/rules" }],
+  }),
   component: () => (
     <SiteLayout>
       <section className="max-w-3xl mx-auto px-4 py-20">

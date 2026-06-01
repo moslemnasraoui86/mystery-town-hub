@@ -5,7 +5,16 @@ import { supabase } from "@/integrations/supabase/client";
 import { Newspaper } from "lucide-react";
 
 export const Route = createFileRoute("/news")({
-  head: () => ({ meta: [{ title: "News — Mystery Town" }, { name: "description", content: "Latest server news, patches and announcements." }] }),
+  head: () => ({
+    meta: [
+      { title: "News — Mystery Town" },
+      { name: "description", content: "Latest Mystery Town server news, patch announcements, in-game events and dispatches from the wasteland — updated as the world evolves." },
+      { property: "og:title", content: "News — Mystery Town" },
+      { property: "og:description", content: "Patches, events and dispatches from Mystery Town's hardcore RP wasteland." },
+      { property: "og:url", content: "https://mystery-town-nexus.lovable.app/news" },
+    ],
+    links: [{ rel: "canonical", href: "https://mystery-town-nexus.lovable.app/news" }],
+  }),
   component: NewsPage,
 });
 

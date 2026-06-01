@@ -18,7 +18,16 @@ const schema = z.object({
 });
 
 export const Route = createFileRoute("/contact")({
-  head: () => ({ meta: [{ title: "Contact — Mystery Town" }] }),
+  head: () => ({
+    meta: [
+      { title: "Contact — Mystery Town" },
+      { name: "description", content: "Get in touch with the Mystery Town team about questions, suggestions, partnerships, press or support. We read every message." },
+      { property: "og:title", content: "Contact — Mystery Town" },
+      { property: "og:description", content: "Reach the Mystery Town team — questions, suggestions, partnerships and press." },
+      { property: "og:url", content: "https://mystery-town-nexus.lovable.app/contact" },
+    ],
+    links: [{ rel: "canonical", href: "https://mystery-town-nexus.lovable.app/contact" }],
+  }),
   component: ContactPage,
 });
 
