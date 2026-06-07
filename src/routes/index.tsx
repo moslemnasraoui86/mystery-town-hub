@@ -3,6 +3,7 @@ import { SiteLayout } from "@/components/site/SiteLayout";
 import { Button } from "@/components/ui/button";
 import { Skull, Users, Shield, Trophy, Zap, Heart, ChevronRight, Crosshair, Radio } from "lucide-react";
 import hero from "@/assets/hero.jpg";
+import { AnimatedCounter } from "@/components/ui/animated-counter";
 
 export const Route = createFileRoute("/")({
   head: () => ({
