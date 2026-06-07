@@ -14,6 +14,8 @@ import {
 import { useAuth } from "@/lib/auth-context";
 import { Button } from "@/components/ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { NotificationBell } from "./NotificationBell";
+import { ThemeToggle } from "./ThemeToggle";
 
 type Item = { to: string; label: string; desc: string; icon: LucideIcon };
 type Category = { label: string; icon: LucideIcon; items: Item[] };
