@@ -1,13 +1,13 @@
 import { Link } from "@tanstack/react-router";
 import { Home, Users, ClipboardCheck, MessagesSquare, UserSquare2 } from "lucide-react";
 
-const ITEMS = [
+const ITEMS: Array<{ to: string; label: string; icon: typeof Home; exact?: boolean }> = [
   { to: "/", label: "Home", icon: Home, exact: true },
   { to: "/forum", label: "Forum", icon: MessagesSquare },
   { to: "/whitelist", label: "Apply", icon: ClipboardCheck },
   { to: "/characters", label: "Roster", icon: Users },
   { to: "/account", label: "Me", icon: UserSquare2 },
-] as const;
+];
 
 export function MobileNav() {
   return (
