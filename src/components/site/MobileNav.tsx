@@ -18,7 +18,7 @@ export function MobileNav() {
           return (
             <li key={it.to} className="flex-1">
               <Link
-                to={it.to}
+                to={it.to as any}
                 activeOptions={it.exact ? { exact: true } : undefined}
                 className="group flex flex-col items-center justify-center gap-0.5 py-2.5 text-[10px] font-bold uppercase tracking-wider text-muted-foreground transition-colors"
                 activeProps={{ className: "text-primary" }}
