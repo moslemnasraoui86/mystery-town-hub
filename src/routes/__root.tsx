@@ -113,6 +113,7 @@ function RootShell({ children }: { children: React.ReactNode }) {
 }
 
 import { AuthProvider } from "@/lib/auth-context";
+import { ThemeProvider } from "@/lib/theme-context";
 import { Toaster } from "@/components/ui/sonner";
 
 function RootComponent() {
@@ -120,10 +121,12 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <AuthProvider>
-        <Outlet />
-        <Toaster richColors theme="dark" />
-      </AuthProvider>
+      <ThemeProvider>
+        <AuthProvider>
+          <Outlet />
+          <Toaster richColors theme="dark" />
+        </AuthProvider>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 }
