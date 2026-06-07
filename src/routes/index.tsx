@@ -3,6 +3,7 @@ import { SiteLayout } from "@/components/site/SiteLayout";
 import { Button } from "@/components/ui/button";
 import { Skull, Users, Shield, Trophy, Zap, Heart, ChevronRight, Crosshair, Radio } from "lucide-react";
 import hero from "@/assets/hero.jpg";
+import { AnimatedCounter } from "@/components/ui/animated-counter";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -72,18 +73,21 @@ function Home() {
       <section className="border-y border-border bg-card/30">
         <div className="max-w-7xl mx-auto px-4 py-10 grid grid-cols-2 md:grid-cols-4 gap-6">
           {[
-            { v: "12K+", l: "Active Survivors" },
-            { v: "47", l: "Factions" },
-            { v: "200", l: "Player slots" },
-            { v: "99.9%", l: "Uptime" },
+            { v: 12000, suffix: "+", l: "Active Survivors" },
+            { v: 47, suffix: "", l: "Factions" },
+            { v: 200, suffix: "", l: "Player slots" },
+            { v: 99.9, suffix: "%", l: "Uptime", decimals: 1 },
           ].map((s) => (
-            <div key={s.l} className="text-center">
-              <div className="font-display text-3xl md:text-4xl font-black text-primary text-glow">{s.v}</div>
+            <div key={s.l} className="text-center group">
+              <div className="font-display text-3xl md:text-4xl font-black text-primary text-glow group-hover:scale-110 transition-transform duration-500">
+                <AnimatedCounter value={s.v} suffix={s.suffix} decimals={s.decimals ?? 0} />
+              </div>
               <div className="mt-1 text-xs uppercase tracking-widest text-muted-foreground">{s.l}</div>
             </div>
           ))}
         </div>
       </section>
+
 
       {/* Features */}
       <section className="max-w-7xl mx-auto px-4 py-24">

@@ -14,6 +14,8 @@ import {
 import { useAuth } from "@/lib/auth-context";
 import { Button } from "@/components/ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { NotificationBell } from "./NotificationBell";
+import { ThemeToggle } from "./ThemeToggle";
 
 type Item = { to: string; label: string; desc: string; icon: LucideIcon };
 type Category = { label: string; icon: LucideIcon; items: Item[] };
@@ -118,15 +120,17 @@ export function Header() {
           Home
         </Link>
 
-        <div className="flex items-center gap-2 shrink-0">
+        <div className="flex items-center gap-1 sm:gap-2 shrink-0">
+          <ThemeToggle />
           {user ? (
             <>
+              <NotificationBell />
               {isStaff && (
                 <Button variant="outline" size="sm" onClick={() => nav({ to: "/admin" })} className="hidden sm:inline-flex">
                   <Shield className="h-4 w-4 mr-1" /> Admin
                 </Button>
               )}
-              <Button variant="ghost" size="sm" onClick={() => nav({ to: "/account" })}>
+              <Button variant="ghost" size="sm" onClick={() => nav({ to: "/account" })} className="max-w-[120px] truncate">
                 {profile?.username ?? "Account"}
               </Button>
               <Button variant="ghost" size="icon" onClick={signOut} aria-label="Sign out">
