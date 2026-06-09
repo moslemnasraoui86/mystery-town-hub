@@ -11,7 +11,7 @@ const ROLES = [
 ];
 
 export const Route = createFileRoute("/jobs")({
-  head: () => ({ meta: [{ title: "Careers — Mystery Town" }, { name: "description", content: "Open roles at Mystery Town." }]}),
+  head: () => ({ meta: [{ title: "Careers — Prime RolePlay" }, { name: "description", content: "Open roles at Prime RolePlay." }]}),
   component: () => (
     <PageShell icon={Briefcase} title="Open" highlight="Roles" description="Help shape the apocalypse. Most positions are remote.">
       <div className="space-y-3">

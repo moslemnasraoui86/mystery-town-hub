@@ -5,7 +5,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Activity, Wifi, Users, Server } from "lucide-react";
 
 export const Route = createFileRoute("/status")({
-  head: () => ({ meta: [{ title: "Server Status — Mystery Town" }] }),
+  head: () => ({ meta: [{ title: "Server Status — Prime RolePlay" }] }),
   component: StatusPage,
 });
 

@@ -5,7 +5,7 @@ import { LayoutDashboard, Users, FileText, Heart, MessageSquare, Settings, Arrow
 import type { PageKey } from "@/lib/permissions";
 
 export const Route = createFileRoute("/admin")({
-  head: () => ({ meta: [{ title: "Admin Dashboard — Mystery Town" }] }),
+  head: () => ({ meta: [{ title: "Admin Dashboard — Prime RolePlay" }] }),
   component: AdminLayout,
 });
 
@@ -60,7 +60,7 @@ function AdminLayout() {
         <Link to="/" className="flex items-center gap-2 px-2 py-3">
           <Skull className="h-7 w-7 text-primary" />
           <div>
-            <div className="font-display font-black text-sm tracking-wider">MYSTERY TOWN</div>
+            <div className="font-display font-black text-sm tracking-wider">PRIME ROLEPLAY</div>
             <div className="text-[10px] uppercase tracking-widest text-primary">Admin Panel</div>
           </div>
         </Link>

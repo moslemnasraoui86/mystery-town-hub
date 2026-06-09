@@ -11,7 +11,7 @@ import { toast } from "sonner";
 import { User, Mail, Lock, Trash2, ShieldAlert, KeyRound } from "lucide-react";
 
 export const Route = createFileRoute("/account")({
-  head: () => ({ meta: [{ title: "Account Management — Mystery Town" }] }),
+  head: () => ({ meta: [{ title: "Account Management — Prime RolePlay" }] }),
   component: AccountPage,
 });
 

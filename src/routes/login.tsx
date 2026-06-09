@@ -11,7 +11,7 @@ import { Skull } from "lucide-react";
 import { usernameToEmail } from "@/lib/username-auth";
 
 export const Route = createFileRoute("/login")({
-  head: () => ({ meta: [{ title: "Login — Mystery Town" }] }),
+  head: () => ({ meta: [{ title: "Login — Prime RolePlay" }] }),
   component: LoginPage,
 });
 
@@ -48,7 +48,7 @@ function LoginPage() {
         <div className="text-center">
           <Skull className="h-12 w-12 text-primary mx-auto animate-pulse-blood" />
           <h1 className="font-display text-4xl font-black mt-4">Welcome <span className="text-primary text-glow">Back</span></h1>
-          <p className="text-muted-foreground mt-2 text-sm">Sign in to enter Mystery Town.</p>
+          <p className="text-muted-foreground mt-2 text-sm">Sign in to enter Prime RolePlay.</p>
         </div>
         <form onSubmit={submit} className="mt-10 space-y-4 rounded-2xl border border-border bg-card/50 p-6 shadow-deep animate-scale-in">
           <div><Label>Username</Label><Input value={username} onChange={e => setUsername(e.target.value)} required autoFocus /></div>

@@ -18,7 +18,7 @@ const FEATURES = [
 ];
 
 export const Route = createFileRoute("/features")({
-  head: () => ({ meta: [{ title: "Features — Mystery Town" }] }),
+  head: () => ({ meta: [{ title: "Features — Prime RolePlay" }] }),
   component: () => (
     <SiteLayout>
       <section className="max-w-7xl mx-auto px-4 py-20">

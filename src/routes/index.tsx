@@ -8,19 +8,19 @@ import { AnimatedCounter } from "@/components/ui/animated-counter";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Mystery Town — Hardcore RP & Zombies SA-MP Server" },
-      { name: "description", content: "Welcome to Mystery Town: a hardcore RP & zombies SA-MP server with deep economy, factions, and atmospheric lore." },
-      { property: "og:url", content: "https://mystery-town-nexus.lovable.app/" },
+      { title: "Prime RolePlay — Hardcore RP & Zombies SA-MP Server" },
+      { name: "description", content: "Welcome to Prime RolePlay: a hardcore RP & zombies SA-MP server with deep economy, factions, and atmospheric lore." },
+      { property: "og:url", content: "https://prime-roleplay.lovable.app/" },
     ],
-    links: [{ rel: "canonical", href: "https://mystery-town-nexus.lovable.app/" }],
+    links: [{ rel: "canonical", href: "https://prime-roleplay.lovable.app/" }],
     scripts: [
       {
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Organization",
-          name: "Mystery Town",
-          url: "https://mystery-town-nexus.lovable.app/",
+          name: "Prime RolePlay",
+          url: "https://prime-roleplay.lovable.app/",
           description: "Hardcore RP & zombies SA-MP server with deep economy, factions and atmospheric lore.",
         }),
       },
@@ -29,8 +29,8 @@ export const Route = createFileRoute("/")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "WebSite",
-          name: "Mystery Town",
-          url: "https://mystery-town-nexus.lovable.app/",
+          name: "Prime RolePlay",
+          url: "https://prime-roleplay.lovable.app/",
         }),
       },
     ],
@@ -43,7 +43,7 @@ function Home() {
     <SiteLayout>
       {/* Hero */}
       <section className="relative overflow-hidden">
-        <img src={hero} alt="Mystery Town at night" width={1920} height={1080}
+        <img src={hero} alt="Prime RolePlay at night" width={1920} height={1080}
           className="absolute inset-0 w-full h-full object-cover opacity-40" />
         <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background" />
         <div className="relative max-w-7xl mx-auto px-4 py-32 md:py-44">
@@ -56,7 +56,7 @@ function Home() {
             LIVE THE <span className="text-primary text-glow">ROLE</span>.
           </h1>
           <p className="mt-6 max-w-xl text-lg text-muted-foreground">
-            Mystery Town is a hardcore SA-MP RP & zombies experience. Build a character, join a faction, fight for scraps under a blood moon.
+            Prime RolePlay is a hardcore SA-MP RP & zombies experience. Build a character, join a faction, fight for scraps under a blood moon.
           </p>
           <div className="mt-10 flex flex-wrap gap-3">
             <Button asChild size="lg" className="bg-gradient-blood shadow-blood text-base">
@@ -124,7 +124,7 @@ function Home() {
           <div className="relative grid md:grid-cols-2 gap-8 items-center">
             <div>
               <Crosshair className="h-10 w-10 text-primary mb-4" />
-              <h2 className="font-display text-3xl md:text-4xl font-black">Ready to enter Mystery Town?</h2>
+              <h2 className="font-display text-3xl md:text-4xl font-black">Ready to enter Prime RolePlay?</h2>
               <p className="mt-3 text-muted-foreground">Create an account, write your character, and step into the fog.</p>
             </div>
             <div className="flex flex-wrap gap-3 md:justify-end">

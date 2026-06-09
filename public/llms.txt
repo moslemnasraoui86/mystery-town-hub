@@ -1,15 +1,15 @@
-# Mystery Town
+# Prime RolePlay
 
 > Hardcore RP & zombies SA-MP server with deep economy, factions, and atmospheric lore. Survive the dead. Live the role.
 
-Mystery Town runs on heavily modified SA-MP 0.3.7 R5 with hundreds of custom scripts: persistent properties, crafting, factions, dynamic infection, weather and a player-driven economy. Whitelist-only roleplay.
+Prime RolePlay runs on heavily modified SA-MP 0.3.7 R5 with hundreds of custom scripts: persistent properties, crafting, factions, dynamic infection, weather and a player-driven economy. Whitelist-only roleplay.
 
 ## Pages
 
-- [Home](/): Server overview, stats, and what makes Mystery Town different.
+- [Home](/): Server overview, stats, and what makes Prime RolePlay different.
 - [About](/about): The story, team, and mission behind the server.
 - [Features](/features): The systems that power the world.
-- [Lore](/lore): The fiction of Mystery Town.
+- [Lore](/lore): The fiction of Prime RolePlay.
 - [Factions](/factions): Police, gangs, scavengers, doctors and more.
 - [Map](/map): The city, regions, and points of interest.
 - [Rules](/rules): Server rules and code of conduct.
@@ -24,7 +24,7 @@ Mystery Town runs on heavily modified SA-MP 0.3.7 R5 with hundreds of custom scr
 - [Gallery](/gallery): Screenshots and clips from the world.
 - [Screenshots](/screenshots): Hi-res shots from across the apocalypse.
 - [Media](/media): Trailers, podcasts, press kit.
-- [Streamers](/streamers): Mystery Town content creators.
+- [Streamers](/streamers): Prime RolePlay content creators.
 - [Discord](/discord): Join the community.
 - [Forum](/forum): Player discussion.
 - [Shop](/shop): Cosmetic perks.

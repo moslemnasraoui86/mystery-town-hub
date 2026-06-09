@@ -4,7 +4,7 @@ import { MessagesSquare, Users, Bell } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/discord")({
-  head: () => ({ meta: [{ title: "Discord — Mystery Town" }, { name: "description", content: "Join the Mystery Town Discord — events, factions, support, friends." }]}),
+  head: () => ({ meta: [{ title: "Discord — Prime RolePlay" }, { name: "description", content: "Join the Prime RolePlay Discord — events, factions, support, friends." }]}),
   component: () => (
     <PageShell icon={MessagesSquare} title="Join the" highlight="Discord" description="6,400+ survivors. Voice chat, faction channels, staff-only office hours.">
       <div className="grid md:grid-cols-3 gap-5">

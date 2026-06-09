@@ -11,7 +11,7 @@ const STAFF = [
 ];
 
 export const Route = createFileRoute("/staff")({
-  head: () => ({ meta: [{ title: "Staff — Mystery Town" }] }),
+  head: () => ({ meta: [{ title: "Staff — Prime RolePlay" }] }),
   component: () => (
     <SiteLayout>
       <section className="max-w-7xl mx-auto px-4 py-20">

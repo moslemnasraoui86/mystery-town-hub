@@ -10,17 +10,17 @@ export const Route = createFileRoute("/news/$id")({
     return data;
   },
   head: ({ params, loaderData }) => {
-    const url = `https://mystery-town-nexus.lovable.app/news/${params.id}`;
+    const url = `https://prime-roleplay.lovable.app/news/${params.id}`;
     if (!loaderData) {
       return {
-        meta: [{ title: "Article — Mystery Town" }],
+        meta: [{ title: "Article — Prime RolePlay" }],
         links: [{ rel: "canonical", href: url }],
       };
     }
-    const desc = (loaderData.excerpt ?? loaderData.title ?? "Mystery Town news article.").slice(0, 160);
+    const desc = (loaderData.excerpt ?? loaderData.title ?? "Prime RolePlay news article.").slice(0, 160);
     return {
       meta: [
-        { title: `${loaderData.title} — Mystery Town` },
+        { title: `${loaderData.title} — Prime RolePlay` },
         { name: "description", content: desc },
         { property: "og:title", content: loaderData.title },
         { property: "og:description", content: desc },
@@ -37,8 +37,8 @@ export const Route = createFileRoute("/news/$id")({
           headline: loaderData.title,
           description: desc,
           datePublished: loaderData.created_at,
-          author: { "@type": "Organization", name: "Mystery Town" },
-          publisher: { "@type": "Organization", name: "Mystery Town" },
+          author: { "@type": "Organization", name: "Prime RolePlay" },
+          publisher: { "@type": "Organization", name: "Prime RolePlay" },
           mainEntityOfPage: url,
         }),
       }],

@@ -20,7 +20,7 @@ const schema = z.object({
 });
 
 export const Route = createFileRoute("/whitelist")({
-  head: () => ({ meta: [{ title: "Whitelist Application — Mystery Town" }] }),
+  head: () => ({ meta: [{ title: "Whitelist Application — Prime RolePlay" }] }),
   component: WhitelistPage,
 });
 

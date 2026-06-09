@@ -5,7 +5,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Calendar, MapPin } from "lucide-react";
 
 export const Route = createFileRoute("/events")({
-  head: () => ({ meta: [{ title: "Events — Mystery Town" }] }),
+  head: () => ({ meta: [{ title: "Events — Prime RolePlay" }] }),
   component: EventsPage,
 });
 

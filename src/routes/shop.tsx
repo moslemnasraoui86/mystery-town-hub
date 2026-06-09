@@ -3,7 +3,7 @@ import { SiteLayout } from "@/components/site/SiteLayout";
 import { ShoppingBag } from "lucide-react";
 
 export const Route = createFileRoute("/shop")({
-  head: () => ({ meta: [{ title: "Shop — Mystery Town" }] }),
+  head: () => ({ meta: [{ title: "Shop — Prime RolePlay" }] }),
   component: ShopPage,
 });
 

@@ -5,7 +5,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Trophy } from "lucide-react";
 
 export const Route = createFileRoute("/leaderboard")({
-  head: () => ({ meta: [{ title: "Leaderboard — Mystery Town" }] }),
+  head: () => ({ meta: [{ title: "Leaderboard — Prime RolePlay" }] }),
   component: LB,
 });
 

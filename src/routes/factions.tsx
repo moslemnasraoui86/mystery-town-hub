@@ -5,7 +5,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Swords } from "lucide-react";
 
 export const Route = createFileRoute("/factions")({
-  head: () => ({ meta: [{ title: "Factions — Mystery Town" }] }),
+  head: () => ({ meta: [{ title: "Factions — Prime RolePlay" }] }),
   component: FactionsPage,
 });
 

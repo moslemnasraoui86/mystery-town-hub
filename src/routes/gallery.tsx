@@ -2,12 +2,12 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/SiteLayout";
 
 export const Route = createFileRoute("/gallery")({
-  head: () => ({ meta: [{ title: "Gallery — Mystery Town" }] }),
+  head: () => ({ meta: [{ title: "Gallery — Prime RolePlay" }] }),
   component: () => (
     <SiteLayout>
       <section className="max-w-7xl mx-auto px-4 py-20">
         <h1 className="font-display text-5xl font-black text-center">In-Game <span className="text-primary text-glow">Gallery</span></h1>
-        <p className="text-center mt-4 text-muted-foreground">Snapshots from the survivors of Mystery Town.</p>
+        <p className="text-center mt-4 text-muted-foreground">Snapshots from the survivors of Prime RolePlay.</p>
         <div className="mt-12 grid sm:grid-cols-2 md:grid-cols-3 gap-4">
           {Array.from({ length: 9 }).map((_, i) => (
             <div key={i} className="aspect-video rounded-xl border border-border overflow-hidden relative group">

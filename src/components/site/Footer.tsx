@@ -8,7 +8,7 @@ export function Footer() {
         <div>
           <div className="flex items-center gap-2">
             <Skull className="h-6 w-6 text-primary" />
-            <span className="font-display font-black tracking-wider">MYSTERY TOWN</span>
+            <span className="font-display font-black tracking-wider">PRIME ROLEPLAY</span>
           </div>
           <p className="mt-3 text-sm text-muted-foreground">
             A hardcore RP & zombies SA-MP server. Survive. Trade. Roleplay.
@@ -34,12 +34,12 @@ export function Footer() {
         </div>
         <div>
           <h4 className="font-display text-sm mb-3 text-primary">Connect</h4>
-          <p className="text-sm text-muted-foreground">IP: <span className="text-foreground font-mono">play.mysterytown.rp:7777</span></p>
-          <p className="text-sm text-muted-foreground mt-2">Discord: mysterytown</p>
+          <p className="text-sm text-muted-foreground">IP: <span className="text-foreground font-mono">play.primeroleplay.rp:7777</span></p>
+          <p className="text-sm text-muted-foreground mt-2">Discord: primeroleplay</p>
         </div>
       </div>
       <div className="border-t border-border py-4 text-center text-xs text-muted-foreground">
-        © {new Date().getFullYear()} Mystery Town RP. All rights reserved.
+        © {new Date().getFullYear()} Prime RolePlay RP. All rights reserved.
       </div>
     </footer>
   );

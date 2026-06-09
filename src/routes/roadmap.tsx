@@ -4,8 +4,8 @@ import { Map, CheckCircle2, Circle, Clock } from "lucide-react";
 
 export const Route = createFileRoute("/roadmap")({
   head: () => ({ meta: [
-    { title: "Roadmap — Mystery Town" },
-    { name: "description", content: "Where Mystery Town is heading: shipped features, in-progress work, and what's next." },
+    { title: "Roadmap — Prime RolePlay" },
+    { name: "description", content: "Where Prime RolePlay is heading: shipped features, in-progress work, and what's next." },
   ]}),
   component: RoadmapPage,
 });

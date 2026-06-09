@@ -14,7 +14,7 @@ const TOPICS = [
 ];
 
 export const Route = createFileRoute("/wiki")({
-  head: () => ({ meta: [{ title: "Wiki — Mystery Town" }, { name: "description", content: "Player-maintained wiki for Mystery Town mechanics and lore." }]}),
+  head: () => ({ meta: [{ title: "Wiki — Prime RolePlay" }, { name: "description", content: "Player-maintained wiki for Prime RolePlay mechanics and lore." }]}),
   component: () => (
     <PageShell icon={BookOpen} title="The" highlight="Wiki" description="Community-built. Staff-verified.">
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">

@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Skull, Shield, FileText, Heart } from "lucide-react";
 
 export const Route = createFileRoute("/dashboard")({
-  head: () => ({ meta: [{ title: "Dashboard — Mystery Town" }] }),
+  head: () => ({ meta: [{ title: "Dashboard — Prime RolePlay" }] }),
   component: Dash,
 });
 

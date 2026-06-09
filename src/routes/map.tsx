@@ -10,7 +10,7 @@ const REGIONS = [
 ];
 
 export const Route = createFileRoute("/map")({
-  head: () => ({ meta: [{ title: "Map & Regions — Mystery Town" }, { name: "description", content: "Mystery Town's interactive map and region risk tiers." }]}),
+  head: () => ({ meta: [{ title: "Map & Regions — Prime RolePlay" }, { name: "description", content: "Prime RolePlay's interactive map and region risk tiers." }]}),
   component: () => (
     <PageShell icon={MapIcon} title="The" highlight="Map" description="Four regions. One way out. Choose carefully.">
       <div className="aspect-[16/8] rounded-2xl border border-border bg-gradient-to-br from-primary/10 via-card to-background flex items-center justify-center text-muted-foreground">Interactive map placeholder</div>
