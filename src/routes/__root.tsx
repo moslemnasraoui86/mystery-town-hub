@@ -115,9 +115,15 @@ function RootShell({ children }: { children: React.ReactNode }) {
 import { AuthProvider } from "@/lib/auth-context";
 import { ThemeProvider } from "@/lib/theme-context";
 import { Toaster } from "@/components/ui/sonner";
+import { useEffect } from "react";
+import { installDevtoolsGuard } from "@/lib/devtools-guard";
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+
+  useEffect(() => {
+    installDevtoolsGuard();
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
