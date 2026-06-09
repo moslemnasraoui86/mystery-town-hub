@@ -3,9 +3,9 @@ import { PageShell, FeatureGrid } from "@/components/site/PageShell";
 import { Camera, Video, Mic, Image, Film, Newspaper } from "lucide-react";
 
 export const Route = createFileRoute("/media")({
-  head: () => ({ meta: [{ title: "Media Hub — Mystery Town" }, { name: "description", content: "Trailers, screenshots, podcasts and press from Mystery Town." }]}),
+  head: () => ({ meta: [{ title: "Media Hub — Prime RolePlay" }, { name: "description", content: "Trailers, screenshots, podcasts and press from Prime RolePlay." }]}),
   component: () => (
-    <PageShell icon={Camera} title="Media" highlight="Hub" description="Everything visual, audible, and quotable about Mystery Town.">
+    <PageShell icon={Camera} title="Media" highlight="Hub" description="Everything visual, audible, and quotable about Prime RolePlay.">
       <FeatureGrid items={[
         { icon: Video, title: "Trailers", desc: "Cinematic teasers and gameplay reveals." },
         { icon: Image, title: "Screenshot vault", desc: "Hi-res shots from every region of the map." },

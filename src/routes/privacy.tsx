@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/SiteLayout";
 
 export const Route = createFileRoute("/privacy")({
-  head: () => ({ meta: [{ title: "Privacy Policy — Mystery Town" }] }),
+  head: () => ({ meta: [{ title: "Privacy Policy — Prime RolePlay" }] }),
   component: () => (
     <SiteLayout><section className="max-w-3xl mx-auto px-4 py-20 prose prose-invert">
       <h1 className="font-display text-5xl font-black">Privacy Policy</h1>

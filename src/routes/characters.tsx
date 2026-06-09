@@ -12,7 +12,7 @@ import { toast } from "sonner";
 import { User, Clock, CheckCircle2, XCircle } from "lucide-react";
 
 export const Route = createFileRoute("/characters")({
-  head: () => ({ meta: [{ title: "Characters — Mystery Town" }] }),
+  head: () => ({ meta: [{ title: "Characters — Prime RolePlay" }] }),
   component: CharsPage,
 });
 
@@ -56,7 +56,7 @@ function CharsPage() {
     <SiteLayout>
       <section className="max-w-5xl mx-auto px-4 py-20 animate-fade-in">
         <h1 className="font-display text-5xl font-black">Survivor <span className="text-primary text-glow">Roster</span></h1>
-        <p className="text-muted-foreground mt-3">Approved survivors fighting for control of Mystery Town.</p>
+        <p className="text-muted-foreground mt-3">Approved survivors fighting for control of Prime RolePlay.</p>
 
         {user && !mine && (
           <div className="mt-10 rounded-2xl border border-primary/30 bg-card/50 p-5 shadow-blood animate-scale-in">

@@ -9,7 +9,7 @@ const NOTES = [
 ];
 
 export const Route = createFileRoute("/patches")({
-  head: () => ({ meta: [{ title: "Patch Notes — Mystery Town" }, { name: "description", content: "Every change, every version." }]}),
+  head: () => ({ meta: [{ title: "Patch Notes — Prime RolePlay" }, { name: "description", content: "Every change, every version." }]}),
   component: () => (
     <PageShell icon={GitCommitHorizontal} title="Patch" highlight="Notes" description="The blow-by-blow account of every server update.">
       <div className="space-y-4">

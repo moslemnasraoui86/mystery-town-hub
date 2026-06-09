@@ -17,20 +17,20 @@ const RULES = [
 export const Route = createFileRoute("/rules")({
   head: () => ({
     meta: [
-      { title: "Server Rules — Mystery Town" },
-      { name: "description", content: "The ten rules every Mystery Town survivor must follow: respect, no metagaming, no powergaming, no RDM/VDM, no cheats and how to report issues." },
-      { property: "og:title", content: "Server Rules — Mystery Town" },
-      { property: "og:description", content: "The code of conduct for Mystery Town RP — breaking these is the fastest way out." },
-      { property: "og:url", content: "https://mystery-town-nexus.lovable.app/rules" },
+      { title: "Server Rules — Prime RolePlay" },
+      { name: "description", content: "The ten rules every Prime RolePlay survivor must follow: respect, no metagaming, no powergaming, no RDM/VDM, no cheats and how to report issues." },
+      { property: "og:title", content: "Server Rules — Prime RolePlay" },
+      { property: "og:description", content: "The code of conduct for Prime RolePlay RP — breaking these is the fastest way out." },
+      { property: "og:url", content: "https://prime-roleplay.lovable.app/rules" },
     ],
-    links: [{ rel: "canonical", href: "https://mystery-town-nexus.lovable.app/rules" }],
+    links: [{ rel: "canonical", href: "https://prime-roleplay.lovable.app/rules" }],
   }),
   component: () => (
     <SiteLayout>
       <section className="max-w-3xl mx-auto px-4 py-20">
         <h1 className="font-display text-5xl font-black">Server <span className="text-primary text-glow">Rules</span></h1>
         <div className="blood-divider mt-3" />
-        <p className="mt-6 text-muted-foreground">Breaking these is the fastest way out of Mystery Town.</p>
+        <p className="mt-6 text-muted-foreground">Breaking these is the fastest way out of Prime RolePlay.</p>
         <div className="mt-10 space-y-3">
           {RULES.map((r) => (
             <div key={r.t} className="rounded-lg border border-border bg-card/50 p-5 hover:border-primary/40 transition">

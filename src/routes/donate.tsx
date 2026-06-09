@@ -16,7 +16,7 @@ const TIERS = [
 ];
 
 export const Route = createFileRoute("/donate")({
-  head: () => ({ meta: [{ title: "Donate — Mystery Town" }] }),
+  head: () => ({ meta: [{ title: "Donate — Prime RolePlay" }] }),
   component: DonatePage,
 });
 
@@ -44,7 +44,7 @@ function DonatePage() {
   return (
     <SiteLayout>
       <section className="max-w-6xl mx-auto px-4 py-20">
-        <h1 className="font-display text-5xl font-black text-center">Support <span className="text-primary text-glow">Mystery Town</span></h1>
+        <h1 className="font-display text-5xl font-black text-center">Support <span className="text-primary text-glow">Prime RolePlay</span></h1>
         <p className="text-center text-muted-foreground mt-3 max-w-xl mx-auto">100% of donations go to server hosting and development. Pick a tier:</p>
 
         <div className="mt-12 grid md:grid-cols-3 gap-5">

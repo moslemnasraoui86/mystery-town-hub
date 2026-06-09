@@ -5,7 +5,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 const FAQS = [
   { q: "How do I join the server?", a: "Create an account on this site, fill out the whitelist application, wait for review (usually 24–48h), then connect via SA-MP." },
   { q: "Is it free?", a: "Yes. The server is fully free. Donations help us cover hosting and development." },
-  { q: "What version of SA-MP?", a: "Mystery Town runs on heavily modified SA-MP 0.3.7 R5." },
+  { q: "What version of SA-MP?", a: "Prime RolePlay runs on heavily modified SA-MP 0.3.7 R5." },
   { q: "Can I change my character later?", a: "Major character changes (name, backstory) require staff approval via ticket." },
   { q: "Are mods allowed?", a: "Visual mods only. Anything providing gameplay advantage is bannable." },
   { q: "How active is the staff?", a: "We have admins online 24/7 across all timezones." },
@@ -15,13 +15,13 @@ const FAQS = [
 export const Route = createFileRoute("/faq")({
   head: () => ({
     meta: [
-      { title: "FAQ — Mystery Town" },
-      { name: "description", content: "Answers to common questions about joining Mystery Town: whitelist process, SA-MP version, character changes, mods policy, staff coverage and permadeath rules." },
-      { property: "og:title", content: "FAQ — Mystery Town" },
-      { property: "og:description", content: "Everything you need to know before joining Mystery Town — whitelist, rules, character, mods and staff coverage." },
-      { property: "og:url", content: "https://mystery-town-nexus.lovable.app/faq" },
+      { title: "FAQ — Prime RolePlay" },
+      { name: "description", content: "Answers to common questions about joining Prime RolePlay: whitelist process, SA-MP version, character changes, mods policy, staff coverage and permadeath rules." },
+      { property: "og:title", content: "FAQ — Prime RolePlay" },
+      { property: "og:description", content: "Everything you need to know before joining Prime RolePlay — whitelist, rules, character, mods and staff coverage." },
+      { property: "og:url", content: "https://prime-roleplay.lovable.app/faq" },
     ],
-    links: [{ rel: "canonical", href: "https://mystery-town-nexus.lovable.app/faq" }],
+    links: [{ rel: "canonical", href: "https://prime-roleplay.lovable.app/faq" }],
     scripts: [{
       type: "application/ld+json",
       children: JSON.stringify({

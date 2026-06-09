@@ -3,7 +3,7 @@ import { useTheme, type ThemeName } from "@/lib/theme-context";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 
 const META: Record<ThemeName, { label: string; swatch: string; icon: typeof Droplet }> = {
-  blood:    { label: "Blood",    swatch: "oklch(0.55 0.22 27)",  icon: Droplet },
+  blood:    { label: "Prime Blue", swatch: "oklch(0.62 0.20 255)", icon: Droplet },
   midnight: { label: "Midnight", swatch: "oklch(0.55 0.20 260)", icon: Moon },
   ember:    { label: "Ember",    swatch: "oklch(0.68 0.18 50)",  icon: Flame },
   ash:      { label: "Ash",      swatch: "oklch(0.65 0.02 200)", icon: Mountain },

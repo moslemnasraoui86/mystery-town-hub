@@ -3,7 +3,7 @@ import { SiteLayout } from "@/components/site/SiteLayout";
 import { GitCommit } from "lucide-react";
 
 export const Route = createFileRoute("/changelog")({
-  head: () => ({ meta: [{ title: "Changelog — Mystery Town" }] }),
+  head: () => ({ meta: [{ title: "Changelog — Prime RolePlay" }] }),
   component: CL,
 });
 

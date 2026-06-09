@@ -3,9 +3,9 @@ import { PageShell } from "@/components/site/PageShell";
 import { Twitch } from "lucide-react";
 
 export const Route = createFileRoute("/streamers")({
-  head: () => ({ meta: [{ title: "Streamers — Mystery Town" }, { name: "description", content: "Watch Mystery Town live. Follow your favorites." }]}),
+  head: () => ({ meta: [{ title: "Streamers — Prime RolePlay" }, { name: "description", content: "Watch Prime RolePlay live. Follow your favorites." }]}),
   component: () => (
-    <PageShell icon={Twitch} title="Live" highlight="Streamers" description="Mystery Town streamers, ranked by recent activity.">
+    <PageShell icon={Twitch} title="Live" highlight="Streamers" description="Prime RolePlay streamers, ranked by recent activity.">
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {["NoxRP","CrimsonShade","DeadCityDan","HordeQueen","BunkerBob","MidnightMia"].map(n => (
           <div key={n} className="rounded-2xl border border-border bg-card/50 p-5 hover:border-primary/60 transition">

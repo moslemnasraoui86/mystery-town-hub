@@ -72,16 +72,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Mystery Town — Hardcore RP & Zombies SA-MP Server" },
-      { name: "description", content: "Survive the dead. Live the role. Mystery Town is a hardcore RP & zombies SA-MP server with deep economy, factions and lore." },
-      { name: "author", content: "Mystery Town" },
-      { property: "og:title", content: "Mystery Town — Hardcore RP & Zombies SA-MP Server" },
-      { property: "og:description", content: "Survive the dead. Live the role. Mystery Town is a hardcore RP & zombies SA-MP server with deep economy, factions and lore." },
+      { title: "Prime RolePlay — Hardcore RP & Zombies SA-MP Server" },
+      { name: "description", content: "Survive the dead. Live the role. Prime RolePlay is a hardcore RP & zombies SA-MP server with deep economy, factions and lore." },
+      { name: "author", content: "Prime RolePlay" },
+      { property: "og:title", content: "Prime RolePlay — Hardcore RP & Zombies SA-MP Server" },
+      { property: "og:description", content: "Survive the dead. Live the role. Prime RolePlay is a hardcore RP & zombies SA-MP server with deep economy, factions and lore." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
-      { name: "twitter:title", content: "Mystery Town — Hardcore RP & Zombies SA-MP Server" },
-      { name: "twitter:description", content: "Survive the dead. Live the role. Mystery Town is a hardcore RP & zombies SA-MP server with deep economy, factions and lore." },
+      { name: "twitter:title", content: "Prime RolePlay — Hardcore RP & Zombies SA-MP Server" },
+      { name: "twitter:description", content: "Survive the dead. Live the role. Prime RolePlay is a hardcore RP & zombies SA-MP server with deep economy, factions and lore." },
       { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/56958ffe-ec61-46b8-9302-389b2ee6aa89/id-preview-7272f0a7--28ae81ec-18b1-4b11-b68c-bd83e0665f2e.lovable.app-1778572550519.png" },
       { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/56958ffe-ec61-46b8-9302-389b2ee6aa89/id-preview-7272f0a7--28ae81ec-18b1-4b11-b68c-bd83e0665f2e.lovable.app-1778572550519.png" },
     ],
@@ -115,9 +115,15 @@ function RootShell({ children }: { children: React.ReactNode }) {
 import { AuthProvider } from "@/lib/auth-context";
 import { ThemeProvider } from "@/lib/theme-context";
 import { Toaster } from "@/components/ui/sonner";
+import { useEffect } from "react";
+import { installDevtoolsGuard } from "@/lib/devtools-guard";
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+
+  useEffect(() => {
+    installDevtoolsGuard();
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>

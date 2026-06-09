@@ -17,7 +17,7 @@ const schema = z.object({
 });
 
 export const Route = createFileRoute("/register")({
-  head: () => ({ meta: [{ title: "Register — Mystery Town" }] }),
+  head: () => ({ meta: [{ title: "Register — Prime RolePlay" }] }),
   component: RegisterPage,
 });
 
@@ -47,7 +47,7 @@ function RegisterPage() {
       if (error.message.toLowerCase().includes("already")) return toast.error("Username taken");
       return toast.error(error.message);
     }
-    toast.success("Account created. Welcome to Mystery Town.");
+    toast.success("Account created. Welcome to Prime RolePlay.");
     nav({ to: "/dashboard" });
   };
 
@@ -56,7 +56,7 @@ function RegisterPage() {
       <section className="max-w-md mx-auto px-4 py-20 animate-fade-in">
         <div className="text-center">
           <Skull className="h-12 w-12 text-primary mx-auto animate-pulse-blood" />
-          <h1 className="font-display text-4xl font-black mt-4">Join <span className="text-primary text-glow">Mystery Town</span></h1>
+          <h1 className="font-display text-4xl font-black mt-4">Join <span className="text-primary text-glow">Prime RolePlay</span></h1>
           <p className="text-muted-foreground mt-2 text-sm">Create your survivor account.</p>
         </div>
         <form onSubmit={submit} className="mt-10 space-y-4 rounded-2xl border border-border bg-card/50 p-6 shadow-deep animate-scale-in">

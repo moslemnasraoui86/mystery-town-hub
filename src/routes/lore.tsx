@@ -3,12 +3,12 @@ import { SiteLayout } from "@/components/site/SiteLayout";
 import { BookOpen } from "lucide-react";
 
 export const Route = createFileRoute("/lore")({
-  head: () => ({ meta: [{ title: "Lore — Mystery Town" }] }),
+  head: () => ({ meta: [{ title: "Lore — Prime RolePlay" }] }),
   component: LorePage,
 });
 
 const CHAPTERS = [
-  { title: "Chapter I — Before the Fall", body: "Mystery Town was a quiet coastal hub. Trade flowed, neon lit the bay, and corruption festered beneath the chrome. The first strain emerged in district 4 — at first, just rumors of fevered dock workers." },
+  { title: "Chapter I — Before the Fall", body: "Prime RolePlay was a quiet coastal hub. Trade flowed, neon lit the bay, and corruption festered beneath the chrome. The first strain emerged in district 4 — at first, just rumors of fevered dock workers." },
   { title: "Chapter II — The Outbreak", body: "Within seventy two hours the city was sealed. Convoys collapsed. The bridge fell. Survivors retreated inland and built walls from cars and scripture." },
   { title: "Chapter III — Rise of the Factions", body: "From the silence came new powers. The Black Hand. The Iron Wardens. The Ash Cult. Each promising salvation. Each demanding tribute." },
   { title: "Chapter IV — You", body: "You arrive on the last bus before the gates close forever. Will you serve, lead, or run?" },

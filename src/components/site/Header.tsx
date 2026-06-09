@@ -106,7 +106,7 @@ export function Header() {
             <span className="absolute inset-0 rounded-full bg-primary/30 blur-xl animate-pulse-blood -z-10" />
           </span>
           <span className="font-display font-black text-base sm:text-lg tracking-wider">
-            MYSTERY <span className="text-primary text-glow">TOWN</span>
+            PRIME <span className="text-primary text-glow">ROLEPLAY</span>
           </span>
         </Link>
 

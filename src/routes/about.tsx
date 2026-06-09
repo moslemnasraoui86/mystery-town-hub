@@ -4,13 +4,13 @@ import { SiteLayout } from "@/components/site/SiteLayout";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About — Mystery Town" },
-      { name: "description", content: "The story behind Mystery Town: an ambitious hardcore RP & zombies SA-MP server built by passionate developers, writers and roleplayers since 2021." },
-      { property: "og:title", content: "About — Mystery Town" },
-      { property: "og:description", content: "Quality over chaos — meet the team and mission behind Mystery Town's hardcore RP & zombies SA-MP server." },
-      { property: "og:url", content: "https://mystery-town-nexus.lovable.app/about" },
+      { title: "About — Prime RolePlay" },
+      { name: "description", content: "The story behind Prime RolePlay: an ambitious hardcore RP & zombies SA-MP server built by passionate developers, writers and roleplayers since 2021." },
+      { property: "og:title", content: "About — Prime RolePlay" },
+      { property: "og:description", content: "Quality over chaos — meet the team and mission behind Prime RolePlay's hardcore RP & zombies SA-MP server." },
+      { property: "og:url", content: "https://prime-roleplay.lovable.app/about" },
     ],
-    links: [{ rel: "canonical", href: "https://mystery-town-nexus.lovable.app/about" }],
+    links: [{ rel: "canonical", href: "https://prime-roleplay.lovable.app/about" }],
   }),
   component: About,
 });
@@ -19,10 +19,10 @@ function About() {
   return (
     <SiteLayout>
       <section className="max-w-4xl mx-auto px-4 py-20">
-        <h1 className="font-display text-5xl md:text-6xl font-black">About <span className="text-primary text-glow">Mystery Town</span></h1>
+        <h1 className="font-display text-5xl md:text-6xl font-black">About <span className="text-primary text-glow">Prime RolePlay</span></h1>
         <div className="mt-3 blood-divider" />
         <div className="mt-10 space-y-6 text-muted-foreground leading-relaxed text-lg">
-          <p>Mystery Town began as a single quiet settlement on the edge of the dead world. Today it stands as one of the most ambitious roleplay & zombie survival servers on SA-MP, blending tense urban exploration with deep character storytelling.</p>
+          <p>Prime RolePlay began as a single quiet settlement on the edge of the dead world. Today it stands as one of the most ambitious roleplay & zombie survival servers on SA-MP, blending tense urban exploration with deep character storytelling.</p>
           <p>Built by a team of passionate developers, writers and roleplayers, we run on heavily modified <span className="text-foreground">SA-MP 0.3.7 R5</span> with hundreds of custom scripts: persistent properties, crafting, factions, dynamic infection, weather and a player-driven economy.</p>
           <p>Our mission is simple — quality over chaos. Every survivor is whitelisted. Every staff member is trained. Every story matters.</p>
         </div>

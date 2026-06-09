@@ -12,7 +12,7 @@ import { toast } from "sonner";
 import { Pin, MessageCircle } from "lucide-react";
 
 export const Route = createFileRoute("/forum")({
-  head: () => ({ meta: [{ title: "Community Forum — Mystery Town" }] }),
+  head: () => ({ meta: [{ title: "Community Forum — Prime RolePlay" }] }),
   component: ForumPage,
 });
 
