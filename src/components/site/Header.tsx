@@ -169,8 +169,9 @@ export function Header() {
                           : "border-transparent hover:bg-primary/10 hover:text-primary hover:border-primary/30 hover:-translate-y-0.5"
                       }`}
                     >
-                      <span className={`flex h-6 w-6 items-center justify-center rounded-md bg-primary/15 text-primary transition-all duration-500 ${isOpen ? "rotate-12 scale-110" : "group-hover:rotate-12 group-hover:scale-110 group-hover:animate-float"}`}>
-                        <CatIcon className="h-3.5 w-3.5" />
+                      <span className={`relative flex h-6 w-6 items-center justify-center rounded-md bg-primary/15 text-primary ring-1 ring-primary/25 transition-all duration-500 will-change-transform ${isOpen ? "rotate-12 scale-110 ring-primary/60 shadow-blood" : "group-hover:-rotate-12 group-hover:scale-125 group-hover:ring-primary/60 group-hover:shadow-blood"}`}>
+                        <span className={`absolute inset-0 rounded-md bg-primary/25 blur-[6px] transition-opacity duration-500 ${isOpen ? "opacity-100 animate-pulse" : "opacity-0 group-hover:opacity-100"}`} />
+                        <CatIcon className="relative h-3.5 w-3.5 transition-transform duration-500 group-hover:scale-110" />
                       </span>
                       {cat.label}
                     </button>
