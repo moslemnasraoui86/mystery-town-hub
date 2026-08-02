@@ -24,7 +24,9 @@ export const Route = createFileRoute("/discord")({
         })}
       </div>
       <div className="mt-10 text-center">
-        <Button size="lg" className="bg-gradient-blood shadow-blood">Open Discord invite</Button>
+        <Button asChild size="lg" className="bg-gradient-blood shadow-blood">
+          <a href="https://discord.gg/2HEJh3t37A" target="_blank" rel="noopener noreferrer">Open Discord invite</a>
+        </Button>
       </div>
     </PageShell>
   ),
