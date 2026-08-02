@@ -37,10 +37,18 @@ export function AnimatedCounter({ value, duration = 1600, prefix = "", suffix = 
     return () => io.disconnect();
   }, [value, duration]);
 
+  // Locale-independent formatting so SSR output matches the client exactly.
+  const format = (n: number) => {
+    const fixed = n.toFixed(decimals);
+    const [int, frac] = fixed.split(".");
+    const grouped = int.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return frac ? `${grouped}.${frac}` : grouped;
+  };
+
   return (
     <span ref={ref} className={className}>
       {prefix}
-      {current.toLocaleString(undefined, { maximumFractionDigits: decimals, minimumFractionDigits: decimals })}
+      {format(current)}
       {suffix}
     </span>
   );
