@@ -35,7 +35,12 @@ export function Footer() {
         <div>
           <h4 className="font-display text-sm mb-3 text-primary">Connect</h4>
           <p className="text-sm text-muted-foreground">IP: <span className="text-foreground font-mono">play.primeroleplay.rp:7777</span></p>
-          <p className="text-sm text-muted-foreground mt-2">Discord: primeroleplay</p>
+          <p className="text-sm text-muted-foreground mt-2">
+            Discord:{" "}
+            <a href="https://discord.gg/2HEJh3t37A" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+              discord.gg/2HEJh3t37A
+            </a>
+          </p>
         </div>
       </div>
       <div className="border-t border-border py-4 text-center text-xs text-muted-foreground">
